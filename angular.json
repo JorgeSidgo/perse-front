@@ -38,6 +38,7 @@
             "styles": [
               "src/theme.less",
               "src/styles.css",
+              "src/assets/fonts/fonts.css",
               "./node_modules/material-design-icons/iconfont/material-icons.css"
             ],
             "scripts": []
