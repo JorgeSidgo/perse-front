@@ -1,0 +1,36 @@
+<div class="full-flex">
+  <div class="filter">
+    <div class="card parent-card">
+      <div class="card child-card">
+        <p class="logo-login">Persé</p>
+      </div>
+
+      <div class="login-form">
+        <form nz-form>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your username!">
+              <nz-input-group nzPrefixIcon="user">
+                <input type="text" nz-input placeholder="Nombre de Usuario" />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your Password!">
+              <nz-input-group nzPrefixIcon="lock">
+                <input type="password" nz-input placeholder="Contraseña" />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item class="button-row">
+            <nz-form-control>
+              <small><a class="login-form-forgot" class="login-form-forgot">¿Olvidó su contraseña?</a></small>
+              <button type="button" nz-button class="login-form-button" [nzLoading]="loginButtonLoading"
+                (click)="login()" [routerLink]="['/app']" [nzType]="'primary'">Iniciar Sesión</button>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

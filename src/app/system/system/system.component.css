@@ -1,0 +1,83 @@
+nz-header {
+  background: #ddd;
+  display: flex;
+  justify-content: center;
+  height: 55px;
+  line-height: 55px;
+  padding: 0;
+}
+
+nz-content {
+  margin: 1.25em;
+}
+
+nz-breadcrumb {
+  margin: 16px 0;
+}
+
+nz-layout {
+  width: 100%;
+  height: 100%;
+}
+
+nz-footer {
+  text-align: center;
+}
+
+.avatar-circ {
+  width: 2em;
+  height: 2em;
+  background: #FF5722;
+  border-radius: 50%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-circ>i {
+  color: #eee;
+  font-weight: bold;
+  margin: 0 !important;
+}
+
+.user-dropdown {
+  padding: 0 .5em;
+  height: 55px;
+  color: #111;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background .3s ease;
+  /* background: rgba(0, 0, 0, 0.3) !important; */
+}
+
+.user-dropdown:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.user-dropdown:active {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.user-dropdown :not(:last-child) {
+  margin-right: 0.50em;
+}
+
+.user-dropdown :last-child {
+  margin-left: 0.50em;
+}
+
+.trigger {
+  font-size: 18px;
+  line-height: 55px;
+  margin-right: 1.25em;
+  cursor: pointer;
+  content: "menu";
+  transition: color 0.3s;
+}
+
+.trigger:hover {
+  color: #FF5722;
+}
+

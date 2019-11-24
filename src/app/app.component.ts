@@ -7,16 +7,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Persé';
 
-  headerBarText: string;
-
-  constructor() {
-    this.headerBarText = 'Persé';
-  }
-
-  changeState(state: boolean): any {
-    this.headerBarText = (!state) ? 'Persé' : 'P';
-  }
+  constructor() {}
 
 }

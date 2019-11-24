@@ -1,0 +1,54 @@
+.full-flex {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/assets/img/login_bg.jpg');
+  background-size: cover;
+  background-position-y: 15%;
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(18, 60, 61, 0.4);
+}
+
+.parent-card {}
+
+.child-card {
+  margin-top: -4em;
+  margin-bottom: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+}
+
+.logo-login {
+  font-family: 'Grand Hotel';
+  font-size: 3em;
+  font-weight: 400;
+  color: #333;
+  margin: 0;
+}
+
+.button-row {
+  margin-bottom: 0;
+}
+
+.login-form {
+  min-width: 20em;
+  max-width: 25em;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
+}
