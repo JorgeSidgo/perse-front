@@ -40,14 +40,34 @@
 }
 
 .view-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 99%;
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.view-title>h5 {
   font-family: 'Catamaran-Bold';
   font-size: 1.25em;
   color: rgba(0, 0, 0, 0.7);
-  padding-bottom: .05em;
-  width: 100%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 0;
+}
+
+.view-title>button {
+  margin-right: 0.5em !important;
+  /* margin-bottom: 1em !important; */
 }
 
 .text-danger {
   color: #f5222d;
+}
+
+.ant-btn {
+  border-radius: 4px;
+  font-weight: 300;
+  font-family: 'Catamaran-Bold';
 }

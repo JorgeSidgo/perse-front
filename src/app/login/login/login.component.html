@@ -6,26 +6,26 @@
       </div>
 
       <div class="login-form">
-        <form nz-form>
+        <form nz-form [formGroup]="loginForm" (ngSubmit)="login()">
           <nz-form-item>
-            <nz-form-control nzErrorTip="Please input your username!">
+            <nz-form-control nzErrorTip="Ingrese su e-mail">
               <nz-input-group nzPrefixIcon="user">
-                <input type="text" nz-input placeholder="Nombre de Usuario" />
+                <input type="text" formControlName="email" nz-input placeholder="E-mail" />
               </nz-input-group>
             </nz-form-control>
           </nz-form-item>
           <nz-form-item>
-            <nz-form-control nzErrorTip="Please input your Password!">
+            <nz-form-control nzErrorTip="Ingrese su contraseña">
               <nz-input-group nzPrefixIcon="lock">
-                <input type="password" nz-input placeholder="Contraseña" />
+                <input type="password" formControlName="password" nz-input placeholder="Contraseña" />
               </nz-input-group>
             </nz-form-control>
           </nz-form-item>
           <nz-form-item class="button-row">
             <nz-form-control>
               <small><a class="login-form-forgot" class="login-form-forgot">¿Olvidó su contraseña?</a></small>
-              <button type="button" nz-button class="login-form-button" [nzLoading]="loginButtonLoading"
-                (click)="login()" [routerLink]="['/app']" [nzType]="'primary'">Iniciar Sesión</button>
+              <button nz-button class="login-form-button" [nzLoading]="loginButtonLoading" [nzType]="'primary'">Iniciar
+                Sesión</button>
             </nz-form-control>
           </nz-form-item>
         </form>

@@ -1,1 +1,11 @@
-<h5 class="view-title" nz-title>Gestión de Productos</h5>
+<div class="view-title">
+  <h5 nz-title>Gestión de Productos</h5>
+  <button nz-button class="ant-btn-success" (click)="showModal()">
+    <i nz-icon nzType="plus" nzTheme="outline"></i>
+    Agregar
+  </button>
+</div>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Modal Title" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
+  [nzOkLoading]="isOkLoading">
+  <p>Modal Content</p>
+</nz-modal>
