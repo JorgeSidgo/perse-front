@@ -5,6 +5,7 @@ import { Account } from '../entity/Account';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { Login } from '../entity/Login';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class AuthService {
   baseUrl: string;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {
     this.baseUrl = environment.baseUrl;
   }
@@ -23,5 +25,10 @@ export class AuthService {
     return this.http.post<Account>(`${this.baseUrl}/auth/login`, data).pipe(
       map((response: Account) => response)
     );
+  }
+
+  logout(): void {
+    window.localStorage.removeItem('authentication');
+    this.router.navigateByUrl('/login');
   }
 }

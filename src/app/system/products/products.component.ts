@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-products',
@@ -7,27 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  isVisible = false;
-  isOkLoading = false;
+  addModalIsVisible = false;
+  addModalIsLoading = false;
 
 
-  constructor() { }
+  constructor(
+    private message: NzMessageService
+  ) { }
 
   ngOnInit() {
   }
   showModal(): void {
-    this.isVisible = true;
+    this.addModalIsVisible = true;
   }
 
   handleOk(): void {
-    this.isOkLoading = true;
+    this.addModalIsLoading = true;
     setTimeout(() => {
-      this.isVisible = false;
-      this.isOkLoading = false;
+      this.addModalIsVisible = false;
+      this.addModalIsLoading = false;
+      this.message.success("Producto agregado exitosamente")
     }, 3000);
   }
 
   handleCancel(): void {
-    this.isVisible = false;
+    this.addModalIsVisible = false;
   }
 }

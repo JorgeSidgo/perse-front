@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Account } from 'src/app/entity/Account';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-system',
@@ -14,7 +15,9 @@ export class SystemComponent {
 
   headerBarText: string;
 
-  constructor() {
+  constructor(
+    private authService: AuthService
+  ) {
     this.headerBarText = 'Persé';
     this.userData = JSON.parse(window.localStorage.getItem('authentication'));
     this.email = this.userData.email;
@@ -22,6 +25,10 @@ export class SystemComponent {
 
   changeState(state: boolean): any {
     this.headerBarText = (!state) ? 'Persé' : 'P';
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }

@@ -18,3 +18,25 @@
   border-color: #21BA45;
   color: #fff;
 }
+
+.ant-btn-black {
+    color: #fff;
+    background-color: #1B1C1D;
+    border-color: #1B1C1D;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+    transition: background-color .3s ease;
+  }
+  
+  .ant-btn-black:hover {
+    background-color: #27292a;
+    border-color: #27292a;
+    color: #fff;
+  }
+  
+  .ant-btn-black:focus {
+    background-color: #1B1C1D;
+    border-color: #1B1C1D;
+    color: #fff;
+  }
+  

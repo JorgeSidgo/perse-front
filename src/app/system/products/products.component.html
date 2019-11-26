@@ -1,3 +1,19 @@
+<nz-modal [nzClosable]="false" [nzKeyboard]="false" [(nzVisible)]="addModalIsVisible" nzTitle="Agregar Producto"
+  [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="handleCancel()">
+
+  <ng-template #modalContent>
+    <p>Contenido Garca</p>
+  </ng-template>
+
+
+  <ng-template #modalFooter>
+    <button nz-button class="ant-btn-black" (click)="handleCancel()" nzType="default">Cancelar</button>
+    <button nz-button [nzLoading]="addModalIsLoading" class="ant-btn-success" (click)="handleOk()"
+      nzType="primary">Agregar</button>
+  </ng-template>
+</nz-modal>
+
+
 <div class="view-title">
   <h5 nz-title>Gestión de Productos</h5>
   <button nz-button class="ant-btn-success" (click)="showModal()">
@@ -5,7 +21,20 @@
     Agregar
   </button>
 </div>
-<nz-modal [(nzVisible)]="isVisible" nzTitle="Modal Title" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
-  [nzOkLoading]="isOkLoading">
-  <p>Modal Content</p>
-</nz-modal>
+
+<nz-table class="dataTable" nzSize="small" nzBordered>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <tr *ngFor="let data of borderedTable.data">
+        <td>{{ data.name }}</td>
+        <td>{{ data.age }}</td>
+        <td>{{ data.address }}</td>
+      </tr> -->
+  </tbody>
+</nz-table>

@@ -4,11 +4,9 @@
       <span class="perse-logo">{{headerBarText}}</span>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-menu-item nzMatchRouter>
-        <a [routerLink]="['./home']">
-          <i nz-icon nzType="home"></i>
-          Dashboard
-        </a>
+      <li nz-menu-item [routerLink]="['./home']" nzMatchRouter>
+        <i nz-icon nzType="home"></i>
+        <span>Dashboard</span>
       </li>
       <li nz-submenu nzTitle="Clientes" nzIcon="user">
         <ul>
@@ -22,11 +20,9 @@
           <li nz-menu-item>Team 2</li>
         </ul>
       </li>
-      <li nz-menu-item nzMatchRouter>
-        <a [routerLink]="['./products']">
-          <i nz-icon nzType="gold"></i>
-          Productos
-        </a>
+      <li nz-menu-item [routerLink]="['./products']" nzMatchRouter>
+        <i nz-icon nzType="gold"></i>
+        <span>Productos</span>
       </li>
     </ul>
   </nz-sider>
@@ -52,7 +48,7 @@
             </li>
 
             <li nz-menu-divider></li>
-            <li [routerLink]="['/login']" nz-text nzType="danger" class="text-danger" nz-menu-item>
+            <li (click)="logout()" nz-text nzType="danger" class="text-danger" nz-menu-item>
               <i nz-icon nzType="danger" class="text-danger" nzType="poweroff" nzTheme="outline"></i>
               Cerrar Sesión
             </li>
