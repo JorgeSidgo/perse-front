@@ -27,8 +27,20 @@ export class AuthService {
     );
   }
 
+  setToken(token: any): void {
+    window.localStorage.setItem('Authorization', JSON.stringify(token));
+  }
+
+  getToken(): Account {
+    return JSON.parse(window.localStorage.getItem('Authorization'));
+  }
+
+  removeToken(): void {
+    window.localStorage.removeItem('Authorization');
+  }
+
   logout(): void {
-    window.localStorage.removeItem('authentication');
+    window.localStorage.removeItem('Authorization');
     this.router.navigateByUrl('/login');
   }
 }

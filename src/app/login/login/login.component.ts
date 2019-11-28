@@ -45,8 +45,8 @@ export class LoginComponent implements OnInit {
       this.loginButtonLoading = false;
 
       if (data.code) {
-        window.localStorage.removeItem('authentication');
-        window.localStorage.setItem('authentication', JSON.stringify(data));
+        this.authService.removeToken();
+        this.authService.setToken(data);
         this.router.navigateByUrl('/app');
       }
 

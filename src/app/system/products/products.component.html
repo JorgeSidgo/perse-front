@@ -22,19 +22,29 @@
   </button>
 </div>
 
-<nz-table class="dataTable" nzSize="small" nzBordered>
+<div class="grid-container">
+  <div nz-row [nzGutter]="16">
+    <app-product-card nz-col [nzSpan]="8" *ngFor="let item of dataList"></app-product-card>
+  </div>
+</div>
+
+<!-- <nz-table #dataTable [nzData]="dataList" [nzLoading]="tableIsLoading" class="dataTable" nzSize="small" nzBordered>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Address</th>
+      <th>Código</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Foto</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <!-- <tr *ngFor="let data of borderedTable.data">
-        <td>{{ data.name }}</td>
-        <td>{{ data.age }}</td>
-        <td>{{ data.address }}</td>
-      </tr> -->
+    <tr *ngFor="let data of dataTable.data">
+      <td>{{ data.id }}</td>
+      <td>{{ data.name }}</td>
+      <td>{{ data.desciption }}</td>
+      <td></td>
+      <td></td>
+    </tr>
   </tbody>
-</nz-table>
+</nz-table> -->

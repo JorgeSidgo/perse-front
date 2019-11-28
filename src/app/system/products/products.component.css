@@ -1,0 +1,13 @@
+.grid-container {
+  width: 99%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ant-row {
+  margin: 0 !important;
+}
+
+.ant-col {
+  margin-bottom: 1.25em;
+}

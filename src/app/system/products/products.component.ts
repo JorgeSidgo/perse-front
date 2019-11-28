@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
+import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/entity/Product';
 
 @Component({
   selector: 'app-products',
@@ -11,15 +13,28 @@ export class ProductsComponent implements OnInit {
   addModalIsVisible = false;
   addModalIsLoading = false;
 
+  tableIsLoading = true;
+  dataList: Product[];
+
 
   constructor(
+    private productService: ProductService,
     private message: NzMessageService
   ) { }
 
   ngOnInit() {
+    this.index();
   }
   showModal(): void {
     this.addModalIsVisible = true;
+  }
+
+  index(): void {
+    this.productService.index().subscribe((data) => {
+      this.dataList = data.data.data;
+      this.tableIsLoading = false;
+      console.log(this.dataList);
+    });
   }
 
   handleOk(): void {
