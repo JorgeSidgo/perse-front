@@ -13,7 +13,7 @@ export class ProductsComponent implements OnInit {
   addModalIsVisible = false;
   addModalIsLoading = false;
 
-  tableIsLoading = true;
+  gridIsLoading = true;
   dataList: Product[];
 
 
@@ -32,7 +32,7 @@ export class ProductsComponent implements OnInit {
   index(): void {
     this.productService.index().subscribe((data) => {
       this.dataList = data.data.data;
-      this.tableIsLoading = false;
+      this.gridIsLoading = false;
       console.log(this.dataList);
     });
   }
@@ -42,7 +42,7 @@ export class ProductsComponent implements OnInit {
     setTimeout(() => {
       this.addModalIsVisible = false;
       this.addModalIsLoading = false;
-      this.message.success("Producto agregado exitosamente")
+      this.message.success('Producto agregado exitosamente');
     }, 3000);
   }
 

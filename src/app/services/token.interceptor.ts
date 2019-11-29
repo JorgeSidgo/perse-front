@@ -13,12 +13,19 @@ import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-    constructor(public auth: AuthService, public router: Router) { }
+
+    tokenString: string;
+
+    constructor(public auth: AuthService, public router: Router) {
+        this.tokenString = this.auth.getToken() == null ? '' : this.auth.getToken().token;
+    }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+        console.log('tokenString', this.tokenString);
 
         request = request.clone({
             setHeaders: {
-                Authorization: `Bearer ${this.auth.getToken().token}`
+                Authorization: `Bearer ${this.tokenString}`
             }
         });
         return next.handle(request).pipe(

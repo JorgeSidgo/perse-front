@@ -24,27 +24,13 @@
 
 <div class="grid-container">
   <div nz-row [nzGutter]="16">
-    <app-product-card nz-col [nzSpan]="8" *ngFor="let item of dataList"></app-product-card>
+
+    <app-product-card-loading nz-col [nzSpan]="8" [isLoading]="gridIsLoading"></app-product-card-loading>
+    <app-product-card-loading nz-col [nzSpan]="8" [isLoading]="gridIsLoading"></app-product-card-loading>
+    <app-product-card-loading nz-col [nzSpan]="8" [isLoading]="gridIsLoading"></app-product-card-loading>
+
+    <app-product-card nz-col [nzSpan]="8" *ngFor="let item of dataList" [nombreProducto]="item.name"
+      [descProducto]="item.description" [imgProducto]="item.product_picture"></app-product-card>
+
   </div>
 </div>
-
-<!-- <nz-table #dataTable [nzData]="dataList" [nzLoading]="tableIsLoading" class="dataTable" nzSize="small" nzBordered>
-  <thead>
-    <tr>
-      <th>Código</th>
-      <th>Nombre</th>
-      <th>Descripción</th>
-      <th>Foto</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let data of dataTable.data">
-      <td>{{ data.id }}</td>
-      <td>{{ data.name }}</td>
-      <td>{{ data.desciption }}</td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</nz-table> -->
