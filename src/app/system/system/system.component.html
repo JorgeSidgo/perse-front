@@ -8,17 +8,13 @@
         <i nz-icon nzType="home"></i>
         <span>Dashboard</span>
       </li>
-      <li nz-submenu nzTitle="Clientes" nzIcon="user">
-        <ul>
-          <li nz-menu-item>Gestión de Clientes</li>
-          <li nz-menu-item>Puntos</li>
-        </ul>
+      <li nz-menu-item [routerLink]="['./clients']" nzMatchRouter>
+        <i nz-icon nzType="user"></i>
+        <span>Clientes</span>
       </li>
-      <li nz-submenu nzTitle="Vendedores" nzIcon="team">
-        <ul>
-          <li nz-menu-item>Team 1</li>
-          <li nz-menu-item>Team 2</li>
-        </ul>
+      <li nz-menu-item [routerLink]="['./vendedores']" nzMatchRouter>
+        <i nz-icon nzType="team"></i>
+        <span>Vendedores</span>
       </li>
       <li nz-menu-item [routerLink]="['./products']" nzMatchRouter>
         <i nz-icon nzType="gold"></i>

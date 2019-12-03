@@ -1,0 +1,18 @@
+<nz-card nzHoverable nzSize="small" [nzCover]="coverTemplate" [nzActions]="[actionEdit, actionDelete, actionDetail]">
+  <nz-card-meta [nzTitle]="nombreProducto" [nzDescription]="descProducto"></nz-card-meta>
+</nz-card>
+<ng-template #coverTemplate>
+  <img alt="producto" [src]="imgProducto" />
+</ng-template>
+<ng-template #actionEdit>
+  <button (click)="yes()" class="ant-btn-blue" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
+      nzType="edit"></i></button>
+</ng-template>
+<ng-template #actionDelete>
+  <button (click)="yes()" class="ant-btn-red" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
+      nzType="delete"></i></button>
+</ng-template>
+<ng-template #actionDetail>
+  <button (click)="yes()" class="ant-btn-black" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
+      nzType="ellipsis"></i></button>
+</ng-template>

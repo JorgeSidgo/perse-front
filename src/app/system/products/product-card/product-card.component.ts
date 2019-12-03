@@ -16,4 +16,8 @@ export class ProductCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  yes(): void {
+    alert('simon');
+  }
+
 }
