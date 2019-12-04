@@ -24,6 +24,9 @@ export class ClientsModalAddComponent implements OnInit {
   typeValue: any;
   categorieValue: any;
 
+  passwordValue: string;
+  passwordConfValue: string;
+
   // FORMS
 
   addForm: FormGroup;
@@ -55,7 +58,19 @@ export class ClientsModalAddComponent implements OnInit {
    */
   handleOk(): void {
     this.modalIsLoading = true;
-    console.log('form-data', this.addForm.value);
+
+    // tslint:disable-next-line: forin
+    for (const i in this.addForm.controls) {
+      this.addForm.controls[i].markAsDirty();
+      this.addForm.controls[i].updateValueAndValidity();
+    }
+
+    if (this.addForm.dirty && this.addForm.valid) {
+      console.log('form-data', this.addForm.value);
+    }
+
+    this.modalIsLoading = false;
+
     /* this.productService.store(this.resolveForm()).subscribe((data) => {
       console.log(data);
       this.closeModal();
@@ -69,6 +84,14 @@ export class ClientsModalAddComponent implements OnInit {
     }); */
   }
 
+
+  updatePassValue(pass: string): void {
+    this.passwordValue = pass;
+  }
+
+  updatePassConfValue(passConf: string): void {
+    this.passwordConfValue = passConf;
+  }
 
   handleCancel(): void {
     this.closeModal();

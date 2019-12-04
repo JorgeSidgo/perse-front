@@ -2,34 +2,34 @@
   [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="handleCancel()">
 
   <ng-template #modalContent>
-    <form [formGroup]="addForm" nz-form nzLayout="vertical">
+    <form [formGroup]="addForm" id="addForm" nz-form nzLayout="vertical" (ngSubmit)="handleOk()">
       <nz-input-group style="margin-bottom: 1.5em;">
         <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
           <nz-form-label>Nombre:</nz-form-label>
-          <nz-form-control nzErrorTip="Ingrese un nombre para el producto">
-            <input formControlName="first_name" nz-input />
+          <nz-form-control nzErrorTip="Ingrese el nombre del Cliente">
+            <input formControlName="first_name" placeholder="Nombre" nz-input />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
           <nz-form-label>Apellido:</nz-form-label>
-          <nz-form-control nzErrorTip="Ingrese un nombre para el producto">
-            <input formControlName="last_name" nz-input />
+          <nz-form-control nzErrorTip="Ingrese el apellido del cliente">
+            <input formControlName="last_name" placeholder="Apellido" nz-input />
           </nz-form-control>
         </nz-form-item>
       </nz-input-group>
       <nz-form-item>
         <nz-form-label>Correo Electrónico:</nz-form-label>
-        <nz-form-control nzErrorTip="Ingrese un nombre para el producto">
-          <input formControlName="email" nz-input />
+        <nz-form-control nzErrorTip="Ingrese el correo electrónico">
+          <input formControlName="email" placeholder="Correo Electrónico" nz-input />
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-label>Número de Teléfono:</nz-form-label>
-        <nz-form-control nzErrorTip="Ingrese un nombre para el producto">
-          <input formControlName="phone" nz-input />
+        <nz-form-control nzErrorTip="Ingrese el número de teléfono">
+          <input formControlName="phone" placeholder="+50300000000" nz-input />
         </nz-form-control>
       </nz-form-item>
-      <nz-input-group style="margin-bottom: 1.5em;">
+      <!--       <nz-input-group style="margin-bottom: 1.5em;">
         <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
           <nz-form-label>Contraseña:</nz-form-label>
           <app-password-input formControlName="password"></app-password-input>
@@ -38,14 +38,14 @@
           <nz-form-label>Confirmar Contraseña:</nz-form-label>
           <app-password-input formControlName="password_conf"></app-password-input>
         </nz-form-item>
-      </nz-input-group>
+      </nz-input-group> -->
     </form>
   </ng-template>
 
 
   <ng-template #modalFooter>
     <button nz-button class="ant-btn-black" (click)="handleCancel()" nzType="default">Cancelar</button>
-    <button nz-button [nzLoading]="modalIsLoading" class="ant-btn-success" (click)="handleOk()"
+    <button nz-button type="submit" [nzLoading]="modalIsLoading" class="ant-btn-success" form="addForm"
       nzType="primary">Agregar</button>
   </ng-template>
 </nz-modal>
