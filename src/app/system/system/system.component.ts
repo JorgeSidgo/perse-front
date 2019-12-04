@@ -19,7 +19,7 @@ export class SystemComponent {
     private authService: AuthService
   ) {
     this.headerBarText = 'Persé';
-    this.userData = this.authService.getToken();
+    this.userData = this.authService.getAccount();
     this.email = this.userData.email;
   }
 

@@ -29,18 +29,29 @@ export class AuthService {
 
   setToken(token: any): void {
     window.localStorage.setItem('Authorization', JSON.stringify(token));
+    window.localStorage.setItem('Token', JSON.stringify(token.token));
   }
 
-  getToken(): Account {
-    return JSON.parse(window.localStorage.getItem('Authorization'));
+  getAccount(): Account {
+    return JSON.parse(window.localStorage.getItem('Authorization')) as Account;
+  }
+
+  getToken(): string {
+    return JSON.parse(window.localStorage.getItem('Token'));
   }
 
   removeToken(): void {
     window.localStorage.removeItem('Authorization');
+    window.localStorage.removeItem('Token');
   }
 
   logout(): void {
-    window.localStorage.removeItem('Authorization');
+
+    this.http.post<Account>(`${this.baseUrl}/auth/logout`, {}).pipe(
+      map((response: Account) => response)
+    );
+
+    this.removeToken();
     this.router.navigateByUrl('/login');
   }
 }

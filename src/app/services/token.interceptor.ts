@@ -17,15 +17,14 @@ export class TokenInterceptor implements HttpInterceptor {
     tokenString: string;
 
     constructor(public auth: AuthService, public router: Router) {
-        this.tokenString = this.auth.getToken() == null ? '' : this.auth.getToken().token;
     }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        console.log('tokenString', this.tokenString);
+        console.log('tokenString', this.auth.getToken());
 
         request = request.clone({
             setHeaders: {
-                Authorization: `Bearer ${this.tokenString}`
+                Authorization: `Bearer ${this.auth.getToken()}`
             }
         });
         return next.handle(request).pipe(

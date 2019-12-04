@@ -4,14 +4,21 @@ import { Routes, RouterModule } from '@angular/router';
 import { SystemComponent } from './system/system.component';
 import { ProductsComponent } from './products/products.component';
 import { ClientsComponent } from './clients/clients.component';
+import { ClientHomeComponent } from './client-home/client-home.component';
+import { SellersComponent } from './sellers/sellers.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
   {
     path: 'app',
     component: SystemComponent,
     children: [
-      { path: 'products', component: ProductsComponent },
-      { path: 'clients', component: ClientsComponent }
+      { path: 'home', component: ClientHomeComponent, canActivate: [AuthGuard] },
+      { path: 'products', component: ProductsComponent, canActivate: [AuthGuard] },
+      { path: 'clients', component: ClientsComponent, canActivate: [AuthGuard] },
+      { path: 'sellers', component: SellersComponent, canActivate: [AuthGuard] },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '**', redirectTo: 'home' },
     ]
   },
 ];

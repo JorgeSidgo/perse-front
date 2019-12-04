@@ -16,11 +16,13 @@ import { ClientsModalDeleteComponent } from './clients/clients-modal-delete/clie
 import { ClientsModalDetailsComponent } from './clients/clients-modal-details/clients-modal-details.component';
 import { ClientsModalEditComponent } from './clients/clients-modal-edit/clients-modal-edit.component';
 import { PasswordInputComponent } from './commons/password-input/password-input.component';
+import { ClientHomeComponent } from './client-home/client-home.component';
+import { SellersComponent } from './sellers/sellers.component';
 
 
 
 @NgModule({
-  declarations: [SystemComponent, ProductsComponent, ProductCardComponent, ProductCardLoadingComponent, ProductModalAddComponent, ProductModalEditComponent, ProductModalDeleteComponent, ProductModalDetailsComponent, ClientsComponent, ClientsModalAddComponent, ClientsModalDeleteComponent, ClientsModalDetailsComponent, ClientsModalEditComponent, PasswordInputComponent],
+  declarations: [SystemComponent, ProductsComponent, ProductCardComponent, ProductCardLoadingComponent, ProductModalAddComponent, ProductModalEditComponent, ProductModalDeleteComponent, ProductModalDetailsComponent, ClientsComponent, ClientsModalAddComponent, ClientsModalDeleteComponent, ClientsModalDetailsComponent, ClientsModalEditComponent, PasswordInputComponent, ClientHomeComponent, SellersComponent],
   imports: [
     CommonModule,
     SystemRoutingModule,

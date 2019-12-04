@@ -1,5 +1,9 @@
+:focus {
+  outline: none !important;
+}
+
 .logo {
-  background: #db5127;
+  background: #D35400;
   width: 100%;
   margin: 0;
   display: flex;

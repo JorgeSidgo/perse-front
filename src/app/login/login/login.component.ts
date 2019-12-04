@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       if (data.code) {
         this.authService.removeToken();
         this.authService.setToken(data);
-        this.router.navigateByUrl('/app');
+        this.router.navigateByUrl('/app/home');
       }
 
     });
