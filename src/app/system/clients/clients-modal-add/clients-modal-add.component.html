@@ -7,13 +7,13 @@
         <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
           <nz-form-label>Nombre:</nz-form-label>
           <nz-form-control nzErrorTip="Ingrese el nombre del Cliente">
-            <input formControlName="first_name" placeholder="Nombre" nz-input />
+            <input formControlName="first_name" placeholder="Nombre" nz-input onlyLetters />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
           <nz-form-label>Apellido:</nz-form-label>
           <nz-form-control nzErrorTip="Ingrese el apellido del cliente">
-            <input formControlName="last_name" placeholder="Apellido" nz-input />
+            <input formControlName="last_name" placeholder="Apellido" nz-input onlyLetters />
           </nz-form-control>
         </nz-form-item>
       </nz-input-group>
@@ -23,12 +23,20 @@
           <input formControlName="email" placeholder="Correo Electrónico" nz-input />
         </nz-form-control>
       </nz-form-item>
-      <nz-form-item>
-        <nz-form-label>Número de Teléfono:</nz-form-label>
-        <nz-form-control nzErrorTip="Ingrese el número de teléfono">
-          <input formControlName="phone" placeholder="+50300000000" nz-input />
-        </nz-form-control>
-      </nz-form-item>
+      <nz-input-group style="margin-bottom: 1.5em;">
+        <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
+          <nz-form-label>Número de Teléfono:</nz-form-label>
+          <nz-form-control nzErrorTip="Ingrese el número de teléfono">
+            <input formControlName="phone" placeholder="+50300000000" nz-input />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
+          <nz-form-label>Fecha de Cumpleaños:</nz-form-label>
+          <nz-form-control nzErrorTip="Seleccione una fecha de cumpleaños">
+            <nz-date-picker style="width: 100%;" nzFormat="dd/MM/yyyy" formControlName="birthday"></nz-date-picker>
+          </nz-form-control>
+        </nz-form-item>
+      </nz-input-group>
       <!--       <nz-input-group style="margin-bottom: 1.5em;">
         <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
           <nz-form-label>Contraseña:</nz-form-label>

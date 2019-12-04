@@ -47,8 +47,7 @@ export class ClientsModalAddComponent implements OnInit {
       last_name: [null, [Validators.required]],
       email: [null, [Validators.required]],
       phone: [null, [Validators.required]],
-      password: [null, [Validators.required]],
-      password_conf: [null, [Validators.required]]
+      birthday: [null, [Validators.required]]
     });
   }
 
@@ -67,9 +66,13 @@ export class ClientsModalAddComponent implements OnInit {
 
     if (this.addForm.dirty && this.addForm.valid) {
       console.log('form-data', this.addForm.value);
+    } else {
+      console.log('nelson');
     }
 
     this.modalIsLoading = false;
+
+    console.log(this.randomPass());
 
     /* this.productService.store(this.resolveForm()).subscribe((data) => {
       console.log(data);
@@ -84,6 +87,26 @@ export class ClientsModalAddComponent implements OnInit {
     }); */
   }
 
+  randomPass(): any {
+
+    let randomPassword = '';
+
+    let alphanArray = [
+      'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
+      'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    ];
+
+    for (let index = 0; index < 7; index++) {
+
+      let randomNum = Math.floor(Math.random() * alphanArray.length);
+
+      randomPassword += alphanArray[randomNum];
+
+    }
+
+    return btoa(randomPassword) + ' ' + randomPassword;
+
+  }
 
   updatePassValue(pass: string): void {
     this.passwordValue = pass;
@@ -98,6 +121,7 @@ export class ClientsModalAddComponent implements OnInit {
   }
 
   closeModal(): void {
+    this.initForm();
     this.modalState.emit(false);
   }
 

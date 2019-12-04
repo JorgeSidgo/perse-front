@@ -18,15 +18,37 @@ import { ClientsModalEditComponent } from './clients/clients-modal-edit/clients-
 import { PasswordInputComponent } from './commons/password-input/password-input.component';
 import { ClientHomeComponent } from './client-home/client-home.component';
 import { SellersComponent } from './sellers/sellers.component';
+import { NgxMaskModule } from 'ngx-mask';
+import { OnlyLettersDirective } from '../directives/only-letters.directive';
+import { OnlyNumbersDirective } from '../directives/only-numbers.directive';
 
 
 
 @NgModule({
-  declarations: [SystemComponent, ProductsComponent, ProductCardComponent, ProductCardLoadingComponent, ProductModalAddComponent, ProductModalEditComponent, ProductModalDeleteComponent, ProductModalDetailsComponent, ClientsComponent, ClientsModalAddComponent, ClientsModalDeleteComponent, ClientsModalDetailsComponent, ClientsModalEditComponent, PasswordInputComponent, ClientHomeComponent, SellersComponent],
+  declarations: [
+    OnlyNumbersDirective,
+    OnlyLettersDirective,
+    SystemComponent,
+    ProductsComponent,
+    ProductCardComponent,
+    ProductCardLoadingComponent,
+    ProductModalAddComponent,
+    ProductModalEditComponent,
+    ProductModalDeleteComponent,
+    ProductModalDetailsComponent,
+    ClientsComponent,
+    ClientsModalAddComponent,
+    ClientsModalDeleteComponent,
+    ClientsModalDetailsComponent,
+    ClientsModalEditComponent,
+    PasswordInputComponent,
+    ClientHomeComponent,
+    SellersComponent],
   imports: [
     CommonModule,
     SystemRoutingModule,
-    SharedModule
+    SharedModule,
+    NgxMaskModule.forRoot()
   ],
 })
 export class SystemModule { }

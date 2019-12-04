@@ -83,6 +83,10 @@
   font-family: 'Catamaran-Bold';
 }
 
+.ant-calendar-picker {
+  width: 100%;
+}
+
 body::-webkit-scrollbar {
   width: 1em;
 }
