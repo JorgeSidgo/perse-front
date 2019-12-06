@@ -38,6 +38,9 @@
   border: 1px solid rgba(34, 36, 38, 0.15);
 }
 
+.ant-row {
+  margin: 0 !important;
+}
 
 .header-row {
   width: 95%;
@@ -47,7 +50,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 99%;
+  width: 100%;
   padding-bottom: 7px;
   margin-bottom: 1em;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -85,6 +88,12 @@
 
 .ant-calendar-picker {
   width: 100%;
+}
+
+.action-shelf {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 body::-webkit-scrollbar {

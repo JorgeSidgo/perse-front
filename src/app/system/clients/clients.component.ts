@@ -21,14 +21,30 @@ export class ClientsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.index();
   }
 
   showModal(): void {
     this.addModalIsVisible = true;
   }
 
+  index(): void {
+    this.loadData();
+  }
+
   closeModal(): void {
     this.addModalIsVisible = false;
+  }
+
+
+  loadData(): void {
+    this.dataList = null;
+    this.gridIsLoading = true;
+    this.userService.getClients().subscribe((data) => {
+      this.dataList = data.data;
+      console.log(data.data);
+      this.gridIsLoading = false;
+    });
   }
 
 }

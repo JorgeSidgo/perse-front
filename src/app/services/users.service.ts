@@ -14,13 +14,24 @@ export class UsersService {
   constructor(
     private http: HttpClient
   ) {
-    this.baseUrl = `${environment.baseUrl}/auth`;
+    this.baseUrl = `${environment.baseUrl}`;
   }
 
   signup(data: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/signup`, data).pipe(
+    return this.http.post<any>(`${this.baseUrl}/auth/signup`, data).pipe(
       map((response: any) => response)
     );
   }
 
+  getClients(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/user/index-clients`).pipe(
+      map((response: any) => response)
+    );
+  }
+
+  getSellers(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/user/index-sellers`).pipe(
+      map((response: any) => response)
+    );
+  }
 }

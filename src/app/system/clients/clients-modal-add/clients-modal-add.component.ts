@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { NzMessageService } from 'ng-zorro-antd';
+import { Client } from 'src/app/entity/Client';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-clients-modal-add',
@@ -51,10 +53,20 @@ export class ClientsModalAddComponent implements OnInit {
     });
   }
 
-  /*   resolveForm(): Product {
-      return this.addForm.value as Product;
-    }
-   */
+  resolveForm(): Client {
+    const clientData = new Client();
+
+    clientData.first_name = this.addForm.value.first_name;
+    clientData.last_name = this.addForm.value.last_name;
+    clientData.email = this.addForm.value.email;
+    clientData.phone = this.addForm.value.phone;
+    clientData.birthday = moment(this.addForm.value.birthday).format('YYYY-MM-DD')
+    clientData.is_client = 1;
+    clientData.password = this.randomPass();
+
+    return clientData;
+  }
+
   handleOk(): void {
     this.modalIsLoading = true;
 
@@ -68,23 +80,22 @@ export class ClientsModalAddComponent implements OnInit {
       console.log('form-data', this.addForm.value);
     } else {
       console.log('nelson');
+      this.modalIsLoading = false;
     }
-
-    this.modalIsLoading = false;
 
     console.log(this.randomPass());
 
-    /* this.productService.store(this.resolveForm()).subscribe((data) => {
+    this.userService.signup(this.resolveForm()).subscribe((data) => {
       console.log(data);
       this.closeModal();
       this.modalIsLoading = false;
       if (data.code) {
-        this.message.success('Producto agregado exitosamente');
+        this.message.success('Cliente agregado exitosamente');
         this.emitReload();
       } else {
         this.message.error(data.message);
       }
-    }); */
+    });
   }
 
   randomPass(): any {
@@ -104,7 +115,7 @@ export class ClientsModalAddComponent implements OnInit {
 
     }
 
-    return btoa(randomPassword) + ' ' + randomPassword;
+    return randomPassword;
 
   }
 

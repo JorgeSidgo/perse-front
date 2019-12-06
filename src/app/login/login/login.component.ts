@@ -4,6 +4,7 @@ import { Account } from 'src/app/entity/Account';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private messageService: NzMessageService,
     private fb: FormBuilder,
     private router: Router
   ) {
@@ -40,20 +42,31 @@ export class LoginComponent implements OnInit {
       this.loginForm.controls[i].updateValueAndValidity();
     }
 
-    this.loginData = this.loginForm.value;
-    this.authService.login(this.loginData).subscribe((data) => {
+    if (this.loginForm.dirty && this.loginForm.valid) {
+      this.loginData = this.loginForm.value;
+      this.authService.login(this.loginData).subscribe((data) => {
+
+        console.log(data);
+
+        if (data.code) {
+          this.authService.removeToken();
+          this.authService.setToken(data);
+          this.router.navigateByUrl('/app/home');
+        } else {
+          this.loginButtonLoading = false;
+        }
+      }, (error) => {
+        if (error.status === 422) {
+          this.messageService.error('Credenciales Incorrectas');
+          this.loginButtonLoading = false;
+        }
+      });
+
+    } else {
       this.loginButtonLoading = false;
+    }
 
-      if (data.code) {
-        this.authService.removeToken();
-        this.authService.setToken(data);
-        this.router.navigateByUrl('/app/home');
-      }
 
-    });
 
   }
-
-
-
 }
