@@ -61,7 +61,7 @@ export class ClientsModalAddComponent implements OnInit {
     clientData.last_name = this.addForm.value.last_name;
     clientData.email = this.addForm.value.email;
     clientData.phone = this.addForm.value.phone;
-    clientData.birthday = moment(this.addForm.value.birthday).format('YYYY-MM-DD')
+    clientData.birthday = moment(this.addForm.value.birthday).format('YYYY-MM-DD');
     clientData.is_client = 1;
     clientData.password = this.randomPass();
 
@@ -79,25 +79,25 @@ export class ClientsModalAddComponent implements OnInit {
 
     if (this.addForm.dirty && this.addForm.valid) {
       console.log('form-data', this.addForm.value);
+      this.userService.signup(this.resolveForm()).subscribe((data) => {
+        console.log(data);
+        this.closeModal();
+        this.modalIsLoading = false;
+        if (data.code) {
+          this.message.success('Cliente agregado exitosamente');
+          this.emitReload();
+        } else {
+          this.modalIsLoading = false;
+          this.message.error(data.message);
+        }
+      });
     } else {
-      console.log('nelson');
+      this.message.warning('Complete el formulario');
       this.modalIsLoading = false;
     }
 
     console.log(this.randomPass());
 
-    this.userService.signup(this.resolveForm()).subscribe((data) => {
-      console.log(data);
-      this.closeModal();
-      this.modalIsLoading = false;
-      if (data.code) {
-        this.message.success('Cliente agregado exitosamente');
-        this.emitReload();
-      } else {
-        this.modalIsLoading = false;
-        this.message.error(data.message);
-      }
-    });
   }
 
   randomPass(): any {

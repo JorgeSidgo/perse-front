@@ -10,6 +10,22 @@
 </div>
 
 <div class="grid-container">
+
+  <div nz-row [nzGutter]="16" style="margin-bottom: 1em;">
+
+
+    <div>
+      <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+        <input type="text" nz-input placeholder="input search text" />
+      </nz-input-group>
+      <ng-template #suffixIconButton>
+        <button nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
+      </ng-template>
+    </div>
+
+
+  </div>
+
   <div nz-row [nzGutter]="16" style="margin:0;">
     <nz-table [nzLoading]="gridIsLoading" #borderedTable nzBordered [nzData]="dataList">
       <thead>
@@ -30,7 +46,7 @@
           <td>{{data.last_name}}</td>
           <td>{{data.email}}</td>
           <td>{{data.phone}}</td>
-          <td>{{data.birthday}}</td>
+          <td>{{data.birthday | date:'dd/MM/yyyy'}}</td>
           <td class="action-shelf">
             <button class="ant-btn-blue" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
                 nzType="edit"></i></button>

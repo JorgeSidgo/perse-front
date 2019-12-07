@@ -69,17 +69,25 @@ export class ProductModalAddComponent implements OnInit {
 
 
     console.log('form-data', this.addForm.value);
-    /* this.productService.store(this.resolveForm()).subscribe((data) => {
-      console.log(data);
-      this.closeModal();
+
+    if (this.addForm.dirty && this.addForm.valid) {
+      this.productService.store(this.resolveForm()).subscribe((data) => {
+        console.log(data);
+        this.closeModal();
+        this.modalIsLoading = false;
+        if (data.code) {
+          this.message.success('Producto agregado exitosamente');
+          this.emitReload();
+        } else {
+          this.message.error(data.message);
+        }
+      });
+    } else {
+      this.message.warning('Complete el formulario');
       this.modalIsLoading = false;
-      if (data.code) {
-        this.message.success('Producto agregado exitosamente');
-        this.emitReload();
-      } else {
-        this.message.error(data.message);
-      }
-    }); */
+    }
+
+
   }
 
   /*   beforeUpload = (file: UploadFile): boolean => {
