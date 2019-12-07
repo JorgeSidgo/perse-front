@@ -49,7 +49,8 @@ export class ClientsModalAddComponent implements OnInit {
       last_name: [null, [Validators.required]],
       email: [null, [Validators.required]],
       phone: [null, [Validators.required]],
-      birthday: [null, [Validators.required]]
+      birthday: [null, [Validators.required]],
+      send_sms: [null]
     });
   }
 
@@ -93,6 +94,7 @@ export class ClientsModalAddComponent implements OnInit {
         this.message.success('Cliente agregado exitosamente');
         this.emitReload();
       } else {
+        this.modalIsLoading = false;
         this.message.error(data.message);
       }
     });

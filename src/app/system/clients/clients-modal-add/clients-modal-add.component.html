@@ -27,7 +27,7 @@
         <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
           <nz-form-label>Número de Teléfono:</nz-form-label>
           <nz-form-control nzErrorTip="Ingrese el número de teléfono">
-            <input formControlName="phone" placeholder="+50300000000" nz-input />
+            <input formControlName="phone" mask="0000000" [prefix]="[7, 6]" placeholder="+50300000000" nz-input />
           </nz-form-control>
         </nz-form-item>
         <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
