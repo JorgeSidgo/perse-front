@@ -47,7 +47,7 @@ export class ProductModalAddComponent implements OnInit {
     this.addForm = this.fb.group({
       name: [null, [Validators.required]],
       description: [null, [Validators.required]],
-      product_picture: ['x', [Validators.required]],
+      product_picture: [null, [Validators.required]],
       point_cost: [null, [Validators.required]],
       id_type: [null, [Validators.required]],
       id_categorie: [null, [Validators.required]]
@@ -79,8 +79,31 @@ export class ProductModalAddComponent implements OnInit {
           this.message.success('Producto agregado exitosamente');
           this.emitReload();
         } else {
+          this.modalIsLoading = false;
           this.message.error(data.message);
         }
+      }, (error) => {
+
+        if (error.status === 400) {
+
+          console.log(error.error);
+
+          let list = `<ul>`;
+
+          // tslint:disable-next-line: forin
+          for (let item in error.error.data) {
+            list += `<li>${item}</li>`;
+          }
+
+          list += `</ul>`;
+
+          this.message.error(`${error.error.message} <br> ${list}`);
+        } else {
+          this.message.error('Error en la petición');
+          console.log(error);
+        }
+
+        this.modalIsLoading = false;
       });
     } else {
       this.message.warning('Complete el formulario');

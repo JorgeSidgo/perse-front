@@ -80,7 +80,6 @@ export class ClientsModalAddComponent implements OnInit {
     if (this.addForm.dirty && this.addForm.valid) {
       console.log('form-data', this.addForm.value);
       this.userService.signup(this.resolveForm()).subscribe((data) => {
-        console.log(data);
         this.closeModal();
         this.modalIsLoading = false;
         if (data.code) {
@@ -90,6 +89,28 @@ export class ClientsModalAddComponent implements OnInit {
           this.modalIsLoading = false;
           this.message.error(data.message);
         }
+      }, (error) => {
+
+        if (error.status === 400) {
+
+          console.log(error.error);
+
+          let list = `<ul>`;
+
+          // tslint:disable-next-line: forin
+          for (let item in error.error.data) {
+            list += `<li>${item}</li>`;
+          }
+
+          list += `</ul>`;
+
+          this.message.error(`${error.error.message} <br> ${list}`);
+        } else {
+          this.message.error('Error en la petición');
+          console.log(error);
+        }
+
+        this.modalIsLoading = false;
       });
     } else {
       this.message.warning('Complete el formulario');
