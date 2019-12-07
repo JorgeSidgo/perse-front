@@ -11,10 +11,10 @@
 
 <div class="grid-container">
 
-  <div nz-row [nzGutter]="16" style="margin-bottom: 1em;">
+  <div nz-row [nzGutter]="16" style="margin: 0;">
 
 
-    <div>
+    <div nz-col nzOffset="18" nzSpan="6" style="margin-bottom: 1em; padding-right: 0;">
       <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
         <input type="text" nz-input placeholder="input search text" />
       </nz-input-group>
@@ -54,6 +54,8 @@
                 nzType="delete"></i></button>
             <button class="ant-btn-black" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
                 nzType="ellipsis"></i></button>
+            <button class="ant-btn-yellow" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
+                nzType="dollar-circle" nzTheme="fill"></i></button>
           </td>
         </tr>
       </tbody>

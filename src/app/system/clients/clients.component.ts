@@ -11,6 +11,7 @@ export class ClientsComponent implements OnInit {
   // MODALS
 
   addModalIsVisible = false;
+  pointsModalIsVisible = false;
 
   // DATA
   gridIsLoading = true;
@@ -24,12 +25,20 @@ export class ClientsComponent implements OnInit {
     this.index();
   }
 
+  showPointsModal(): void {
+    this.pointsModalIsVisible = true;
+  }
+
   showModal(): void {
     this.addModalIsVisible = true;
   }
 
   index(): void {
     this.loadData();
+  }
+
+  closePointsModal(): void {
+    this.pointsModalIsVisible = false;
   }
 
   closeModal(): void {

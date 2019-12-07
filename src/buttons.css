@@ -82,3 +82,24 @@
   border-color: #1B1C1D;
   color: #fff;
 }
+
+.ant-btn-yellow {
+  color: #fff;
+  background-color: #daa300;
+  border-color: #daa300;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+  transition: background-color .3s ease;
+}
+
+.ant-btn-yellow:hover {
+  background-color: #eaae00;
+  border-color: #eaae00;
+  color: #fff;
+}
+
+.ant-btn-yellow:focus {
+  background-color: #daa300;
+  border-color: #daa300;
+  color: #fff;
+}

@@ -21,6 +21,11 @@ import { SellersComponent } from './sellers/sellers.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { OnlyLettersDirective } from '../directives/only-letters.directive';
 import { OnlyNumbersDirective } from '../directives/only-numbers.directive';
+import { ClientsModalPointsComponent } from './clients/clients-modal-points/clients-modal-points.component';
+import { SellersModalAddComponent } from './sellers/sellers-modal-add/sellers-modal-add.component';
+import { SellersModalDeleteComponent } from './sellers/sellers-modal-delete/sellers-modal-delete.component';
+import { SellersModalDetailsComponent } from './sellers/sellers-modal-details/sellers-modal-details.component';
+import { SellersModalEditComponent } from './sellers/sellers-modal-edit/sellers-modal-edit.component';
 
 
 
@@ -43,7 +48,12 @@ import { OnlyNumbersDirective } from '../directives/only-numbers.directive';
     ClientsModalEditComponent,
     PasswordInputComponent,
     ClientHomeComponent,
-    SellersComponent],
+    SellersComponent,
+    ClientsModalPointsComponent,
+    SellersModalAddComponent,
+    SellersModalDeleteComponent,
+    SellersModalDetailsComponent,
+    SellersModalEditComponent],
   imports: [
     CommonModule,
     SystemRoutingModule,
