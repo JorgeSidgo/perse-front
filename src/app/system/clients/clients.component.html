@@ -1,7 +1,7 @@
 <app-clients-modal-add [modalIsVisible]="addModalIsVisible" (modalState)="closeModal()" (parentReload)="loadData()">
 </app-clients-modal-add>
 
-<app-clients-modal-points [modalIsVisible]="pointsModalIsVisible" [clientPoints]="userPoints"
+<app-clients-modal-points [modalIsVisible]="pointsModalIsVisible" [clientPoints]="userPoints" [clientId]="userId"
   (modalState)="closePointsModal()" (parentReload)="loadData()">
 </app-clients-modal-points>
 
@@ -31,7 +31,7 @@
   </div>
 
   <div nz-row [nzGutter]="16" style="margin:0;">
-    <nz-table [nzLoading]="gridIsLoading" #borderedTable nzBordered [nzData]="dataList">
+    <nz-table [nzLoading]="gridIsLoading" #borderedTable nzBordered nzSize="small" [nzData]="dataList">
       <thead>
         <tr>
           <th>Nº</th>
@@ -39,6 +39,7 @@
           <th>Apellido</th>
           <th>E-mail</th>
           <th>Teléfono</th>
+          <th>Puntos</th>
           <th>Cumpleaños</th>
           <th>Acciones</th>
         </tr>
@@ -50,6 +51,7 @@
           <td>{{data.last_name}}</td>
           <td>{{data.email}}</td>
           <td>{{data.phone}}</td>
+          <td>{{data.points}}</td>
           <td>{{data.birthday | date:'dd/MM/yyyy'}}</td>
           <td class="action-shelf">
             <button class="ant-btn-blue" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon

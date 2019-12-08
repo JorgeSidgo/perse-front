@@ -19,6 +19,7 @@ export class ClientsComponent implements OnInit {
   dataList: any[];
   userData: Client;
   userPoints = 0;
+  userId = 0;
 
   constructor(
     private userService: UsersService
@@ -53,6 +54,7 @@ export class ClientsComponent implements OnInit {
     this.userService.getUser(id).subscribe(data => {
       console.log(data.data);
       this.userPoints = data.data.points;
+      this.userId = data.data.id;
     });
   }
 

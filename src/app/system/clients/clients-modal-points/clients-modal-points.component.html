@@ -4,9 +4,10 @@
   <ng-template #modalContent>
     <form [formGroup]="pointsForm" id="pointsForm" nz-form nzLayout="vertical" (ngSubmit)="handleOk()">
       <nz-form-item>
-        <nz-form-label>{{clientPoints}} puntos para canje:</nz-form-label>
+        <nz-form-label>El cliente posee {{clientPoints}} puntos para canje:</nz-form-label>
         <nz-form-control nzErrorTip="Ingrese una descripción">
-          <nz-input-number formControlName="point" style="width: 100%;" [nzMin]="0" [nzStep]="1"></nz-input-number>
+          <nz-input-number formControlName="points" style="width: 100%;" [nzMin]="minPoints" [nzMax]="maxPoints"
+            [nzStep]="1"></nz-input-number>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>

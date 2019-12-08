@@ -15,7 +15,6 @@ import { ClientsModalAddComponent } from './clients/clients-modal-add/clients-mo
 import { ClientsModalDeleteComponent } from './clients/clients-modal-delete/clients-modal-delete.component';
 import { ClientsModalDetailsComponent } from './clients/clients-modal-details/clients-modal-details.component';
 import { ClientsModalEditComponent } from './clients/clients-modal-edit/clients-modal-edit.component';
-import { PasswordInputComponent } from './commons/password-input/password-input.component';
 import { ClientHomeComponent } from './client-home/client-home.component';
 import { SellersComponent } from './sellers/sellers.component';
 import { NgxMaskModule } from 'ngx-mask';
@@ -47,7 +46,6 @@ import { FormsModule } from '@angular/forms';
     ClientsModalDeleteComponent,
     ClientsModalDetailsComponent,
     ClientsModalEditComponent,
-    PasswordInputComponent,
     ClientHomeComponent,
     SellersComponent,
     ClientsModalPointsComponent,

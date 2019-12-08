@@ -19,6 +19,7 @@ export class ClientsModalPointsComponent implements OnInit {
 
   @Input() clientData: Client;
   @Input() clientPoints = 0;
+  @Input() clientId = 0;
 
   // OUTPUTS
 
@@ -31,7 +32,7 @@ export class ClientsModalPointsComponent implements OnInit {
   categorieValue: any;
   switchState = true;
   minPoints = 0;
-  maxPoints = 0;
+  maxPoints = 100;
   // actionLabel = (this.switchState) ? 'Agregar' : 'Disminuir';
 
   // FORMS
@@ -59,8 +60,8 @@ export class ClientsModalPointsComponent implements OnInit {
 
   initForm(): void {
     this.pointsForm = this.fb.group({
-      id_user: [null, [Validators.required]],
-      point: [0, [Validators.required]],
+      id_user: [null],
+      points: [0, [Validators.required]],
       key: [this.switchState]
     });
   }
@@ -78,21 +79,25 @@ export class ClientsModalPointsComponent implements OnInit {
       this.pointsForm.controls[i].updateValueAndValidity();
     }
 
-
     console.log('form-data', this.pointsForm.value);
-
     if (this.pointsForm.dirty && this.pointsForm.valid) {
-      /* this.productService.store(this.resolveForm()).subscribe((data) => {
+
+      this.pointsForm.value.id_user = this.clientId;
+      console.log('form-data', this.pointsForm.value);
+
+
+      this.usersService.updateClientPoints(this.pointsForm.value).subscribe((data) => {
         console.log(data);
         this.closeModal();
         this.modalIsLoading = false;
         if (data.code) {
-          this.message.success('Producto agregado exitosamente');
+          this.message.success('Puntos Actualizados');
           this.emitReload();
         } else {
           this.message.error(data.message);
         }
-      }); */
+      });
+
     } else {
       this.message.warning('Complete el formulario');
       this.modalIsLoading = false;

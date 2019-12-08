@@ -35,6 +35,12 @@ export class UsersService {
     );
   }
 
+  updateClientPoints(data: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/user/set-points`, data).pipe(
+      map((response: any) => response)
+    );
+  }
+
   getSellers(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/user/index-sellers`).pipe(
       map((response: any) => response)
