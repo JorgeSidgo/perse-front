@@ -1,7 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChange } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { NzMessageService } from 'ng-zorro-antd';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { computed } from "mobx-angular";
+import { Client } from 'src/app/entity/Client';
 
 @Component({
   selector: 'app-clients-modal-points',
@@ -15,8 +17,8 @@ export class ClientsModalPointsComponent implements OnInit {
 
   @Input() modalIsVisible: boolean;
 
-  @Input() typeProductList: any[];
-  @Input() categorieList: any[];
+  @Input() clientData: Client;
+  @Input() clientPoints = 0;
 
   // OUTPUTS
 
@@ -27,6 +29,10 @@ export class ClientsModalPointsComponent implements OnInit {
   modalIsLoading = false;
   typeValue: any;
   categorieValue: any;
+  switchState = true;
+  minPoints = 0;
+  maxPoints = 0;
+  // actionLabel = (this.switchState) ? 'Agregar' : 'Disminuir';
 
   // FORMS
 
@@ -42,14 +48,20 @@ export class ClientsModalPointsComponent implements OnInit {
     this.initForm();
   }
 
+
+  /*   getActionLabel() {
+      if (this.switchState) {
+        return 'Agregar';
+      } else {
+        return 'Disminuir';
+      }
+    } */
+
   initForm(): void {
     this.pointsForm = this.fb.group({
-      name: [null, [Validators.required]],
-      description: [null, [Validators.required]],
-      product_picture: [null, [Validators.required]],
-      point_cost: [null, [Validators.required]],
-      id_type: [null, [Validators.required]],
-      id_categorie: [null, [Validators.required]]
+      id_user: [null, [Validators.required]],
+      point: [0, [Validators.required]],
+      key: [this.switchState]
     });
   }
 
@@ -111,12 +123,15 @@ export class ClientsModalPointsComponent implements OnInit {
       );
     } */
 
+
+
   handleCancel(): void {
     this.closeModal();
   }
 
   closeModal(): void {
     this.modalState.emit(false);
+    this.initForm();
   }
 
   emitReload(): void {

@@ -1,13 +1,21 @@
-<nz-modal [nzClosable]="false" [nzKeyboard]="false" [(nzVisible)]="modalIsVisible" nzTitle="Gestió  n de Puntos"
+<nz-modal [nzClosable]="false" [nzKeyboard]="false" [(nzVisible)]="modalIsVisible" nzTitle="Gestión de Puntos"
   [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="handleCancel()">
 
   <ng-template #modalContent>
     <form [formGroup]="pointsForm" id="pointsForm" nz-form nzLayout="vertical" (ngSubmit)="handleOk()">
       <nz-form-item>
-        <nz-form-label>Puntos para canje:</nz-form-label>
+        <nz-form-label>{{clientPoints}} puntos para canje:</nz-form-label>
         <nz-form-control nzErrorTip="Ingrese una descripción">
-          <nz-input-number formControlName="point_cost" [(ngModel)]="pointsClient" style="width: 100%;" [nzMin]="0"
-            [nzStep]="1"></nz-input-number>
+          <nz-input-number formControlName="point" style="width: 100%;" [nzMin]="0" [nzStep]="1"></nz-input-number>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <!-- <nz-switch [(ngModel)]="switchState"></nz-switch> -->
+          <nz-switch formControlName="key" [nzCheckedChildren]="checkedTemplate"
+            [nzUnCheckedChildren]="unCheckedTemplate"></nz-switch>
+          <ng-template #checkedTemplate><i nz-icon nzType="plus" nzTheme="outline"></i></ng-template>
+          <ng-template #unCheckedTemplate><i nz-icon nzType="minus" nzTheme="outline"></i></ng-template>
         </nz-form-control>
       </nz-form-item>
     </form>

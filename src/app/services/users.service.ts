@@ -23,6 +23,12 @@ export class UsersService {
     );
   }
 
+  getUser(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/user/show/${id}`).pipe(
+      map((response: any) => response)
+    );
+  }
+
   getClients(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/user/index-clients`).pipe(
       map((response: any) => response)

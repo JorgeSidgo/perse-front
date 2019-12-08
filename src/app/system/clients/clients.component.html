@@ -1,8 +1,9 @@
 <app-clients-modal-add [modalIsVisible]="addModalIsVisible" (modalState)="closeModal()" (parentReload)="loadData()">
 </app-clients-modal-add>
 
-<!-- <app-clients-modal-points [modalIsVisible]="pointsModalIsVisible" (modalState)="closePointsModal()" (parentReload)="loadData()">
-  </app-clients-modal-points> -->
+<app-clients-modal-points [modalIsVisible]="pointsModalIsVisible" [clientPoints]="userPoints"
+  (modalState)="closePointsModal()" (parentReload)="loadData()">
+</app-clients-modal-points>
 
 <div class="view-title">
   <h5 nz-title>Gestión de Clientes</h5>
@@ -19,7 +20,7 @@
 
     <div nz-col nzOffset="18" nzSpan="6" style="margin-bottom: 1em; padding-right: 0;">
       <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
-        <input type="text" nz-input placeholder="input search text" />
+        <input type="text" nz-input placeholder="Buscar" />
       </nz-input-group>
       <ng-template #suffixIconButton>
         <button nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
@@ -57,8 +58,8 @@
                 nzType="delete"></i></button>
             <button class="ant-btn-black" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
                 nzType="ellipsis"></i></button>
-            <button class="ant-btn-yellow" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
-                nzType="dollar-circle" nzTheme="fill"></i></button>
+            <button class="ant-btn-yellow" (click)="showPointsModal(data.id)" nz-button nzType="primary" nzSize="small"
+              nzShape="circle"><i nz-icon nzType="dollar-circle" nzTheme="fill"></i></button>
           </td>
         </tr>
       </tbody>

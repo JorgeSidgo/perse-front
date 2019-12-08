@@ -12,6 +12,7 @@ export class SystemComponent {
   title = 'Persé';
   email: string;
   userData: Account;
+  isCollapsed = false;
 
   headerBarText: string;
 

@@ -26,6 +26,7 @@ import { SellersModalAddComponent } from './sellers/sellers-modal-add/sellers-mo
 import { SellersModalDeleteComponent } from './sellers/sellers-modal-delete/sellers-modal-delete.component';
 import { SellersModalDetailsComponent } from './sellers/sellers-modal-details/sellers-modal-details.component';
 import { SellersModalEditComponent } from './sellers/sellers-modal-edit/sellers-modal-edit.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -53,9 +54,10 @@ import { SellersModalEditComponent } from './sellers/sellers-modal-edit/sellers-
     SellersModalAddComponent,
     SellersModalDeleteComponent,
     SellersModalDetailsComponent,
-    SellersModalEditComponent],
+    SellersModalEditComponent,],
   imports: [
     CommonModule,
+    FormsModule,
     SystemRoutingModule,
     SharedModule,
     NgxMaskModule.forRoot()
