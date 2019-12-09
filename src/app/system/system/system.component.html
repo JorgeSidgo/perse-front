@@ -1,5 +1,9 @@
 <nz-layout>
-  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzBreakpoint]="'sm'" [nzCollapsedWidth]="0"
+    [nzZeroTrigger]="zeroTrigger">
+    <!-- <div class="univ-loading-container">
+      <nz-spin nzSimple></nz-spin>
+    </div> -->
     <div class="logo">
       <span class="perse-logo">{{headerBarText}}</span>
     </div>
@@ -21,6 +25,7 @@
         <span>Productos</span>
       </li>
     </ul>
+
   </nz-sider>
   <nz-layout>
     <nz-header>
@@ -58,4 +63,8 @@
       </div>
     </nz-content>
   </nz-layout>
+  <ng-template #zeroTrigger>
+    <i nz-icon nzType="menu-fold" nzTheme="outline"></i>
+  </ng-template>
+
 </nz-layout>

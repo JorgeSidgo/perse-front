@@ -13,12 +13,14 @@ export class ClientsComponent implements OnInit {
 
   addModalIsVisible = false;
   pointsModalIsVisible = false;
+  pointsModalcontentLoading = false;
 
   // DATA
   gridIsLoading = true;
   dataList: any[];
   userData: Client;
   userPoints = 0;
+  userName = ' ';
   userId = 0;
 
   constructor(
@@ -51,10 +53,13 @@ export class ClientsComponent implements OnInit {
   }
 
   getClientData(id: number) {
+    this.pointsModalcontentLoading = true;
     this.userService.getUser(id).subscribe(data => {
       console.log(data.data);
       this.userPoints = data.data.points;
+      this.userName = `${data.data.first_name} ${data.data.last_name}`;
       this.userId = data.data.id;
+      this.pointsModalcontentLoading = false;
     });
   }
 

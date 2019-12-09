@@ -5,14 +5,14 @@
   <img alt="producto" [src]="imgProducto" />
 </ng-template>
 <ng-template #actionEdit>
-  <button (click)="yes()" class="ant-btn-blue" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
-      nzType="edit"></i></button>
+  <button (click)="yes()" class="ant-btn-blue" nzTooltipTitle="Editar" nzTooltipPlacement="top" nz-button nz-tooltip
+    nzType="primary" nzSize="small" nzShape="circle"><i nz-icon nzType="edit"></i></button>
 </ng-template>
 <ng-template #actionDelete>
-  <button (click)="yes()" class="ant-btn-red" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
-      nzType="delete"></i></button>
+  <button (click)="yes()" class="ant-btn-red" nzTooltipTitle="Eliminar" nzTooltipPlacement="top" nz-button nz-tooltip
+    nzType="primary" nzSize="small" nzShape="circle"><i nz-icon nzType="delete"></i></button>
 </ng-template>
 <ng-template #actionDetail>
-  <button (click)="yes()" class="ant-btn-black" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
-      nzType="ellipsis"></i></button>
+  <button (click)="yes()" class="ant-btn-black" nzTooltipTitle="Detalles" nzTooltipPlacement="top" nz-button nz-tooltip
+    nzType="primary" nzSize="small" nzShape="circle"><i nz-icon nzType="ellipsis"></i></button>
 </ng-template>

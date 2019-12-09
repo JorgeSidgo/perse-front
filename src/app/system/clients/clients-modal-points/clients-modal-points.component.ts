@@ -20,6 +20,8 @@ export class ClientsModalPointsComponent implements OnInit {
   @Input() clientData: Client;
   @Input() clientPoints = 0;
   @Input() clientId = 0;
+  @Input() clientName = ' ';
+  @Input() contentLoading: boolean;
 
   // OUTPUTS
 
@@ -33,7 +35,6 @@ export class ClientsModalPointsComponent implements OnInit {
   switchState = true;
   minPoints = 0;
   maxPoints = 100;
-  // actionLabel = (this.switchState) ? 'Agregar' : 'Disminuir';
 
   // FORMS
 
@@ -50,26 +51,27 @@ export class ClientsModalPointsComponent implements OnInit {
   }
 
 
-  /*   getActionLabel() {
-      if (this.switchState) {
-        return 'Agregar';
-      } else {
-        return 'Disminuir';
-      }
-    } */
-
   initForm(): void {
     this.pointsForm = this.fb.group({
       id_user: [null],
       points: [0, [Validators.required]],
-      key: [this.switchState]
+      key: [true]
     });
   }
 
-  /*    resolveForm(): Product {
-       return this.pointsForm.value as Product;
-     }
-    */
+  get actionLabel(): boolean {
+    return this.pointsForm.value.key;
+  }
+
+  get maxPointsInput(): number {
+    if (this.actionLabel) {
+      return 100;
+    } else {
+      return this.clientPoints;
+    }
+
+  }
+
   handleOk(): void {
     this.modalIsLoading = true;
 
@@ -105,30 +107,6 @@ export class ClientsModalPointsComponent implements OnInit {
 
 
   }
-
-  /*   beforeUpload = (file: UploadFile): boolean => {
-      this.fileList = this.fileList.concat(file);
-      console.log(this.fileList);
-      return this.http.request(req).subscribe(
-        // tslint:disable-next-line no-any
-        (event: HttpEvent<any>) => {
-          if (event.type === HttpEventType.UploadProgress) {
-            if (event.total! > 0) {
-              // tslint:disable-next-line:no-any
-              (event as any).percent = (event.loaded / event.total!) * 100;
-            }
-            item.onProgress!(event, item.file!);
-          } else if (event instanceof HttpResponse) {
-            item.onSuccess!(event.body, item.file!, event);
-          }
-        },
-        err => {
-          item.onError!(err, item.file!);
-        }
-      );
-    } */
-
-
 
   handleCancel(): void {
     this.closeModal();

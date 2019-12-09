@@ -1,1 +1,21 @@
+<div class="view-title">
+  <h5 nz-title>Productos Disponibles</h5>
 
+  <span>
+    Actualmente cuenta con {{userPoints}} puntos
+  </span>
+</div>
+
+<div class="grid-container">
+  <div nz-row [nzGutter]="16">
+
+    <app-client-home-product-card-loading *ngFor="let item of [0,1,2,3,4,5]" nz-col nz-col nzXs="24" nzSm="24" nzMd="8"
+      nzLg="8" [isLoading]="gridIsLoading">
+    </app-client-home-product-card-loading>
+
+    <app-client-home-product-card nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8" *ngFor="let item of dataList"
+      [nombreProducto]="item.name" [descProducto]="item.point_cost" [imgProducto]="item.product_picture">
+    </app-client-home-product-card>
+
+  </div>
+</div>

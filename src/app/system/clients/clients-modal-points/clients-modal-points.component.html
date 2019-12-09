@@ -1,24 +1,34 @@
-<nz-modal [nzClosable]="false" [nzKeyboard]="false" [(nzVisible)]="modalIsVisible" nzTitle="Gestión de Puntos"
-  [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="handleCancel()">
+<nz-modal [nzClosable]="false" [nzKeyboard]="false" [(nzVisible)]="modalIsVisible"
+  nzTitle="{{clientName}} posee {{clientPoints}} puntos para canje:" [nzContent]="modalContent" [nzFooter]="modalFooter"
+  (nzOnCancel)="handleCancel()">
 
   <ng-template #modalContent>
+    <div *ngIf="contentLoading" class="univ-loading-container">
+      <nz-spin nzSimple></nz-spin>
+    </div>
     <form [formGroup]="pointsForm" id="pointsForm" nz-form nzLayout="vertical" (ngSubmit)="handleOk()">
       <nz-form-item>
-        <nz-form-label>El cliente posee {{clientPoints}} puntos para canje:</nz-form-label>
+        <nz-form-label>
+          {{actionLabel ? 'Agregar' : 'Disminuir'}}
+          <!-- <br> -->
+          <nz-switch style="margin-left: 0.5em;" formControlName="key" nzSize="small"
+            [nzCheckedChildren]="checkedTemplate" [nzUnCheckedChildren]="unCheckedTemplate"></nz-switch>
+          <ng-template #checkedTemplate><i nz-icon nzType="plus" nzTheme="outline"></i></ng-template>
+          <ng-template #unCheckedTemplate><i nz-icon nzType="minus" nzTheme="outline"></i></ng-template>
+        </nz-form-label>
         <nz-form-control nzErrorTip="Ingrese una descripción">
-          <nz-input-number formControlName="points" style="width: 100%;" [nzMin]="minPoints" [nzMax]="maxPoints"
+          <nz-input-number formControlName="points" style="width: 100%;" [nzMin]="minPoints" [nzMax]="maxPointsInput"
             [nzStep]="1"></nz-input-number>
         </nz-form-control>
       </nz-form-item>
-      <nz-form-item>
+      <!-- <nz-form-item>
         <nz-form-control>
-          <!-- <nz-switch [(ngModel)]="switchState"></nz-switch> -->
-          <nz-switch formControlName="key" [nzCheckedChildren]="checkedTemplate"
+          <nz-switch formControlName="key" nzSize="small" [nzCheckedChildren]="checkedTemplate"
             [nzUnCheckedChildren]="unCheckedTemplate"></nz-switch>
           <ng-template #checkedTemplate><i nz-icon nzType="plus" nzTheme="outline"></i></ng-template>
           <ng-template #unCheckedTemplate><i nz-icon nzType="minus" nzTheme="outline"></i></ng-template>
         </nz-form-control>
-      </nz-form-item>
+      </nz-form-item> -->
     </form>
   </ng-template>
 

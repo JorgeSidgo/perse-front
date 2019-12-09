@@ -31,4 +31,15 @@ export class ProductService {
       map((response: any) => response)
     );
   }
+
+  available(_points: number): Observable<any> {
+
+    const payload = {
+      points: _points
+    };
+
+    return this.http.post<any>(`${this.baseUrl}/products-available`, payload).pipe(
+      map((response: any) => response)
+    );
+  }
 }

@@ -26,6 +26,8 @@ import { SellersModalDeleteComponent } from './sellers/sellers-modal-delete/sell
 import { SellersModalDetailsComponent } from './sellers/sellers-modal-details/sellers-modal-details.component';
 import { SellersModalEditComponent } from './sellers/sellers-modal-edit/sellers-modal-edit.component';
 import { FormsModule } from '@angular/forms';
+import { ClientHomeProductCardComponent } from './client-home/client-home-product-card/client-home-product-card.component';
+import { ClientHomeProductCardLoadingComponent } from './client-home/client-home-product-card-loading/client-home-product-card-loading.component';
 
 
 
@@ -52,7 +54,9 @@ import { FormsModule } from '@angular/forms';
     SellersModalAddComponent,
     SellersModalDeleteComponent,
     SellersModalDetailsComponent,
-    SellersModalEditComponent,],
+    SellersModalEditComponent,
+    ClientHomeProductCardComponent,
+    ClientHomeProductCardLoadingComponent,],
   imports: [
     CommonModule,
     FormsModule,
