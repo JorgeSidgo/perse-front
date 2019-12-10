@@ -43,6 +43,7 @@ export class AuthService {
   removeToken(): void {
     window.localStorage.removeItem('Authorization');
     window.localStorage.removeItem('Token');
+    window.localStorage.removeItem('Permit');
   }
 
   logout(): void {
