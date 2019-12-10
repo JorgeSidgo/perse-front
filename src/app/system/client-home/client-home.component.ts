@@ -65,9 +65,9 @@ export class ClientHomeComponent implements OnInit {
     console.log('puntos', points);
     this.dataList = null;
     this.gridIsLoading = true;
-    this.productService.available(points).subscribe((data) => {
+    this.productService.index().subscribe((data) => {
       console.log('ava', data.data);
-      this.dataList = data.data;
+      this.dataList = data.data.data;
       this.gridIsLoading = false;
     });
   }

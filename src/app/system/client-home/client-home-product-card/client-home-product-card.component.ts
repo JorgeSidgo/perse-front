@@ -10,6 +10,9 @@ export class ClientHomeProductCardComponent implements OnInit {
   @Input() nombreProducto;
   @Input() descProducto;
   @Input() imgProducto;
+  @Input() userPoint;
+  @Input() prodCost;
+
 
   constructor() { }
 

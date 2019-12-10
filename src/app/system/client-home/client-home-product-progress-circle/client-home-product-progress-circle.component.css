@@ -1,0 +1,12 @@
+nz-progress {
+    margin-right: 8px;
+    width: 15px !important;
+    height: 15px !important;
+    margin-bottom: 8px;
+    display: inline-block;
+  }
+
+  .ant-progress-inner.ng-star-inserted {
+    width: 50px !important;
+    height: 50px !important;
+  }

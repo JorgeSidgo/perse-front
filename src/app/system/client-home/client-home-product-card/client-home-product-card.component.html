@@ -1,5 +1,6 @@
 <nz-card nzHoverable nzSize="small" [nzCover]="coverTemplate" [nzActions]="[actionDetail]">
-  <nz-card-meta [nzTitle]="nombreProducto" [nzDescription]="'Costo en Puntos: ' + descProducto"></nz-card-meta>
+  <nz-card-meta [nzTitle]="nombreProducto" [nzDescription]="'Costo en Puntos: ' + prodCost"></nz-card-meta>
+  <app-client-home-product-progress-circle [points]="userPoint" [pointCost]="prodCost"></app-client-home-product-progress-circle>
 </nz-card>
 <ng-template #coverTemplate>
   <img alt="producto" [src]="imgProducto" />

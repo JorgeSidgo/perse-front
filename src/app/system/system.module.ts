@@ -28,6 +28,7 @@ import { SellersModalEditComponent } from './sellers/sellers-modal-edit/sellers-
 import { FormsModule } from '@angular/forms';
 import { ClientHomeProductCardComponent } from './client-home/client-home-product-card/client-home-product-card.component';
 import { ClientHomeProductCardLoadingComponent } from './client-home/client-home-product-card-loading/client-home-product-card-loading.component';
+import { ClientHomeProductProgressCircleComponent } from './client-home/client-home-product-progress-circle/client-home-product-progress-circle.component';
 
 
 
@@ -56,7 +57,8 @@ import { ClientHomeProductCardLoadingComponent } from './client-home/client-home
     SellersModalDetailsComponent,
     SellersModalEditComponent,
     ClientHomeProductCardComponent,
-    ClientHomeProductCardLoadingComponent,],
+    ClientHomeProductCardLoadingComponent,
+    ClientHomeProductProgressCircleComponent,],
   imports: [
     CommonModule,
     FormsModule,

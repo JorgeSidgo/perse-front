@@ -1,9 +1,12 @@
 <div class="view-title">
-  <h5 nz-title>Productos Disponibles</h5>
+  <h5 nz-title>Productos Canjeables</h5>
 
   <span>
-    Actualmente cuenta con {{userPoints}} puntos
+    Usted cuenta con {{userPoints}} de 300 puntos posibles
+  <span>
+    <nz-progress [nzPercent]="11" nzSize="small" nzStatus="active" [nzShowInfo]="false"></nz-progress>
   </span>
+</span>
 </div>
 
 <div class="grid-container">
@@ -14,7 +17,7 @@
     </app-client-home-product-card-loading>
 
     <app-client-home-product-card nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8" *ngFor="let item of dataList"
-      [nombreProducto]="item.name" [descProducto]="item.point_cost" [imgProducto]="item.product_picture">
+      [nombreProducto]="item.name" [userPoint]="userPoints" [prodCost]="item.point_cost" [imgProducto]="item.product_picture">
     </app-client-home-product-card>
 
   </div>
