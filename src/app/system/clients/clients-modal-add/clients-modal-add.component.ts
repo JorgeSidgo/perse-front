@@ -57,13 +57,17 @@ export class ClientsModalAddComponent implements OnInit {
   resolveForm(): Client {
     const clientData = new Client();
 
+    let random = this.randomPass();
+
     clientData.first_name = this.addForm.value.first_name;
     clientData.last_name = this.addForm.value.last_name;
     clientData.email = this.addForm.value.email;
     clientData.phone = this.addForm.value.phone;
     clientData.birthday = moment(this.addForm.value.birthday).format('YYYY-MM-DD');
     clientData.is_client = 1;
-    clientData.password = this.randomPass();
+    clientData.password = random;
+
+    console.log('pass', random);
 
     return clientData;
   }

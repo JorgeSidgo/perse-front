@@ -1,18 +1,18 @@
 <nz-layout>
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzBreakpoint]="'sm'" [nzCollapsedWidth]="0"
     [nzZeroTrigger]="zeroTrigger">
-    <!-- <div class="univ-loading-container">
+    <div *ngIf="permissionLoading" class="univ-loading-container">
       <nz-spin nzSimple></nz-spin>
-    </div> -->
+    </div>
     <div class="logo">
       <span class="perse-logo">{{headerBarText}}</span>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-menu-item [routerLink]="['./home']" nzMatchRouter>
-        <i nz-icon nzType="home"></i>
-        <span>Dashboard</span>
+      <li *ngFor="let menuItem of permitList" nz-menu-item [routerLink]="'.' + menuItem.route" nzMatchRouter>
+        <i nz-icon [nzType]="menuItem.icon"></i>
+        <span>{{menuItem.display_name}}</span>
       </li>
-      <li nz-menu-item [routerLink]="['./clients']" nzMatchRouter>
+      <!--       <li nz-menu-item [routerLink]="['./clients']" nzMatchRouter>
         <i nz-icon nzType="user"></i>
         <span>Clientes</span>
       </li>
@@ -23,7 +23,7 @@
       <li nz-menu-item [routerLink]="['./products']" nzMatchRouter>
         <i nz-icon nzType="gold"></i>
         <span>Productos</span>
-      </li>
+      </li> -->
     </ul>
 
   </nz-sider>
