@@ -22,6 +22,7 @@ export class ClientsComponent implements OnInit {
   userPoints = 0;
   userName = ' ';
   userId = 0;
+  search_data: string = "";
 
   constructor(
     private userService: UsersService
@@ -41,6 +42,7 @@ export class ClientsComponent implements OnInit {
   }
 
   index(): void {
+    this.search_data="";
     this.loadData();
   }
 
@@ -61,6 +63,20 @@ export class ClientsComponent implements OnInit {
       this.userId = data.data.id;
       this.pointsModalcontentLoading = false;
     });
+  }
+
+  searchClients(){
+    if(this.search_data=="")
+      this.index();
+    else{
+      this.dataList = null;
+      this.gridIsLoading = true;
+      this.userService.seachClients(this.search_data).subscribe((data) => {
+        this.dataList = data.data;
+        this.gridIsLoading = false;
+      });
+    }  
+
   }
 
 

@@ -29,6 +29,7 @@ import { FormsModule } from '@angular/forms';
 import { ClientHomeProductCardComponent } from './client-home/client-home-product-card/client-home-product-card.component';
 import { ClientHomeProductCardLoadingComponent } from './client-home/client-home-product-card-loading/client-home-product-card-loading.component';
 import { ClientHomeProductProgressCircleComponent } from './client-home/client-home-product-progress-circle/client-home-product-progress-circle.component';
+import { RedemptionsComponent } from './redemptions/redemptions.component';
 
 
 
@@ -58,7 +59,8 @@ import { ClientHomeProductProgressCircleComponent } from './client-home/client-h
     SellersModalEditComponent,
     ClientHomeProductCardComponent,
     ClientHomeProductCardLoadingComponent,
-    ClientHomeProductProgressCircleComponent,],
+    ClientHomeProductProgressCircleComponent,
+    RedemptionsComponent,],
   imports: [
     CommonModule,
     FormsModule,

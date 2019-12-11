@@ -6,6 +6,7 @@ import { ProductsComponent } from './products/products.component';
 import { ClientsComponent } from './clients/clients.component';
 import { ClientHomeComponent } from './client-home/client-home.component';
 import { SellersComponent } from './sellers/sellers.component';
+import { RedemptionsComponent } from './redemptions/redemptions.component';
 import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'products', component: ProductsComponent, canActivate: [AuthGuard] },
       { path: 'clients', component: ClientsComponent, canActivate: [AuthGuard] },
       { path: 'sellers', component: SellersComponent, canActivate: [AuthGuard] },
+      { path: 'exchange', component: RedemptionsComponent, canActivate: [AuthGuard] },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', redirectTo: 'home' },
     ]
