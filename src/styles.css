@@ -121,3 +121,14 @@ body::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
+
+.ant-card-small>.ant-card-body {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ant-card-small>.ant-card-body>* {
+  display: block;
+}
