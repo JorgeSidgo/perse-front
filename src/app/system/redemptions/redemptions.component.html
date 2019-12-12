@@ -1,1 +1,10 @@
-<p>redemptions works!</p>
+<div nz-row>
+    <div nz-col nzSpan="16">Canje de productos.</div>
+    <div nz-col nzSpan="8">
+    </div>
+  </div>
+  <div nz-row>
+      <app-form-loading *ngIf="isLoading"></app-form-loading>
+      <app-form-redemption *ngIf="isLoading==false" [clientList]="clientList"></app-form-redemption>
+  </div>
+

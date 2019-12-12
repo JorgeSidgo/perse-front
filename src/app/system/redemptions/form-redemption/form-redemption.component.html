@@ -1,0 +1,28 @@
+<div nz-col nzSpan="8">
+        <h4>Selecciona el tipo de canje.</h4>
+        <nz-select  nzSpan="12" nzShowSearch nzAllowClear (change)="activateClientSelect()" nzPlaceHolder="Selecccionar cliente" [(ngModel)]="selectedValue">
+            <nz-option nzLabel="Regalo" nzValue="1"></nz-option>
+            <nz-option nzLabel="Normal" nzValue="2"></nz-option>
+        </nz-select>
+</div>
+<div nz-col nzSpan="8">
+    <h4>Seleccion de Usuarios.</h4>
+    <nz-select
+      nzDisabled="clientState" 
+      nzMode="multiple"
+      [(ngModel)]="selectedUser"
+      nzPlaceHolder="Clientes"
+      nzAllowClear
+      nzShowSearch
+      [nzServerSearch]="true"
+      (nzOnSearch)="onSearch($event)">
+      <nz-option *ngFor="let client of clientList" [nzValue]="client.id" [nzLabel]="client.first_name" ></nz-option>
+    </nz-select>
+    
+</div>
+<div nz-col nzSpan="8">
+        <h4>Seleccion de productos.</h4>
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a person" [(ngModel)]="selectedValue" nzDisabled>
+            
+        </nz-select>
+</div>

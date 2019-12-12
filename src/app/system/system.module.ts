@@ -30,6 +30,9 @@ import { ClientHomeProductCardComponent } from './client-home/client-home-produc
 import { ClientHomeProductCardLoadingComponent } from './client-home/client-home-product-card-loading/client-home-product-card-loading.component';
 import { ClientHomeProductProgressCircleComponent } from './client-home/client-home-product-progress-circle/client-home-product-progress-circle.component';
 import { RedemptionsComponent } from './redemptions/redemptions.component';
+import { FormLoadingComponent } from './redemptions/form-loading/form-loading.component';
+import { FormRedemptionComponent } from './redemptions/form-redemption/form-redemption.component';
+import { CardRedemptionComponent } from './redemptions/card-redemption/card-redemption.component';
 
 
 
@@ -60,7 +63,10 @@ import { RedemptionsComponent } from './redemptions/redemptions.component';
     ClientHomeProductCardComponent,
     ClientHomeProductCardLoadingComponent,
     ClientHomeProductProgressCircleComponent,
-    RedemptionsComponent,],
+    RedemptionsComponent,
+    FormLoadingComponent,
+    FormRedemptionComponent,
+    CardRedemptionComponent,],
   imports: [
     CommonModule,
     FormsModule,
