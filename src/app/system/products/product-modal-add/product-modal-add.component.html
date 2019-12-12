@@ -44,7 +44,7 @@
       <nz-form-item>
         <nz-form-label>Foto del Producto:</nz-form-label>
         <nz-form-control nzErrorTip="Ingrese una descripción">
-          <input type="file" formControlName="product_picture">
+          <input type="file" formControlName="product_picture" (change)="changeListener($event)">
           <!-- <nz-upload nzAccept="image/png, image/jpeg" nzFileType="image/png, image/jpeg" [(nzFileList)]="fileList"
             [nzCustomRequest]="beforeUpload" nzLimit="1" style="width: 100%;">
             <button nz-button><i nz-icon nzType="upload"></i><span>Seleccionar Archivo</span></button>

@@ -28,6 +28,7 @@ export class ProductModalAddComponent implements OnInit {
   typeValue: any;
   categorieValue: any;
   fileList: UploadFile[] = [];
+  image: any;
 
   // FORMS
 
@@ -54,8 +55,29 @@ export class ProductModalAddComponent implements OnInit {
     });
   }
 
+  /* resolveImage(): any {
+    let fileArray = [];
+    let
+  } */
+
   resolveForm(): Product {
+    this.addForm.value.product_picture = this.image;
+    console.log("resolved", this.addForm.value);
     return this.addForm.value as Product;
+  }
+
+  changeListener($event): void {
+    this.readThis($event.target);
+  }
+
+  readThis(inputValue: any): void {
+    var file: File = inputValue.files[0];
+    var myReader: FileReader = new FileReader();
+
+    myReader.onloadend = (e) => {
+      this.image = myReader.result;
+    };
+    myReader.readAsDataURL(file);
   }
 
   handleOk(): void {
@@ -66,6 +88,7 @@ export class ProductModalAddComponent implements OnInit {
       this.addForm.controls[i].markAsDirty();
       this.addForm.controls[i].updateValueAndValidity();
     }
+
 
 
     console.log('form-data', this.addForm.value);

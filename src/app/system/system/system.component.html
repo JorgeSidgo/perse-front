@@ -43,7 +43,7 @@
         </a>
         <nz-dropdown-menu #menu="nzDropdownMenu">
           <ul nz-menu>
-            <li nz-menu-divider></li>
+            <!-- <li nz-menu-divider></li> -->
             <li (click)="logout()" nz-text nzType="danger" class="text-danger" nz-menu-item>
               <i nz-icon nzType="danger" class="text-danger" nzType="poweroff" nzTheme="outline"></i>
               Cerrar Sesión
@@ -53,9 +53,13 @@
       </div>
     </nz-header>
     <nz-content>
+      <!-- <div class="skew-background">
+      </div> -->
       <div class="inner-content">
         <router-outlet></router-outlet>
       </div>
+
+
     </nz-content>
   </nz-layout>
   <ng-template #zeroTrigger>
