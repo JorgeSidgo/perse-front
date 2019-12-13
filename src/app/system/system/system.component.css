@@ -17,6 +17,7 @@ nz-sider {
 
 nz-content {
   margin: 1.25em;
+  position: relative;
 }
 
 nz-breadcrumb {
@@ -88,4 +89,12 @@ nz-footer {
 .trigger:hover {
   color: #FF5722;
   text-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+}
+
+.bottom-bar {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
 }

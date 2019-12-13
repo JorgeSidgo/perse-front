@@ -22,6 +22,8 @@ export class SystemComponent implements OnInit {
   permissionLoading = false;
   permitList: any[];
 
+  deviceWidth = false;
+
   constructor(
     private authService: AuthService,
     private permissionService: PermissionService
@@ -33,6 +35,7 @@ export class SystemComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.resize();
     this.getPermits();
   }
 
@@ -58,6 +61,13 @@ export class SystemComponent implements OnInit {
       this.permitList = JSON.parse(decodedPermits.toString(cryptoJs.enc.Utf8));
       this.permissionLoading = false;
     }
+  }
+
+  resize(): void {
+    window.addEventListener('resize', e => {
+      this.deviceWidth = (window.innerWidth < 576) ? true : false;
+      console.log(this.deviceWidth);
+    });
   }
 
   logout() {
