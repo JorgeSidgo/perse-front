@@ -33,6 +33,7 @@ import { RedemptionsComponent } from './redemptions/redemptions.component';
 import { FormLoadingComponent } from './redemptions/form-loading/form-loading.component';
 import { FormRedemptionComponent } from './redemptions/form-redemption/form-redemption.component';
 import { CardRedemptionComponent } from './redemptions/card-redemption/card-redemption.component';
+import { FullMenuComponent } from './system/full-menu/full-menu.component';
 
 
 
@@ -66,7 +67,8 @@ import { CardRedemptionComponent } from './redemptions/card-redemption/card-rede
     RedemptionsComponent,
     FormLoadingComponent,
     FormRedemptionComponent,
-    CardRedemptionComponent,],
+    CardRedemptionComponent,
+    FullMenuComponent,],
   imports: [
     CommonModule,
     FormsModule,

@@ -24,6 +24,8 @@ export class SystemComponent implements OnInit {
 
   deviceWidth = false;
 
+  fullMenuVisible = true;
+
   constructor(
     private authService: AuthService,
     private permissionService: PermissionService
@@ -31,16 +33,19 @@ export class SystemComponent implements OnInit {
     this.headerBarText = 'Persé';
     this.userData = this.authService.getAccount();
     this.email = this.userData.email;
+    this.deviceWidth = (window.innerWidth < 576) ? true : false;
   }
 
 
   ngOnInit(): void {
     this.resize();
     this.getPermits();
+    this.changeState(this.isCollapsed);
   }
 
   changeState(state: boolean): any {
     this.headerBarText = (!state) ? 'Persé' : 'P';
+    this.backgroundStyle(state);
   }
 
   getPermits() {
@@ -66,8 +71,27 @@ export class SystemComponent implements OnInit {
   resize(): void {
     window.addEventListener('resize', e => {
       this.deviceWidth = (window.innerWidth < 576) ? true : false;
-      console.log(this.deviceWidth);
     });
+  }
+
+  backgroundStyle(state: boolean): void {
+
+    const skewd = document.getElementById('skew-background');
+
+    if (!state && !this.deviceWidth) {
+      skewd.style.width = 'calc((100% - 200px) - 1.2em)';
+    } else if (state && !this.deviceWidth) {
+      skewd.style.width = 'calc(100% - 1.2em)';
+    } else if (!state && this.deviceWidth) {
+      skewd.style.width = 'calc(100% - 200px)';
+    } else if (state && this.deviceWidth) {
+      skewd.style.width = 'calc(100%)';
+    }
+    console.log(skewd.style.width);
+  }
+
+  closeFullMenu(): void {
+    this.fullMenuVisible = false;
   }
 
   logout() {

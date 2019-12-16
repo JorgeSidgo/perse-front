@@ -1,5 +1,4 @@
 <nz-layout>
-
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzBreakpoint]="'sm'" [nzCollapsedWidth]="0"
     [nzZeroTrigger]="zeroTrigger">
     <div *ngIf="permissionLoading" class="univ-loading-container">
@@ -13,22 +12,12 @@
         <i nz-icon [nzType]="menuItem.icon"></i>
         <span>{{menuItem.display_name}}</span>
       </li>
-      <!--       <li nz-menu-item [routerLink]="['./clients']" nzMatchRouter>
-        <i nz-icon nzType="user"></i>
-        <span>Clientes</span>
-      </li>
-      <li nz-menu-item [routerLink]="['./sellers']" nzMatchRouter>
-        <i nz-icon nzType="team"></i>
-        <span>Vendedores</span>
-      </li>
-      <li nz-menu-item [routerLink]="['./products']" nzMatchRouter>
-        <i nz-icon nzType="gold"></i>
-        <span>Productos</span>
-      </li> -->
     </ul>
 
   </nz-sider>
   <nz-layout>
+    <div class="skew-background" id="skew-background">
+    </div>
     <nz-header>
       <div class="header-row" nz-row nzType="flex" nzJustify="space-between" nzAlign="top">
         <div nz-col>
@@ -54,55 +43,15 @@
       </div>
     </nz-header>
     <nz-content>
-      <!-- <div class="skew-background">
-      </div> -->
-      <ul nz-menu class="bottom-bar" *ngIf="deviceWidth" nzMode="horizontal">
-        <li nz-menu-item nzSelected>
-          <i nz-icon nzType="mail"></i>
-          Navigation One
-        </li>
-        <li nz-menu-item nzDisabled>
-          <i nz-icon nzType="appstore"></i>
-          Navigation Two
-        </li>
-        <li nz-submenu nzTitle="Navigation Three - Submenu" nzIcon="setting">
-          <ul>
-            <li nz-menu-group nzTitle="Item 1">
-              <ul>
-                <li nz-menu-item>Option 1</li>
-                <li nz-menu-item>Option 2</li>
-              </ul>
-            </li>
-            <li nz-menu-group nzTitle="Item 2">
-              <ul>
-                <li nz-menu-item>Option 3</li>
-                <li nz-menu-item>Option 4</li>
-                <li nz-submenu nzTitle="Sub Menu">
-                  <ul>
-                    <li nz-menu-item nzDisabled>Option 5</li>
-                    <li nz-menu-item>Option 6</li>
-                  </ul>
-                </li>
-                <li nz-submenu nzDisabled nzTitle="Disabled Sub Menu">
-                  <ul>
-                    <li nz-menu-item>Option 5</li>
-                    <li nz-menu-item>Option 6</li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li nz-menu-item>
-          <a href="https://ng.ant.design" target="_blank" rel="noopener noreferrer">Navigation Four - Link</a>
-        </li>
-      </ul>
+      <app-full-menu [menuList]="permitList" [menuIsVisible]="fullMenuVisible" (menuState)="closeFullMenu()">
+      </app-full-menu>
       <div class="inner-content">
         <router-outlet></router-outlet>
       </div>
 
 
     </nz-content>
+
   </nz-layout>
   <ng-template #zeroTrigger>
     <i nz-icon nzType="menu-fold" nzTheme="outline"></i>

@@ -1,0 +1,18 @@
+<div [ngClass]="(menuIsVisible) ? 'full-menu visible': 'full-menu'" class="full-menu">
+  <div class="exit">
+    <i nz-icon (click)="closeMenu()" nzType="close" nzTheme="outline"></i>
+    <span class="perse-logo">Persé</span>
+    <!-- <div class="logo">
+    </div> -->
+  </div>
+  <div class="menu-container">
+    <ul nz-menu class="full-menu-list" ck nzTheme="dark" nzMode="inline">
+      <li class="full-menu-item" *ngFor="let menuItem of menuList" nz-menu-item [routerLink]="'.' + menuItem.route"
+        nzMatchRouter>
+        <i nz-icon [nzType]="menuItem.icon"></i>
+        <span>{{menuItem.display_name}}</span>
+      </li>
+    </ul>
+
+  </div>
+</div>

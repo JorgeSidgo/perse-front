@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { Login } from '../entity/Login';
 import { Router } from '@angular/router';
+import * as cryptoJs from 'crypto-js';
 
 @Injectable({
   providedIn: 'root'
@@ -28,12 +29,13 @@ export class AuthService {
   }
 
   setToken(token: any): void {
-    window.localStorage.setItem('Authorization', JSON.stringify(token));
+    window.localStorage.setItem('Authorization', cryptoJs.AES.encrypt(JSON.stringify(token), environment.secret));
     window.localStorage.setItem('Token', JSON.stringify(token.token));
   }
 
   getAccount(): Account {
-    return JSON.parse(window.localStorage.getItem('Authorization')) as Account;
+    const decodedAuth = cryptoJs.AES.decrypt(localStorage.getItem('Authorization'), environment.secret);
+    return JSON.parse(decodedAuth.toString(cryptoJs.enc.Utf8)) as Account;
   }
 
   getToken(): string {
