@@ -34,8 +34,15 @@ export class UsersService {
       map((response: any) => response)
     );
   }
-  seachClients(query:string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/user/search-clients?data=`+query).pipe(
+
+  getClientsNoGift(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/user/show-without-gift`).pipe(
+      map((response: any) => response)
+    );
+  }
+
+  seachClients(query: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/user/search-clients?data=` + query).pipe(
       map((response: any) => response)
     );
   }

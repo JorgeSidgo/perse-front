@@ -10,7 +10,7 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class SellersModalAddComponent implements OnInit {
 
-  
+
   // INPUTS
 
   @Input() modalIsVisible: boolean;
@@ -29,7 +29,7 @@ export class SellersModalAddComponent implements OnInit {
   passwordConfValue: string;
 
   // FORMS
-  
+
   addForm: FormGroup;
 
   constructor(
@@ -60,7 +60,7 @@ export class SellersModalAddComponent implements OnInit {
     sellertData.email = this.addForm.value.email;
     sellertData.phone = this.addForm.value.phone;
     sellertData.is_client = 0;
-    sellertData.password ="123";
+    sellertData.password = "123";
 
     return sellertData;
   }
@@ -115,7 +115,7 @@ export class SellersModalAddComponent implements OnInit {
       this.modalIsLoading = false;
     }
 
-    
+
 
   }
 

@@ -42,4 +42,15 @@ export class ProductService {
       map((response: any) => response)
     );
   }
+
+  availableNoImg(_points: number): Observable<any> {
+
+    const payload = {
+      points: _points
+    };
+
+    return this.http.post<any>(`${this.baseUrl}/products-available-noimg`, payload).pipe(
+      map((response: any) => response)
+    );
+  }
 }

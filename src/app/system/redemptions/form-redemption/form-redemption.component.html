@@ -1,28 +1,52 @@
-<div nz-col nzSpan="8">
-        <h4>Selecciona el tipo de canje.</h4>
-        <nz-select  nzSpan="12" nzShowSearch nzAllowClear (change)="activateClientSelect()" nzPlaceHolder="Selecccionar cliente" [(ngModel)]="selectedValue">
-            <nz-option nzLabel="Regalo" nzValue="1"></nz-option>
-            <nz-option nzLabel="Normal" nzValue="2"></nz-option>
+<div nz-row>
+
+  <div *ngIf="isLoading" class="univ-loading-container">
+    <nz-spin nzSimple></nz-spin>
+  </div>
+
+  <form id="redemptionForm" [formGroup]="redemptionForm" nz-form>
+
+    <!--     <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
+      <nz-form-label>Categoría:</nz-form-label>
+      <nz-form-control nzErrorTip="Ingrese una descripción">
+        <nz-select formControlName="id_categorie" style="width: 100%;" nzShowSearch nzAllowClear
+          nzPlaceHolder="Seleccione una...">
+          <nz-option *ngFor="let item of categorieList" [nzLabel]="item.name" [nzValue]="item.id"></nz-option>
         </nz-select>
-</div>
-<div nz-col nzSpan="8">
-    <h4>Seleccion de Usuarios.</h4>
-    <nz-select
-      nzDisabled="clientState" 
-      nzMode="multiple"
-      [(ngModel)]="selectedUser"
-      nzPlaceHolder="Clientes"
-      nzAllowClear
-      nzShowSearch
-      [nzServerSearch]="true"
-      (nzOnSearch)="onSearch($event)">
-      <nz-option *ngFor="let client of clientList" [nzValue]="client.id" [nzLabel]="client.first_name" ></nz-option>
-    </nz-select>
-    
-</div>
-<div nz-col nzSpan="8">
-        <h4>Seleccion de productos.</h4>
-        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a person" [(ngModel)]="selectedValue" nzDisabled>
-            
+      </nz-form-control>
+    </nz-form-item> -->
+
+    <div nz-row nzType="flex" [nzGutter]="24">
+      <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8">
+        <h4>Selecciona el tipo de canje</h4>
+        <nz-select formControlName="tipo_canje" (ngModelChange)="tipoCanjeChanged()" style="width: 100%;" nzXs="24"
+          nzSm="24" nzMd="8" nzLg="8" nzShowSearch nzAllowClear nzPlaceHolder="Tipo de Canje">
+          <nz-option nzLabel="Regalo" nzValue="1"></nz-option>
+          <nz-option nzLabel="Normal" nzValue="2"></nz-option>
         </nz-select>
+      </div>
+      <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8">
+        <h4>Selección de cliente</h4>
+        <nz-select style="width: 100%;" formControlName="id_usuario" (ngModelChange)="clienteChange()"
+          [nzDisabled]="clienteDisabled" nzPlaceHolder="Cliente" nzAllowClear nzShowSearch>
+          <nz-option *ngFor="let client of clientList" [nzValue]="{id: client.id, points: client.points}"
+            [nzLabel]="client.first_name + ' ' + client.last_name"></nz-option>
+        </nz-select>
+
+      </div>
+      <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8">
+        <h4>Selección de producto</h4>
+        <nz-select formControlName="id_producto" style="width: 100%;" nzShowSearch nzAllowClear nzPlaceHolder="Producto"
+          [nzDisabled]="productoDisabled">
+          <nz-option *ngFor="let prod of productList" [nzValue]="prod.id" [nzLabel]="prod.name"></nz-option>
+        </nz-select>
+      </div>
+    </div>
+    <div nz-row nzType="flex" nazAlign="middle" nzJustify="end" [nzGutter]="24">
+      <div nz-col style="padding: 1em 0 !important;">
+        <button type="submit" nz-button [nzLoading]="false" class="ant-btn-success" form="redemptionForm"
+          nzType="primary">Canjear</button>
+      </div>
+    </div>
+  </form>
 </div>

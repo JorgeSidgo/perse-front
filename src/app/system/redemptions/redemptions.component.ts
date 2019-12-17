@@ -1,6 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-import {  UsersService } from 'src/app/services/users.service';
+import { UsersService } from 'src/app/services/users.service';
 import { CategorieService } from 'src/app/services/categorie.service';
 import { TypeProductService } from 'src/app/services/type-product.service';
 import { NzMessageService } from 'ng-zorro-antd';
@@ -25,22 +25,11 @@ export class RedemptionsComponent implements OnInit {
     private fb: FormBuilder
   ) { }
 
-  isLoading:boolean=true;
-
-  productList:Product[];
-  typeProductList:TypeProduct[];
-  clientList:Client[];
+  productList: Product[];
+  typeProductList: TypeProduct[];
+  clientList: Client[];
 
   ngOnInit() {
-    this.getData();
-  }
-
-  getData(){
-    this.clientList = null;
-    this.userService.getClients().subscribe((data) => {
-      this.clientList = data.data;
-      this.isLoading = false;
-    });
   }
 
 }

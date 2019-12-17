@@ -24,7 +24,7 @@ export class SystemComponent implements OnInit {
 
   deviceWidth = false;
 
-  fullMenuVisible = true;
+  fullMenuVisible = false;
 
   constructor(
     private authService: AuthService,
