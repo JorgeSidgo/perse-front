@@ -1,5 +1,4 @@
 <div nz-row>
-
   <div *ngIf="isLoading" class="univ-loading-container">
     <nz-spin nzSimple></nz-spin>
   </div>
@@ -27,24 +26,26 @@
       </div>
       <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8">
         <h4>Selección de cliente</h4>
-        <nz-select style="width: 100%;" formControlName="id_usuario" (ngModelChange)="clienteChange()"
+        <nz-select style="width: 100%;" formControlName="id_cliente" (ngModelChange)="clienteChange()"
           [nzDisabled]="clienteDisabled" nzPlaceHolder="Cliente" nzAllowClear nzShowSearch>
-          <nz-option *ngFor="let client of clientList" [nzValue]="{id: client.id, points: client.points}"
+          <nz-option *ngFor="let client of clientList"
+            [nzValue]="{id: client.id, points: client.points, name: client.first_name + ' '+ client.last_name}"
             [nzLabel]="client.first_name + ' ' + client.last_name"></nz-option>
         </nz-select>
 
       </div>
       <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8">
         <h4>Selección de producto</h4>
-        <nz-select formControlName="id_producto" style="width: 100%;" nzShowSearch nzAllowClear nzPlaceHolder="Producto"
-          [nzDisabled]="productoDisabled">
-          <nz-option *ngFor="let prod of productList" [nzValue]="prod.id" [nzLabel]="prod.name"></nz-option>
+        <nz-select formControlName="id_producto" (ngModelChange)="productoChange()" style="width: 100%;" nzShowSearch
+          nzAllowClear nzPlaceHolder="Producto" [nzDisabled]="productoDisabled">
+          <nz-option *ngFor="let prod of productList" [nzValue]="{id: prod.id, name: prod.name}" [nzLabel]="prod.name">
+          </nz-option>
         </nz-select>
       </div>
     </div>
     <div nz-row nzType="flex" nazAlign="middle" nzJustify="end" [nzGutter]="24">
       <div nz-col style="padding: 1em 0 !important;">
-        <button type="submit" nz-button [nzLoading]="false" class="ant-btn-success" form="redemptionForm"
+        <button type="button" (click)="checkoutModal()" nz-button [nzLoading]="false" class="ant-btn-success"
           nzType="primary">Canjear</button>
       </div>
     </div>

@@ -38,6 +38,11 @@ export class AuthService {
     return JSON.parse(decodedAuth.toString(cryptoJs.enc.Utf8)) as Account;
   }
 
+  getAccountId(): number {
+    const decodedAuth = cryptoJs.AES.decrypt(localStorage.getItem('Authorization'), environment.secret);
+    return JSON.parse(decodedAuth.toString(cryptoJs.enc.Utf8)).id_user;
+  }
+
   getToken(): string {
     return JSON.parse(window.localStorage.getItem('Token'));
   }

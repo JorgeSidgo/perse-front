@@ -34,6 +34,7 @@ import { FormLoadingComponent } from './redemptions/form-loading/form-loading.co
 import { FormRedemptionComponent } from './redemptions/form-redemption/form-redemption.component';
 import { CardRedemptionComponent } from './redemptions/card-redemption/card-redemption.component';
 import { FullMenuComponent } from './system/full-menu/full-menu.component';
+import { CheckoutModalComponent } from './redemptions/checkout-modal/checkout-modal.component';
 
 
 
@@ -68,7 +69,8 @@ import { FullMenuComponent } from './system/full-menu/full-menu.component';
     FormLoadingComponent,
     FormRedemptionComponent,
     CardRedemptionComponent,
-    FullMenuComponent,],
+    FullMenuComponent,
+    CheckoutModalComponent,],
   imports: [
     CommonModule,
     FormsModule,
