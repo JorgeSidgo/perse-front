@@ -22,6 +22,7 @@ export class ClientHomeComponent implements OnInit {
   dataList: Product[];
   typeProductList: any[];
   categorieList: any[];
+  percentPoints: number;
 
   userData: Client;
   userPoints = 0;
@@ -54,6 +55,7 @@ export class ClientHomeComponent implements OnInit {
     this.userService.getUser(id).subscribe(data => {
       console.log(data.data);
       this.userPoints = data.data.points;
+      this.percentPoints = (100 * this.userPoints) / 300;
       this.userName = `${data.data.first_name} ${data.data.last_name}`;
       this.userId = data.data.id;
       this.getAvailable(this.userPoints);

@@ -144,10 +144,19 @@ export class FormRedemptionComponent implements OnInit {
         id_user_seller: this.sellerId,
         id_product: this.productoId,
         id_type: this.type_selected,
-        state: 0
+        state: true
       };
 
+      console.log(body);
+
       this.redemptionService.redemptionStore(body).subscribe(data => {
+
+        if (data.code) {
+          this.messageService.success(data.message);
+        } else {
+          this.messageService.error(data.message);
+        }
+
         resolve(data);
       });
     }).catch((rej) => rej('error'));

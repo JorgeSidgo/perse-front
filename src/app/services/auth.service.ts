@@ -33,6 +33,8 @@ export class AuthService {
     window.localStorage.setItem('Token', JSON.stringify(token.token));
   }
 
+
+
   getAccount(): Account {
     const decodedAuth = cryptoJs.AES.decrypt(localStorage.getItem('Authorization'), environment.secret);
     return JSON.parse(decodedAuth.toString(cryptoJs.enc.Utf8)) as Account;

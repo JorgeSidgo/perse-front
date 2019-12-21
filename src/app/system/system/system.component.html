@@ -1,5 +1,5 @@
 <nz-layout>
-  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzBreakpoint]="'sm'" [nzCollapsedWidth]="0"
+  <nz-sider *ngIf="notClient" nzCollapsible [(nzCollapsed)]="isCollapsed" [nzBreakpoint]="'sm'" [nzCollapsedWidth]="0"
     [nzZeroTrigger]="zeroTrigger">
     <div *ngIf="permissionLoading" class="univ-loading-container">
       <nz-spin nzSimple></nz-spin>
@@ -21,8 +21,16 @@
     <nz-header>
       <div class="header-row" nz-row nzType="flex" nzJustify="space-between" nzAlign="top">
         <div nz-col>
-          <i class="trigger material-icons" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+          <i *ngIf="notClient; else clientTrigger" class="trigger material-icons" nz-icon
+            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
             (click)="isCollapsed = !isCollapsed; changeState(isCollapsed)"></i>
+
+          <ng-template #clientTrigger>
+            <i class="trigger material-icons" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+              (click)="fullMenuVisible = !fullMenuVisible"></i>
+          </ng-template>
+
+          <span *ngIf="!notClient" class="perse-logo" style="color: #222 !important;">Persé</span>
         </div>
         <a class="user-dropdown" nz-dropdown nzTrigger="click" nz-col [nzDropdownMenu]="menu">
           <div class="avatar-circ">

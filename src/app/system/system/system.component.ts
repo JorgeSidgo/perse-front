@@ -26,6 +26,8 @@ export class SystemComponent implements OnInit {
 
   fullMenuVisible = false;
 
+  notClient = true;
+
   constructor(
     private authService: AuthService,
     private permissionService: PermissionService
@@ -40,12 +42,17 @@ export class SystemComponent implements OnInit {
   ngOnInit(): void {
     this.resize();
     this.getPermits();
+    this.checkRole();
     this.changeState(this.isCollapsed);
   }
 
   changeState(state: boolean): any {
     this.headerBarText = (!state) ? 'Persé' : 'P';
     this.backgroundStyle(state);
+  }
+
+  checkRole(): void {
+    this.notClient = (this.userData.roles[0].name === 'client') ? false : true;
   }
 
   getPermits() {
@@ -78,16 +85,21 @@ export class SystemComponent implements OnInit {
 
     const skewd = document.getElementById('skew-background');
 
-    if (!state && !this.deviceWidth) {
-      skewd.style.width = 'calc((100% - 200px) - 1.2em)';
-    } else if (state && !this.deviceWidth) {
-      skewd.style.width = 'calc(100% - 1.2em)';
-    } else if (!state && this.deviceWidth) {
-      skewd.style.width = 'calc(100% - 200px)';
-    } else if (state && this.deviceWidth) {
+    if (!this.notClient) {
       skewd.style.width = 'calc(100%)';
+    } else {
+      if (!state && !this.deviceWidth) {
+        skewd.style.width = 'calc((100% - 200px) - 1.2em)';
+      } else if (state && !this.deviceWidth) {
+        skewd.style.width = 'calc(100% - 1.2em)';
+      } else if (!state && this.deviceWidth) {
+        skewd.style.width = 'calc(100% - 200px)';
+      } else if (state && this.deviceWidth) {
+        skewd.style.width = 'calc(100%)';
+      }
     }
-    console.log(skewd.style.width);
+
+
   }
 
   closeFullMenu(): void {
