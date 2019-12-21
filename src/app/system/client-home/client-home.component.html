@@ -19,7 +19,7 @@
 
     <app-client-home-product-card nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8" *ngFor="let item of dataList"
       [nombreProducto]="item.name" [userPoint]="userPoints" [prodCost]="item.point_cost"
-      [imgProducto]="item.product_picture">
+      [imgProducto]="item.product_picture" [fullObject]="item">
     </app-client-home-product-card>
 
   </div>
