@@ -15,6 +15,8 @@ import es from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { SystemModule } from './system/system.module';
 import { TokenInterceptor } from './services/token.interceptor';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 registerLocaleData(es);
 
@@ -29,7 +31,8 @@ registerLocaleData(es);
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    SystemModule
+    SystemModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     {

@@ -12,6 +12,7 @@
 
 .full-menu.visible {
   display: block;
+  overflow: auto;
   transition: all .3s ease;
 }
 
@@ -41,11 +42,13 @@
 }
 
 .full-menu-list {
-  display: grid !important;
+  display: flex !important;
   width: 60% !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  grid-template-rows: auto !important;
+  overflow-y: auto;
+  /* grid-template-rows: auto !important; */
+  flex-direction: column;
   background-color: rgba(0, 0, 0, 0);
 }
 
@@ -53,11 +56,19 @@
   display: flex;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0);
-  width: auto !important;
+  width: 40% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 1em 0;
+  padding-left: 0 !important;
+  line-height: 100% !important;
+  height: 100% !important;
 }
 
 .full-menu-item>* {
   display: block;
   width: 100%;
   text-align: center;
+  font-size: 1.5em;
+  margin-bottom: .5em;
 }

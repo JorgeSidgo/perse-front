@@ -1,6 +1,6 @@
 <nz-layout>
-  <nz-sider *ngIf="notClient" nzCollapsible [(nzCollapsed)]="isCollapsed" [nzBreakpoint]="'sm'" [nzCollapsedWidth]="0"
-    [nzZeroTrigger]="zeroTrigger">
+  <nz-sider *ngIf="notClient && !deviceWidth" nzCollapsible [(nzCollapsed)]="isCollapsed" [nzBreakpoint]="'sm'"
+    [nzCollapsedWidth]="collapsedWith" [nzTrigger]="null">
     <div *ngIf="permissionLoading" class="univ-loading-container">
       <nz-spin nzSimple></nz-spin>
     </div>
@@ -21,7 +21,7 @@
     <nz-header>
       <div class="header-row" nz-row nzType="flex" nzJustify="space-between" nzAlign="top">
         <div nz-col>
-          <i *ngIf="notClient; else clientTrigger" class="trigger material-icons" nz-icon
+          <i *ngIf="notClient && !deviceWidth; else clientTrigger" class="trigger material-icons" nz-icon
             [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
             (click)="isCollapsed = !isCollapsed; changeState(isCollapsed)"></i>
 
@@ -30,7 +30,7 @@
               (click)="fullMenuVisible = !fullMenuVisible"></i>
           </ng-template>
 
-          <span *ngIf="!notClient" class="perse-logo" style="color: #222 !important;">Persé</span>
+          <span *ngIf="!notClient || deviceWidth" class="perse-logo" style="color: #222 !important;">Persé</span>
         </div>
         <a class="user-dropdown" nz-dropdown nzTrigger="click" nz-col [nzDropdownMenu]="menu">
           <div class="avatar-circ">
@@ -61,8 +61,5 @@
     </nz-content>
 
   </nz-layout>
-  <ng-template #zeroTrigger>
-    <i nz-icon nzType="menu-fold" nzTheme="outline"></i>
-  </ng-template>
 
 </nz-layout>

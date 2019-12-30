@@ -9,15 +9,15 @@ import { UsersService } from 'src/app/services/users.service';
 export class SellersComponent implements OnInit {
 
 
-   // MODALS
+  // MODALS
 
-   addModalIsVisible = false;
-   pointsModalIsVisible = false;
+  addModalIsVisible = false;
+  pointsModalIsVisible = false;
 
-     // DATA
+  // DATA
   gridIsLoading = true;
   dataList: any[];
- 
+
   userPoints = 0;
   userName = ' ';
   userId = 0;
@@ -35,10 +35,14 @@ export class SellersComponent implements OnInit {
     this.addModalIsVisible = true;
   }
 
+  closeModal(): void {
+
+  }
+
   index(): void {
     this.loadData();
   }
-  
+
   loadData(): void {
     this.dataList = null;
     this.gridIsLoading = true;
