@@ -1,11 +1,13 @@
-<nz-card nzHoverable nzSize="small" [nzCover]="coverTemplate" [nzActions]="[actionDetail]">
+<nz-card style="margin-bottom:1em; height: 100%;" nzHoverable nzSize="small" [nzCover]="coverTemplate"
+  [nzActions]="[actionDetail]">
   <nz-card-meta [nzTitle]="nombreProducto" [nzDescription]="'Costo en Puntos: ' + prodCost"></nz-card-meta>
-  <app-client-home-product-progress-circle [points]="userPoint" [pointCost]="prodCost"></app-client-home-product-progress-circle>
+  <app-client-home-product-progress-circle [points]="userPoint" [pointCost]="prodCost">
+  </app-client-home-product-progress-circle>
 </nz-card>
 <ng-template #coverTemplate>
   <img alt="producto" [src]="imgProducto" />
 </ng-template>
 <ng-template #actionDetail>
-  <button class="ant-btn-black" (click)="detailsModal()" nz-button nz-tooltip nzType="primary"
-    nzSize="small" nzShape="circle"><i nz-icon nzType="ellipsis"></i></button>
+  <button class="ant-btn-black" (click)="detailsModal()" nz-button nz-tooltip nzType="primary" nzSize="small"
+    nzShape="circle"><i nz-icon nzType="ellipsis"></i></button>
 </ng-template>

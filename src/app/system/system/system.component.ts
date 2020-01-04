@@ -28,6 +28,8 @@ export class SystemComponent implements OnInit {
 
   notClient = true;
 
+  collapsedWith = 0;
+
   constructor(
     private authService: AuthService,
     private permissionService: PermissionService
@@ -36,6 +38,7 @@ export class SystemComponent implements OnInit {
     this.userData = this.authService.getAccount();
     this.email = this.userData.email;
     this.deviceWidth = (window.innerWidth < 576) ? true : false;
+    this.collapsedWith = (this.deviceWidth) ? 0 : 80;
   }
 
 
@@ -78,6 +81,7 @@ export class SystemComponent implements OnInit {
   resize(): void {
     window.addEventListener('resize', e => {
       this.deviceWidth = (window.innerWidth < 576) ? true : false;
+      this.headerBarText = (this.deviceWidth) ? 'P' : 'Persé';
     });
   }
 

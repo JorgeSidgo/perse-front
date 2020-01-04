@@ -35,6 +35,7 @@ import { FormRedemptionComponent } from './redemptions/form-redemption/form-rede
 import { CardRedemptionComponent } from './redemptions/card-redemption/card-redemption.component';
 import { FullMenuComponent } from './system/full-menu/full-menu.component';
 import { CheckoutModalComponent } from './redemptions/checkout-modal/checkout-modal.component';
+import { HistoryClientComponent } from './history-client/history-client.component';
 
 
 
@@ -70,7 +71,8 @@ import { CheckoutModalComponent } from './redemptions/checkout-modal/checkout-mo
     FormRedemptionComponent,
     CardRedemptionComponent,
     FullMenuComponent,
-    CheckoutModalComponent,],
+    CheckoutModalComponent,
+    HistoryClientComponent,],
   imports: [
     CommonModule,
     FormsModule,

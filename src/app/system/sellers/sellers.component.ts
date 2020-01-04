@@ -11,19 +11,20 @@ import { Seller } from 'src/app/entity/Seller';
 export class SellersComponent implements OnInit {
 
 
-   // MODALS
+  // MODALS
+
 
    addModalIsVisible = false;
    pointsModalIsVisible = false;
    editModalVisible= false;
    
 
-     // DATA
+  // DATA
   gridIsLoading = true;
   dataList: any[];
+
   dataListEdit: Seller=new Seller();
   data="hola";
- 
   userPoints = 0;
   userName = ' ';
   userId = 0;
@@ -40,10 +41,14 @@ export class SellersComponent implements OnInit {
     this.addModalIsVisible = true;
   }
 
+  closeModal(): void {
+
+  }
+
   index(): void {
     this.loadData();
   }
-  
+
   loadData(): void {
     this.dataList = null;
     this.gridIsLoading = true;
