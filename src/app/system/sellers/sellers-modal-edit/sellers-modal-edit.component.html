@@ -1,1 +1,57 @@
-<p>sellers-modal-edit works!</p>
+<nz-modal [nzClosable]="false" [nzKeyboard]="false" [(nzVisible)]="modalIsVisible" nzTitle="Editar Vendedor"
+  [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="handleCancel()">
+ 
+  <ng-template #modalContent>
+    <form [formGroup]="editForm" id="editForm" nz-form nzLayout="vertical" (ngSubmit)="handleOk()">
+      <nz-input-group style="margin-bottom: 1.5em;">
+        <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
+          <nz-form-label>Nombre:</nz-form-label>
+          <nz-form-control nzErrorTip="Ingrese el nombre del Vendedor">
+            <input formControlName="first_name" placeholder="Nombre" [ngModel]="dataList.first_name"  nz-input onlyLetters />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
+          <nz-form-label>Apellido:</nz-form-label>
+          <nz-form-control nzErrorTip="Ingrese el apellido del Vendedor">
+            <input formControlName="last_name" placeholder="Apellido" [ngModel]="dataList.last_name" nz-input onlyLetters />
+          </nz-form-control>
+        </nz-form-item>
+      </nz-input-group>
+      <nz-form-item>
+        <nz-form-label>Correo Electrónico:</nz-form-label>
+        <nz-form-control nzErrorTip="Ingrese el correo electrónico">
+          <input formControlName="email" placeholder="Correo Electrónico" [ngModel]="dataList.email" nz-input />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-input-group style="margin-bottom: 1.5em;">
+        <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
+          <nz-form-label>Número de Teléfono:</nz-form-label>
+          <nz-form-control nzErrorTip="Ingrese el número de teléfono">
+            <input formControlName="phone" mask="00000000" placeholder="77777777"  [ngModel]="dataList.phone" nz-input/>
+          </nz-form-control>
+        </nz-form-item>
+      </nz-input-group>
+      <!--       <nz-input-group style="margin-bottom: 1.5em;">
+        <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
+          <nz-form-label>Contraseña:</nz-form-label>
+          <app-password-input formControlName="password"></app-password-input>
+        </nz-form-item>
+        <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
+          <nz-form-label>Confirmar Contraseña:</nz-form-label>
+          <app-password-input formControlName="password_conf"></app-password-input>}
+        </nz-form-item>
+      </nz-input-group> -->
+    </form>
+  </ng-template>
+
+
+  <ng-template #modalFooter>
+    <button nz-button class="ant-btn-black" (click)="handleCancel()" nzType="default">Cancelar</button>
+    <button nz-button type="submit" [nzLoading]="modalIsLoading" class="ant-btn-success" form="editForm"
+      nzType="primary">Modificar</button>
+  </ng-template>
+</nz-modal>
+
+
+
+

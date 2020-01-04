@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientsModalEditComponent implements OnInit {
 
+
+
   constructor() { }
+
+  modalIsLoading = false;
 
   ngOnInit() {
   }
