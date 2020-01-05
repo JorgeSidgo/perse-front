@@ -27,10 +27,11 @@ export class SellersModalEditComponent implements OnInit {
 
 //Declaring dataVariables
 editForm: FormGroup;
+modalIsLoading = false;
 
 
 
-  constructor(private userService: UsersService,private fb: FormBuilder,private message: NzMessageService,) { }
+  constructor(private userService: UsersService,private fb: FormBuilder,private message: NzMessageService) { }
 
   ngOnInit() {
     this.initForm();
@@ -61,7 +62,7 @@ editForm: FormGroup;
 
 
   handleOk(): void {
-    //this.modalIsLoading = true;
+    this.modalIsLoading = true;
     
 
     // tslint:disable-next-line: forin
@@ -71,15 +72,15 @@ editForm: FormGroup;
     }
 
     if ( this.editForm.dirty && this.editForm.valid) {
-      console.log('form-data', this.editForm.value);
+      console.log(this.dataList);
       this.userService.updateSeller(this.dataList,this.id).subscribe((data) => {
         this.closeModal();
-        //this.modalIsLoading = false;
+        this.modalIsLoading = false;
         if (data.code) {
           this.message.success('Vendedor Editado exitosamente');
-          //this.emitReload();
+          this.emitReload();
         } else {
-          ///this.modalIsLoading = false;
+        this.modalIsLoading = false;
           this.message.error(data.message);
         }
       }, (error) => {
@@ -103,11 +104,11 @@ editForm: FormGroup;
           console.log(error);
         }
 
-        //this.modalIsLoading = false;
+        this.modalIsLoading = false;
       });
     } else {
       this.message.warning('Complete el formulario');
-      //this.modalIsLoading = false;
+      this.modalIsLoading = false;
     }
   }
 

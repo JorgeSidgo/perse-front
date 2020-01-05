@@ -125,6 +125,8 @@ export class SellersModalAddComponent implements OnInit {
 
   closeModal(): void {
     this.initForm();
+
+    console.log("Entrando al event emiter");
     this.modalState.emit(false);
   }
 

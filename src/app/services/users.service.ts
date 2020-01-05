@@ -29,6 +29,12 @@ export class UsersService {
     ); 
   }
 
+  deleteUser( id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/user/destroy/`+id).pipe(
+      map((response: any) => response)
+    ); 
+  }
+
   getUser(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/user/show/${id}`).pipe(
       map((response: any) => response)

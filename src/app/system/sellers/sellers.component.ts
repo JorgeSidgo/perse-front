@@ -13,18 +13,18 @@ export class SellersComponent implements OnInit {
 
   // MODALS
 
-
    addModalIsVisible = false;
    pointsModalIsVisible = false;
    editModalVisible= false;
+   deleteModalIsVisible= false;
    
 
   // DATA
   gridIsLoading = true;
   dataList: any[];
-
   dataListEdit: Seller=new Seller();
-  data="hola";
+
+
   userPoints = 0;
   userName = ' ';
   userId = 0;
@@ -42,7 +42,16 @@ export class SellersComponent implements OnInit {
   }
 
   closeModal(): void {
+    console.log("aqui se viene la mamada");
+    this.addModalIsVisible = false;
+  }
+  closeModalEdit(): void {
+    console.log("entrando al metodo de cierre de modal");
+    this.editModalVisible= false;
+  }
+  closeModalDelete(): void{
 
+    this.deleteModalIsVisible= false;
   }
 
   index(): void {
@@ -75,6 +84,13 @@ export class SellersComponent implements OnInit {
     this.loadDataEdit(id);
     this.editModalVisible = true;
   }
+
+  showModalDelete(id) : void{
+    this.userId=id;
+    this.deleteModalIsVisible = true;
+  }
+
+  
 
 
 
