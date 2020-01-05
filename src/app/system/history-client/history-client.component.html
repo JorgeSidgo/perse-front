@@ -1,1 +1,26 @@
-<p>history-client works!</p>
+<div class="view-title">
+  <h5 nz-title>Historial de Canjes</h5>
+</div>
+
+
+<div class="grid-container">
+
+
+  <div nz-row [nzGutter]="16" style="display: flex; justify-content: center;">
+
+    <div nz-col nzXs="24" nzSm="24" nzMd="10" nzLg="10" style="margin-left: auto; margin-right: auto;">
+      <div *ngIf="gridIsLoading" class="univ-loading-container">
+        <nz-spin nzSimple></nz-spin>
+      </div>
+      <nz-timeline>
+
+        <app-history-client-card [nombreProducto]="item.pname" [fechaRedemption]="item.redemption_day" [prodCost]="
+          item.pcost" [imgProducto]="item.pic" [fullObject]="item" *ngFor="let item of dataList">
+        </app-history-client-card>
+
+      </nz-timeline>
+    </div>
+  </div>
+
+
+</div>

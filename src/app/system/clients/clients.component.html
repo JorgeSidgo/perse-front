@@ -21,18 +21,11 @@
 
     <div nz-col nzOffset="18" nzSpan="6" style="margin-bottom: 1em; padding-right: 0;">
       <nz-input-group [nzSuffix]="suffixTemplate">
-        <input type="text" nz-input placeholder="Buscar" [(ngModel)]="search_data"  (change)="searchClients()"/>
+        <input type="text" nz-input placeholder="Buscar" [(ngModel)]="search_data" (change)="searchClients()" />
       </nz-input-group>
       <ng-template #suffixTemplate>
-        <i
-        nz-icon
-        nz-tooltip
-        class="ant-input-clear-icon"
-        nzTheme="fill"
-        nzType="close-circle"
-        *ngIf="search_data"
-        (click)="index()"
-      ></i>
+        <i nz-icon nz-tooltip class="ant-input-clear-icon" nzTheme="fill" nzType="close-circle" *ngIf="search_data"
+          (click)="index()"></i>
       </ng-template>
     </div>
 
@@ -40,7 +33,46 @@
   </div>
 
   <div nz-row [nzGutter]="16" style="margin:0;">
-    <nz-table [nzLoading]="gridIsLoading" #borderedTable nzBordered nzSize="small" [nzData]="dataList">
+    <div *ngIf="gridIsLoading" class="univ-loading-container">
+      <nz-spin nzSimple></nz-spin>
+    </div>
+    <table class="ui very compact celled table">
+
+      <thead class="super-compact">
+        <tr>
+          <th>Nº</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>E-mail</th>
+          <th>Teléfono</th>
+          <th>Puntos</th>
+          <th>Cumpleaños</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of dataList">
+          <td>{{data.id}}</td>
+          <td>{{data.first_name}}</td>
+          <td>{{data.last_name}}</td>
+          <td>{{data.email}}</td>
+          <td>{{data.phone}}</td>
+          <td>{{data.points}}</td>
+          <td>{{data.birthday | date:'dd/MM/yyyy'}}</td>
+          <td class="action-shelf">
+            <button class="ant-btn-blue" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
+                nzType="edit"></i></button>
+            <button class="ant-btn-red" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
+                nzType="delete"></i></button>
+            <button class="ant-btn-black" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
+                nzType="ellipsis"></i></button>
+            <button class="ant-btn-yellow" (click)="showPointsModal(data.id)" nz-button nzType="primary" nzSize="small"
+              nzShape="circle"><i nz-icon nzType="dollar-circle" nzTheme="fill"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <nz-table [nzLoading]="gridIsLoading" #borderedTable nzBordered nzSize="small" [nzData]="dataList">
       <thead>
         <tr>
           <th>Nº</th>
@@ -74,7 +106,7 @@
           </td>
         </tr>
       </tbody>
-    </nz-table>
+    </nz-table> -->
 
   </div>
 </div>

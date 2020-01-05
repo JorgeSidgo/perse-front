@@ -36,6 +36,8 @@ import { CardRedemptionComponent } from './redemptions/card-redemption/card-rede
 import { FullMenuComponent } from './system/full-menu/full-menu.component';
 import { CheckoutModalComponent } from './redemptions/checkout-modal/checkout-modal.component';
 import { HistoryClientComponent } from './history-client/history-client.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HistoryClientCardComponent } from './history-client/history-client-card/history-client-card.component';
 
 
 
@@ -72,8 +74,10 @@ import { HistoryClientComponent } from './history-client/history-client.componen
     CardRedemptionComponent,
     FullMenuComponent,
     CheckoutModalComponent,
-    HistoryClientComponent,],
+    HistoryClientComponent,
+    HistoryClientCardComponent,],
   imports: [
+    BrowserAnimationsModule,
     CommonModule,
     FormsModule,
     SystemRoutingModule,

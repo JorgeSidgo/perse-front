@@ -53,7 +53,6 @@ export class ClientHomeComponent implements OnInit {
   getClientData(id: number) {
     this.gridIsLoading = true;
     this.userService.getUser(id).subscribe(data => {
-      console.log(data.data);
       this.userPoints = data.data.points;
       this.percentPoints = (100 * this.userPoints) / 300;
       this.userName = `${data.data.first_name} ${data.data.last_name}`;
@@ -64,11 +63,9 @@ export class ClientHomeComponent implements OnInit {
 
 
   getAvailable(points: number): void {
-    console.log('puntos', points);
     this.dataList = null;
     this.gridIsLoading = true;
     this.productService.index().subscribe((data) => {
-      console.log('ava', data.data);
       this.dataList = data.data.data;
       this.gridIsLoading = false;
     });

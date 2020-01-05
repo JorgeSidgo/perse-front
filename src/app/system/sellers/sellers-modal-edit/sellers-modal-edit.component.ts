@@ -14,10 +14,10 @@ export class SellersModalEditComponent implements OnInit {
 
   //INPUTS
   @Input() modalIsVisible: boolean;
-  @Input() dataList:Seller=new Seller();
-  @Input() datoPrueba="";
+  @Input() dataList: Seller = new Seller();
+  @Input() datoPrueba = "";
   @Input() id: number;
-   
+
 
   //OUTPUTS
   @Output() modalState = new EventEmitter<boolean>();
@@ -112,7 +112,7 @@ modalIsLoading = false;
     }
   }
 
-  
+
   handleCancel(): void {
     this.closeModal();
   }
@@ -121,13 +121,13 @@ modalIsLoading = false;
     this.initForm();
     this.modalState.emit(false);
   }
- 
+
   emitReload(): void {
     this.parentReload.emit();
   }
-  
 
-  
- 
+
+
+
 
 }
