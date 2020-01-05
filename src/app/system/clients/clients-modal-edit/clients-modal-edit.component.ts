@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ClientsModalEditComponent implements OnInit {
 
 
+  modalEditIsVisible = false;
 
   constructor() { }
 

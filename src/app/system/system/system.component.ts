@@ -3,12 +3,17 @@ import { Account } from 'src/app/entity/Account';
 import { AuthService } from 'src/app/services/auth.service';
 import { PermissionService } from 'src/app/services/permission.service';
 import { environment } from 'src/environments/environment';
+import { slideInAnimation } from 'src/app/animations/animations';
 import * as cryptoJs from 'crypto-js';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-system',
   templateUrl: './system.component.html',
-  styleUrls: ['./system.component.css']
+  styleUrls: ['./system.component.css'],
+  animations: [
+    slideInAnimation
+  ]
 })
 export class SystemComponent implements OnInit {
 
@@ -114,4 +119,9 @@ export class SystemComponent implements OnInit {
     this.authService.logout();
   }
 
+
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+  }
 }

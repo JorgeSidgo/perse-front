@@ -1,0 +1,11 @@
+<nz-timeline-item>
+  <b>
+    {{formatedDate}}
+  </b>
+  <nz-card style="margin-bottom:1em;" nzHoverable nzSize="small" [nzCover]="coverTemplate">
+    <nz-card-meta [nzTitle]="nombreProducto" [nzDescription]="'Costo en Puntos: ' + prodCost"></nz-card-meta>
+  </nz-card>
+  <ng-template #coverTemplate>
+    <img alt="producto" [src]="imgProducto" />
+  </ng-template>
+</nz-timeline-item>

@@ -14,10 +14,10 @@ export class SellersModalEditComponent implements OnInit {
 
   //INPUTS
   @Input() modalIsVisible: boolean;
-  @Input() dataList:Seller=new Seller();
-  @Input() datoPrueba="";
+  @Input() dataList: Seller = new Seller();
+  @Input() datoPrueba = "";
   @Input() id: number;
-   
+
 
   //OUTPUTS
   @Output() modalState = new EventEmitter<boolean>();
@@ -25,12 +25,14 @@ export class SellersModalEditComponent implements OnInit {
 
 
 
-//Declaring dataVariables
-editForm: FormGroup;
+  //Declaring dataVariables
+  editForm: FormGroup;
+
+  modalIsLoading = false;
 
 
 
-  constructor(private userService: UsersService,private fb: FormBuilder,private message: NzMessageService,) { }
+  constructor(private userService: UsersService, private fb: FormBuilder, private message: NzMessageService, ) { }
 
   ngOnInit() {
     this.initForm();
@@ -62,7 +64,7 @@ editForm: FormGroup;
 
   handleOk(): void {
     //this.modalIsLoading = true;
-    
+
 
     // tslint:disable-next-line: forin
     for (const i in this.editForm.controls) {
@@ -70,9 +72,9 @@ editForm: FormGroup;
       this.editForm.controls[i].updateValueAndValidity();
     }
 
-    if ( this.editForm.dirty && this.editForm.valid) {
+    if (this.editForm.dirty && this.editForm.valid) {
       console.log('form-data', this.editForm.value);
-      this.userService.updateSeller(this.dataList,this.id).subscribe((data) => {
+      this.userService.updateSeller(this.dataList, this.id).subscribe((data) => {
         this.closeModal();
         //this.modalIsLoading = false;
         if (data.code) {
@@ -111,7 +113,7 @@ editForm: FormGroup;
     }
   }
 
-  
+
   handleCancel(): void {
     this.closeModal();
   }
@@ -120,13 +122,13 @@ editForm: FormGroup;
     this.initForm();
     this.modalState.emit(false);
   }
- 
+
   emitReload(): void {
     this.parentReload.emit();
   }
-  
 
-  
- 
+
+
+
 
 }

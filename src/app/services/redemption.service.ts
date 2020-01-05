@@ -22,4 +22,10 @@ export class RedemptionService {
     );
   }
 
+  historyClient(data: any): any {
+    return this.http.post<any>(`${this.baseUrl}/client-history`, data).pipe(
+      map((response: any) => response)
+    );
+  }
+
 }
