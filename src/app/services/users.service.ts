@@ -29,6 +29,11 @@ export class UsersService {
     ); 
   }
 
+  updateClient(data: any, id: number): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/user/update-client/`+id, data).pipe(
+      map((response: any) => response)
+    ); 
+  }
   deleteUser( id: number): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/user/destroy/`+id).pipe(
       map((response: any) => response)

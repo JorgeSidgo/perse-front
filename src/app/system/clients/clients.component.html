@@ -1,6 +1,12 @@
 <app-clients-modal-add [modalIsVisible]="addModalIsVisible" (modalState)="closeModal()" (parentReload)="loadData()">
 </app-clients-modal-add>
 
+<app-clients-modal-delete [modalIsVisible]="deleteModalIsVisible" [userId]="userId" (modalState)="closeModalDelete()" (parentReload)="loadData()">
+</app-clients-modal-delete>
+
+<app-clients-modal-edit [modalIsVisible]="editModalVisible" [dataList]="dataListEdit" [id]="userId" (modalState)="closeModalEdit()" (parentReload)="loadData()" #edit>  
+</app-clients-modal-edit>
+
 <app-clients-modal-points [modalIsVisible]="pointsModalIsVisible" [contentLoading]="pointsModalcontentLoading"
   [clientPoints]="userPoints" [clientName]="userName" [clientId]="userId" (modalState)="closePointsModal()"
   (parentReload)="loadData()">
@@ -60,9 +66,9 @@
           <td>{{data.points}}</td>
           <td>{{data.birthday | date:'dd/MM/yyyy'}}</td>
           <td class="action-shelf">
-            <button class="ant-btn-blue" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
+            <button class="ant-btn-blue" nz-button nzType="primary" nzSize="small" nzShape="circle" (click)="edit.loadDataEdit(data.id)"><i nz-icon
                 nzType="edit"></i></button>
-            <button class="ant-btn-red" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
+            <button class="ant-btn-red" nz-button nzType="primary" nzSize="small" nzShape="circle" (click)="showModalDelete(data.id)"><i nz-icon
                 nzType="delete"></i></button>
             <button class="ant-btn-black" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
                 nzType="ellipsis"></i></button>

@@ -14,6 +14,8 @@ export class ClientsComponent implements OnInit {
   addModalIsVisible = false;
   pointsModalIsVisible = false;
   pointsModalcontentLoading = false;
+  editModalVisible= false;
+  deleteModalIsVisible= false;
 
   // DATA
   gridIsLoading = true;
@@ -53,7 +55,15 @@ export class ClientsComponent implements OnInit {
   closeModal(): void {
     this.addModalIsVisible = false;
   }
+  
+  closeModalEdit(): void {
+  
+    this.editModalVisible= false;
+  }
+  closeModalDelete(): void{
 
+    this.deleteModalIsVisible= false;
+  }
   getClientData(id: number) {
     this.pointsModalcontentLoading = true;
     this.userService.getUser(id).subscribe(data => {
@@ -89,5 +99,12 @@ export class ClientsComponent implements OnInit {
       this.gridIsLoading = false;
     });
   }
+
+  
+  showModalDelete(id) : void{
+    this.userId=id;
+    this.deleteModalIsVisible = true;
+  }
+
 
 }

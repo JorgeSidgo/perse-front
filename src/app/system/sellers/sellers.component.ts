@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { Seller } from 'src/app/entity/Seller';
 
@@ -25,6 +25,8 @@ export class SellersComponent implements OnInit {
   dataListEdit: Seller=new Seller();
 
 
+  @Output() parentLoad= new EventEmitter<any>();
+
   userPoints = 0;
   userName = ' ';
   userId = 0;
@@ -42,11 +44,11 @@ export class SellersComponent implements OnInit {
   }
 
   closeModal(): void {
-    console.log("aqui se viene la mamada");
+
     this.addModalIsVisible = false;
   }
   closeModalEdit(): void {
-    console.log("entrando al metodo de cierre de modal");
+  
     this.editModalVisible= false;
   }
   closeModalDelete(): void{
@@ -74,9 +76,7 @@ export class SellersComponent implements OnInit {
       this.dataListEdit=data.data;
       console.log(this.dataListEdit);
     });
-    {
-
-    }
+   
   }
 
   showModalEdit(id): void {
@@ -88,6 +88,12 @@ export class SellersComponent implements OnInit {
   showModalDelete(id) : void{
     this.userId=id;
     this.deleteModalIsVisible = true;
+  }
+
+  EventEmitter(): void{
+
+    this.parentLoad.emit();
+
   }
 
   

@@ -14,9 +14,9 @@ export class SellersModalEditComponent implements OnInit {
 
   //INPUTS
   @Input() modalIsVisible: boolean;
-  @Input() dataList: Seller = new Seller();
+  @Input() dataList: Seller;
   @Input() datoPrueba = "";
-  @Input() id: number;
+  id: number;
 
 
   //OUTPUTS
@@ -28,6 +28,8 @@ export class SellersModalEditComponent implements OnInit {
 //Declaring dataVariables
 editForm: FormGroup;
 modalIsLoading = false;
+contentLoading: boolean=false;
+
 
 
 
@@ -42,8 +44,8 @@ modalIsLoading = false;
       first_name: [null, [Validators.required]],
       last_name: [null, [Validators.required]],
       email: [null, [Validators.required]],
-      phone: [null, [Validators.required]],
-      send_sms: [null]
+      phone: [null, [Validators.required]]
+    
     });
   }
 
@@ -72,8 +74,9 @@ modalIsLoading = false;
     }
 
     if ( this.editForm.dirty && this.editForm.valid) {
-      console.log(this.dataList);
-      this.userService.updateSeller(this.dataList,this.id).subscribe((data) => {
+    
+     
+      this.userService.updateSeller(this.resolveForm(),this.id).subscribe((data) => {
         this.closeModal();
         this.modalIsLoading = false;
         if (data.code) {
@@ -119,11 +122,32 @@ modalIsLoading = false;
 
   closeModal(): void {
     this.initForm();
-    this.modalState.emit(false);
+    this.modalIsVisible=false;
   }
 
   emitReload(): void {
     this.parentReload.emit();
+  }
+
+  loadDataEdit(id: number):void{
+    
+
+    this.id=id;
+    this.modalIsVisible=true;
+    
+    this.contentLoading=true;
+    this.userService.show(id).subscribe((data)=>{
+      this.dataList=data.data;
+        this.editForm.controls['first_name'].setValue(this.dataList.first_name);
+        this.editForm.controls['last_name'].setValue(this.dataList.last_name);
+        this.editForm.controls['email'].setValue(this.dataList.email);
+        this.editForm.controls['phone'].setValue(this.dataList.phone);
+    });
+
+    this.contentLoading=false;
+    
+    
+
   }
 
 
