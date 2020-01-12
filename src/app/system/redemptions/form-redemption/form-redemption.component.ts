@@ -79,11 +79,9 @@ export class FormRedemptionComponent implements OnInit {
 
     // tslint:disable-next-line: triple-equals
     if (this.redemptionForm.value.tipo_canje == 1) {
-      console.log('gift');
       this.getClientesNoGift();
       // tslint:disable-next-line: triple-equals
     } else if (this.redemptionForm.value.tipo_canje == 2) {
-      console.log('no-gift');
       this.getClientes();
     }
 
@@ -147,8 +145,6 @@ export class FormRedemptionComponent implements OnInit {
         state: true
       };
 
-      console.log(body);
-
       this.redemptionService.redemptionStore(body).subscribe(data => {
 
         if (data.code) {
@@ -164,7 +160,6 @@ export class FormRedemptionComponent implements OnInit {
   }
 
   checkoutModal() {
-    console.log(this.redemptionForm.value)
     this.modalService.info({
       nzTitle: 'Confirmación',
       nzContent: `Cliente: ${this.clientName} <br> Producto: ${this.productName}`,

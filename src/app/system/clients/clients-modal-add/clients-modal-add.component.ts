@@ -67,8 +67,6 @@ export class ClientsModalAddComponent implements OnInit {
     clientData.is_client = 1;
     clientData.password = 'perse$123';
 
-    // console.log('pass', random);
-
     return clientData;
   }
 
@@ -82,7 +80,6 @@ export class ClientsModalAddComponent implements OnInit {
     }
 
     if (this.addForm.dirty && this.addForm.valid) {
-      console.log('form-data', this.addForm.value);
       this.userService.signup(this.resolveForm()).subscribe((data) => {
         this.closeModal();
         this.modalIsLoading = false;
@@ -97,7 +94,6 @@ export class ClientsModalAddComponent implements OnInit {
 
         if (error.status === 400) {
 
-          console.log(error.error);
 
           let list = `<ul>`;
 
@@ -111,7 +107,7 @@ export class ClientsModalAddComponent implements OnInit {
           this.message.error(`${error.error.message} <br> ${list}`);
         } else {
           this.message.error('Error en la petición');
-          console.log(error);
+
         }
 
         this.modalIsLoading = false;
@@ -120,9 +116,6 @@ export class ClientsModalAddComponent implements OnInit {
       this.message.warning('Complete el formulario');
       this.modalIsLoading = false;
     }
-
-    console.log(this.randomPass());
-
   }
 
   randomPass(): any {

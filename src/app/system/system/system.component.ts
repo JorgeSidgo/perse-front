@@ -74,7 +74,6 @@ export class SystemComponent implements OnInit {
         const tokenizedPermits = cryptoJs.AES.encrypt(JSON.stringify(this.permitList), environment.secret);
         localStorage.setItem('Permit', tokenizedPermits);
         this.permissionLoading = false;
-        console.log(this.permitList);
       });
     } else {
       const decodedPermits = cryptoJs.AES.decrypt(localStorage.getItem('Permit'), environment.secret);

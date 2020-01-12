@@ -9,6 +9,7 @@ import { SellersComponent } from './sellers/sellers.component';
 import { RedemptionsComponent } from './redemptions/redemptions.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { HistoryClientComponent } from './history-client/history-client.component';
+import { PendingClientComponent } from './pending-client/pending-client.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'clients', component: ClientsComponent, canActivate: [AuthGuard] },
       { path: 'sellers', component: SellersComponent, canActivate: [AuthGuard] },
       { path: 'client-history', component: HistoryClientComponent, canActivate: [AuthGuard] },
+      { path: 'client-pending', component: PendingClientComponent, canActivate: [AuthGuard] },
       { path: 'exchange', component: RedemptionsComponent, canActivate: [AuthGuard] },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', redirectTo: 'home' },

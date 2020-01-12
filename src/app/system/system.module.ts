@@ -38,6 +38,8 @@ import { CheckoutModalComponent } from './redemptions/checkout-modal/checkout-mo
 import { HistoryClientComponent } from './history-client/history-client.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HistoryClientCardComponent } from './history-client/history-client-card/history-client-card.component';
+import { PendingClientComponent } from './pending-client/pending-client.component';
+import { PendingClientCardComponent } from './pending-client/pending-client-card/pending-client-card.component';
 
 
 
@@ -75,7 +77,9 @@ import { HistoryClientCardComponent } from './history-client/history-client-card
     FullMenuComponent,
     CheckoutModalComponent,
     HistoryClientComponent,
-    HistoryClientCardComponent,],
+    HistoryClientCardComponent,
+    PendingClientComponent,
+    PendingClientCardComponent,],
   imports: [
     BrowserAnimationsModule,
     CommonModule,

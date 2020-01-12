@@ -81,15 +81,11 @@ export class ClientsModalPointsComponent implements OnInit {
       this.pointsForm.controls[i].updateValueAndValidity();
     }
 
-    console.log('form-data', this.pointsForm.value);
     if (this.pointsForm.dirty && this.pointsForm.valid) {
 
       this.pointsForm.value.id_user = this.clientId;
-      console.log('form-data', this.pointsForm.value);
-
 
       this.usersService.updateClientPoints(this.pointsForm.value).subscribe((data) => {
-        console.log(data);
         this.closeModal();
         this.modalIsLoading = false;
         if (data.code) {

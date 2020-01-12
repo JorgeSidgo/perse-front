@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input,EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { NzMessageService } from 'ng-zorro-antd';
 
@@ -14,7 +14,7 @@ export class ClientsModalDeleteComponent implements OnInit {
     private message: NzMessageService) { }
 
   @Input() modalIsVisible: boolean;
-  @Input() userId : number;
+  @Input() userId: number;
 
   @Output() modalState = new EventEmitter<boolean>();
   @Output() parentReload = new EventEmitter<any>();
@@ -28,14 +28,13 @@ export class ClientsModalDeleteComponent implements OnInit {
   //Eliminando vendedor
   handleOk(): void {
     this.modalIsLoading = true;
-    
+
 
     // tslint:disable-next-line: forin
-   
 
-    if (this.userId!=0) {
-    
-      console.log(this.userId);
+
+    if (this.userId != 0) {
+
       this.userService.deleteUser(this.userId).subscribe((data) => {
         this.closeModal();
         this.modalIsLoading = false;
@@ -50,7 +49,6 @@ export class ClientsModalDeleteComponent implements OnInit {
 
         if (error.status === 400) {
 
-          console.log(error.error);
 
           let list = `<ul>`;
 
@@ -64,7 +62,6 @@ export class ClientsModalDeleteComponent implements OnInit {
           this.message.error(`${error.error.message} <br> ${list}`);
         } else {
           this.message.error('Error en la petición');
-          console.log(error);
         }
 
         this.modalIsLoading = false;
@@ -81,10 +78,10 @@ export class ClientsModalDeleteComponent implements OnInit {
   }
 
   closeModal(): void {
- 
+
     this.modalState.emit(false);
   }
- 
+
   emitReload(): void {
     this.parentReload.emit();
   }

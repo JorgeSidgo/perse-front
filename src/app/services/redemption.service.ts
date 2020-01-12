@@ -28,4 +28,10 @@ export class RedemptionService {
     );
   }
 
+  pendingClient(data: any): any {
+    return this.http.post<any>(`${this.baseUrl}/client-pendings`, data).pipe(
+      map((response: any) => response)
+    );
+  }
+
 }

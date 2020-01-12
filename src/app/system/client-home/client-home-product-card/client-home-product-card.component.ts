@@ -23,8 +23,6 @@ export class ClientHomeProductCardComponent implements OnInit {
 
   detailsModal(): void {
 
-    console.log(this.fullObject);
-
     const obj = this.fullObject;
 
     const content = `

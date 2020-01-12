@@ -46,12 +46,15 @@ export class LoginComponent implements OnInit {
       this.loginData = this.loginForm.value;
       this.authService.login(this.loginData).subscribe((data) => {
 
-        console.log(data);
-
         if (data.code) {
           this.authService.removeToken();
           this.authService.setToken(data);
-          this.router.navigateByUrl('/app/home');
+          if (data.roles[0].name === 'client') {
+            this.router.navigateByUrl('/app/home');
+          } else {
+            this.router.navigateByUrl('/app/clients');
+          }
+
         } else {
           this.loginButtonLoading = false;
         }

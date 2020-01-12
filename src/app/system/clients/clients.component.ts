@@ -14,8 +14,8 @@ export class ClientsComponent implements OnInit {
   addModalIsVisible = false;
   pointsModalIsVisible = false;
   pointsModalcontentLoading = false;
-  editModalVisible= false;
-  deleteModalIsVisible= false;
+  editModalVisible = false;
+  deleteModalIsVisible = false;
 
   // DATA
   gridIsLoading = true;
@@ -44,7 +44,7 @@ export class ClientsComponent implements OnInit {
   }
 
   index(): void {
-    this.search_data="";
+    this.search_data = "";
     this.loadData();
   }
 
@@ -55,19 +55,18 @@ export class ClientsComponent implements OnInit {
   closeModal(): void {
     this.addModalIsVisible = false;
   }
-  
-  closeModalEdit(): void {
-  
-    this.editModalVisible= false;
-  }
-  closeModalDelete(): void{
 
-    this.deleteModalIsVisible= false;
+  closeModalEdit(): void {
+
+    this.editModalVisible = false;
+  }
+  closeModalDelete(): void {
+
+    this.deleteModalIsVisible = false;
   }
   getClientData(id: number) {
     this.pointsModalcontentLoading = true;
     this.userService.getUser(id).subscribe(data => {
-      console.log(data.data);
       this.userPoints = data.data.points;
       this.userName = `${data.data.first_name} ${data.data.last_name}`;
       this.userId = data.data.id;
@@ -75,17 +74,17 @@ export class ClientsComponent implements OnInit {
     });
   }
 
-  searchClients(){
-    if(this.search_data=="")
+  searchClients() {
+    if (this.search_data == "")
       this.index();
-    else{
+    else {
       this.dataList = null;
       this.gridIsLoading = true;
       this.userService.seachClients(this.search_data).subscribe((data) => {
         this.dataList = data.data;
         this.gridIsLoading = false;
       });
-    }  
+    }
 
   }
 
@@ -95,14 +94,13 @@ export class ClientsComponent implements OnInit {
     this.gridIsLoading = true;
     this.userService.getClients().subscribe((data) => {
       this.dataList = data.data;
-      console.log(data.data);
       this.gridIsLoading = false;
     });
   }
 
-  
-  showModalDelete(id) : void{
-    this.userId=id;
+
+  showModalDelete(id): void {
+    this.userId = id;
     this.deleteModalIsVisible = true;
   }
 
