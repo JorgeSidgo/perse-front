@@ -1,1 +1,73 @@
-<p>product-modal-edit works!</p>
+
+
+<nz-modal [nzClosable]="false" [nzKeyboard]="false" [(nzVisible)]="modalIsVisible" nzTitle="Editar Producto"
+[nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="handleCancel()">
+
+
+<ng-template #modalContent>
+       
+        <form [formGroup]="editForm" id="editForm" nz-form nzLayout="vertical" (ngSubmit)="handleOk()">
+          <nz-form-item>
+            <nz-form-label>Nombre:</nz-form-label>
+            <nz-form-control nzErrorTip="Ingrese un nombre para el producto">
+              <input formControlName="name" nz-input placeholder="Nombre" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label>Descripción:</nz-form-label>
+            <nz-form-control nzErrorTip="Ingrese una descripción">
+              <textarea formControlName="description" rows="4" nz-input></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-input-group style="margin-bottom: 1.5em;">
+            <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
+              <nz-form-label>Tipo de Producto:</nz-form-label>
+              <nz-form-control nzErrorTip="Ingrese una descripción">
+                <nz-select formControlName="id_type" style="width: 100%;" nzShowSearch nzAllowClear
+                  nzPlaceHolder="Seleccione uno...">
+                  <nz-option *ngFor="let item of typeProductList" [nzLabel]="item.name" [nzValue]="item.id"></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
+              <nz-form-label>Categoría:</nz-form-label>
+              <nz-form-control nzErrorTip="Ingrese una descripción">
+                <nz-select formControlName="id_categorie" style="width: 100%;" nzShowSearch nzAllowClear
+                  nzPlaceHolder="Seleccione una...">
+                  <nz-option *ngFor="let item of categorieList" [nzLabel]="item.name" [nzValue]="item.id"></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </nz-input-group>
+          <nz-form-item>
+            <nz-form-label>Puntos para canje:</nz-form-label>
+            <nz-form-control nzErrorTip="Ingrese una descripción">
+              <nz-input-number formControlName="point_cost" style="width: 100%;" [nzMin]="0" [nzStep]="1"></nz-input-number>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label>Foto del Producto:</nz-form-label>
+            <nz-form-control nzErrorTip="Ingrese una descripción">
+              <input type="file" formControlName="product_picture" (change)="changeListener($event)">
+              <!-- <nz-upload nzAccept="image/png, image/jpeg" nzFileType="image/png, image/jpeg" [(nzFileList)]="fileList"
+                [nzCustomRequest]="beforeUpload" nzLimit="1" style="width: 100%;">
+                <button nz-button><i nz-icon nzType="upload"></i><span>Seleccionar Archivo</span></button>
+                
+              </nz-upload> -->
+            
+                    <p>Imagen Actual</p>
+                    <img alt="producto" [src]="imgProducto" width="400">
+          
+            </nz-form-control>
+          </nz-form-item>
+         
+        </form>
+      </ng-template>
+     
+    
+      <ng-template #modalFooter>
+        <button nz-button class="ant-btn-black" (click)="handleCancel()" nzType="default">Cancelar</button>
+        <button type="submit" nz-button [nzLoading]="modalIsLoading" class="ant-btn-success" form="editForm"
+          nzType="primary">Modificar</button>
+      </ng-template>
+    </nz-modal>

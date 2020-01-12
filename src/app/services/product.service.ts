@@ -31,6 +31,23 @@ export class ProductService {
       map((response: any) => response)
     );
   }
+  update(data: Product, id:number): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/update/`+id, data).pipe(
+      map((response: any) => response)
+    );
+  }
+
+  show(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/show/` +id ).pipe(
+      map((response: any) => response)
+    );
+  }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/destroy/`+id ).pipe(
+      map((response: any) => response)
+    );
+  }
 
   available(_points: number): Observable<any> {
 

@@ -1,1 +1,14 @@
-<p>product-modal-delete works!</p>
+
+<nz-modal [nzClosable]="false" [nzKeyboard]="false" [(nzVisible)]="modalIsVisible" nzTitle="Eliminar Producto"
+[nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="handleCancel()">
+
+
+<p>¿Está seguro de eliminar este producto?
+</p>
+
+
+<ng-template #modalFooter>
+    <button nz-button class="ant-btn-black" (click)="handleCancel()" nzType="default">Cancelar</button>
+    <button nz-button  class="ant-btn-danger"  [nzLoading]="modalIsLoading" (click)="handleOk()"
+    nzType="default" nzType="primary">Eliminar</button>
+  </ng-template>

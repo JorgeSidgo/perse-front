@@ -78,7 +78,7 @@ contentLoading: boolean=false;
 
     if ( this.editForm.dirty && this.editForm.valid) {
     
-      console.log(this.resolveForm() + "  y ekl id es " + this.id);
+      console.log(this.resolveForm() + "  y el id es " + this.id);
       this.userService.updateClient(this.resolveForm(),this.id).subscribe((data) => {
         this.closeModal();
         this.modalIsLoading = false;
