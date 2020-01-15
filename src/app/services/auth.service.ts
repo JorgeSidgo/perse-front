@@ -22,7 +22,7 @@ export class AuthService {
     this.baseUrl = environment.baseUrl;
   }
 
-  login(data: Login): Observable<Account> {
+  login(data: any): Observable<any> {
     return this.http.post<Account>(`${this.baseUrl}/auth/login`, data).pipe(
       map((response: Account) => response)
     );

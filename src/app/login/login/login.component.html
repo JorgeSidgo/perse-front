@@ -14,7 +14,7 @@
               </nz-input-group>
             </nz-form-control>
           </nz-form-item>
-          <nz-form-item>
+          <nz-form-item *ngIf="requirePass">
             <nz-form-control nzErrorTip="Ingrese su contraseña">
               <nz-input-group nzPrefixIcon="lock">
                 <input type="password" formControlName="password" nz-input placeholder="Contraseña" />
@@ -23,7 +23,7 @@
           </nz-form-item>
           <nz-form-item class="button-row">
             <nz-form-control>
-              <small><a class="login-form-forgot" class="login-form-forgot">¿Olvidó su contraseña?</a></small>
+              <!-- <small *ngIf="requirePass"><a class="login-form-forgot" class="login-form-forgot">¿Olvidó su contraseña?</a></small> -->
               <button nz-button class="login-form-button" [nzLoading]="loginButtonLoading" [nzType]="'primary'">Iniciar
                 Sesión</button>
             </nz-form-control>

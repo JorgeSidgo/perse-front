@@ -15,8 +15,9 @@ export class LoginComponent implements OnInit {
 
   loginButtonLoading = false;
   cuenta: Account;
-  loginData: Login;
+  loginData: any;
   loginForm: FormGroup;
+  requirePass = false;
 
   constructor(
     private authService: AuthService,
@@ -28,7 +29,8 @@ export class LoginComponent implements OnInit {
     this.loginData = new Login();
     this.loginForm = this.fb.group({
       email: [null, [Validators.required]],
-      password: [null, [Validators.required]]
+      password: [null],
+      is_admin: [false]
     });
   }
 
@@ -43,8 +45,22 @@ export class LoginComponent implements OnInit {
     }
 
     if (this.loginForm.dirty && this.loginForm.valid) {
-      this.loginData = this.loginForm.value;
+
+      if (!this.loginForm.value.is_admin) {
+        this.loginData = {
+          email: this.loginForm.value.email
+        };
+      } else {
+        this.loginData = this.loginForm.value;
+      }
+
+
       this.authService.login(this.loginData).subscribe((data) => {
+
+        if (data === 0) {
+          this.requirePass = true;
+          this.loginForm.controls.is_admin.setValue(true);
+        }
 
         if (data.code) {
           this.authService.removeToken();
