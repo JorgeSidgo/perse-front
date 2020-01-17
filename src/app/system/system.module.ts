@@ -40,6 +40,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HistoryClientCardComponent } from './history-client/history-client-card/history-client-card.component';
 import { PendingClientComponent } from './pending-client/pending-client.component';
 import { PendingClientCardComponent } from './pending-client/pending-client-card/pending-client-card.component';
+import { ClientsModalSpamComponent } from './clients/clients-modal-spam/clients-modal-spam.component';
 
 
 
@@ -79,7 +80,8 @@ import { PendingClientCardComponent } from './pending-client/pending-client-card
     HistoryClientComponent,
     HistoryClientCardComponent,
     PendingClientComponent,
-    PendingClientCardComponent,],
+    PendingClientCardComponent,
+    ClientsModalSpamComponent,],
   imports: [
     BrowserAnimationsModule,
     CommonModule,

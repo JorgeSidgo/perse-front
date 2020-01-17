@@ -1,0 +1,35 @@
+<nz-modal [nzClosable]="false" [nzKeyboard]="false" [(nzVisible)]="modalIsVisible" nzTitle="Enviar mensaje de difusión:"
+  [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="handleCancel()">
+
+  <ng-template #modalContent>
+    <div *ngIf="contentLoading" class="univ-loading-container">
+      <nz-spin nzSimple></nz-spin>
+    </div>
+    <form [formGroup]="spamForm" id="spamForm" nz-form nzLayout="vertical" (ngSubmit)="handleOk()">
+      <nz-form-item style="margin-bottom: 0;">
+        <nz-form-label>Medio:</nz-form-label>
+        <nz-form-control nzErrorTip="Seleccione un medio de difusión">
+          <nz-select formControlName="type" style="width: 100%;" nzShowSearch nzAllowClear
+            nzPlaceHolder="Seleccione uno...">
+            <nz-option nzLabel="E-mail y SMS" nzValue="1"></nz-option>
+            <nz-option nzLabel="SMS" nzValue="2"></nz-option>
+            <nz-option nzLabel="E-mail" nzValue="3"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label>Contenido del Mensaje:</nz-form-label>
+        <nz-form-control nzErrorTip="Ingrese una descripción">
+          <textarea formControlName="data" rows="4" nz-input></textarea>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-template>
+
+
+  <ng-template #modalFooter>
+    <button nz-button class="ant-btn-black" (click)="handleCancel()" nzType="default">Cancelar</button>
+    <button nz-button nzType="primary" type="submit" [nzLoading]="modalIsLoading" form="spamForm"
+      nzType="primary">Enviar</button>
+  </ng-template>
+</nz-modal>

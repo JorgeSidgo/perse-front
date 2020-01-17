@@ -16,6 +16,8 @@ export class ClientsComponent implements OnInit {
   pointsModalcontentLoading = false;
   editModalVisible = false;
   deleteModalIsVisible = false;
+  spamModalIsVisible = false;
+  spamModalContentLoading = false;
 
   // DATA
   gridIsLoading = true;
@@ -39,6 +41,10 @@ export class ClientsComponent implements OnInit {
     this.pointsModalIsVisible = true;
   }
 
+  showSpamModal(): void {
+    this.spamModalIsVisible = true;
+  }
+
   showModal(): void {
     this.addModalIsVisible = true;
   }
@@ -50,6 +56,10 @@ export class ClientsComponent implements OnInit {
 
   closePointsModal(): void {
     this.pointsModalIsVisible = false;
+  }
+
+  closeSpamModal(): void {
+    this.spamModalIsVisible = false;
   }
 
   closeModal(): void {

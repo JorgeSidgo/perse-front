@@ -1,10 +1,12 @@
 <app-clients-modal-add [modalIsVisible]="addModalIsVisible" (modalState)="closeModal()" (parentReload)="loadData()">
 </app-clients-modal-add>
 
-<app-clients-modal-delete [modalIsVisible]="deleteModalIsVisible" [userId]="userId" (modalState)="closeModalDelete()" (parentReload)="loadData()">
+<app-clients-modal-delete [modalIsVisible]="deleteModalIsVisible" [userId]="userId" (modalState)="closeModalDelete()"
+  (parentReload)="loadData()">
 </app-clients-modal-delete>
 
-<app-clients-modal-edit [modalIsVisible]="editModalVisible" [dataList]="dataListEdit" [id]="userId" (modalState)="closeModalEdit()" (parentReload)="loadData()" #edit>  
+<app-clients-modal-edit [modalIsVisible]="editModalVisible" [dataList]="dataListEdit" [id]="userId"
+  (modalState)="closeModalEdit()" (parentReload)="loadData()" #edit>
 </app-clients-modal-edit>
 
 <app-clients-modal-points [modalIsVisible]="pointsModalIsVisible" [contentLoading]="pointsModalcontentLoading"
@@ -12,12 +14,23 @@
   (parentReload)="loadData()">
 </app-clients-modal-points>
 
+<app-clients-modal-spam [modalIsVisible]="spamModalIsVisible" [contentLoading]="spamModalContentLoading"
+  (modalState)="closeSpamModal()" (parentReload)="loadData()">
+</app-clients-modal-spam>
+
 <div class="view-title">
   <h5 nz-title>Gestión de Clientes</h5>
-  <button nz-button class="ant-btn-success" (click)="showModal()">
-    <i nz-icon nzType="plus" nzTheme="outline"></i>
-    Agregar
-  </button>
+
+  <div class="button-bar">
+    <button style="margin-right: 1em;" (click)="showSpamModal()" nz-button nzType="primary">
+      <i nz-icon nzType="message" nzTheme="outline"></i>
+      Mensaje de Difusión
+    </button>
+    <button nz-button class="ant-btn-success" (click)="showModal()">
+      <i nz-icon nzType="plus" nzTheme="outline"></i>
+      Agregar
+    </button>
+  </div>
 </div>
 
 <div class="grid-container">
@@ -66,10 +79,10 @@
           <td>{{data.points}}</td>
           <td>{{data.birthday | date:'dd/MM/yyyy'}}</td>
           <td class="action-shelf">
-            <button class="ant-btn-blue" nz-button nzType="primary" nzSize="small" nzShape="circle" (click)="edit.loadDataEdit(data.id)"><i nz-icon
-                nzType="edit"></i></button>
-            <button class="ant-btn-red" nz-button nzType="primary" nzSize="small" nzShape="circle" (click)="showModalDelete(data.id)"><i nz-icon
-                nzType="delete"></i></button>
+            <button class="ant-btn-blue" nz-button nzType="primary" nzSize="small" nzShape="circle"
+              (click)="edit.loadDataEdit(data.id)"><i nz-icon nzType="edit"></i></button>
+            <button class="ant-btn-red" nz-button nzType="primary" nzSize="small" nzShape="circle"
+              (click)="showModalDelete(data.id)"><i nz-icon nzType="delete"></i></button>
             <button class="ant-btn-black" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
                 nzType="ellipsis"></i></button>
             <button class="ant-btn-yellow" (click)="showPointsModal(data.id)" nz-button nzType="primary" nzSize="small"

@@ -24,20 +24,20 @@ export class UsersService {
   }
 
   updateSeller(data: any, id: number): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/user/update-seller/`+id, data).pipe(
+    return this.http.put<any>(`${this.baseUrl}/user/update-seller/` + id, data).pipe(
       map((response: any) => response)
-    ); 
+    );
   }
 
   updateClient(data: any, id: number): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/user/update-client/`+id, data).pipe(
+    return this.http.put<any>(`${this.baseUrl}/user/update-client/` + id, data).pipe(
       map((response: any) => response)
-    ); 
+    );
   }
-  deleteUser( id: number): Observable<any> {
-    return this.http.delete<any>(`${this.baseUrl}/user/destroy/`+id).pipe(
+  deleteUser(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/user/destroy/` + id).pipe(
       map((response: any) => response)
-    ); 
+    );
   }
 
   getUser(id: number): Observable<any> {
@@ -65,7 +65,7 @@ export class UsersService {
   }
 
   show(id: number): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/user/show/` +id ).pipe(
+    return this.http.get<any>(`${this.baseUrl}/user/show/` + id).pipe(
       map((response: any) => response)
     );
   }
@@ -83,6 +83,12 @@ export class UsersService {
   }
 
   getSellers(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/user/index-sellers`).pipe(
+      map((response: any) => response)
+    );
+  }
+
+  sendSpam(data: any): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/user/index-sellers`).pipe(
       map((response: any) => response)
     );

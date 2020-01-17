@@ -1,22 +1,19 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ProductService } from 'src/app/services/product.service';
-import { NzMessageService, UploadFile } from 'ng-zorro-antd';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Product } from 'src/app/entity/Product';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
-  selector: 'app-product-modal-add',
-  templateUrl: './product-modal-add.component.html',
-  styleUrls: ['./product-modal-add.component.css']
+  selector: 'app-clients-modal-spam',
+  templateUrl: './clients-modal-spam.component.html',
+  styleUrls: ['./clients-modal-spam.component.css']
 })
-export class ProductModalAddComponent implements OnInit {
+export class ClientsModalSpamComponent implements OnInit {
 
   // INPUTS
-
   @Input() modalIsVisible: boolean;
+  @Input() contentLoading: boolean;
 
-  @Input() typeProductList: any[];
-  @Input() categorieList: any[];
 
   // OUTPUTS
 
@@ -27,15 +24,14 @@ export class ProductModalAddComponent implements OnInit {
   modalIsLoading = false;
   typeValue: any;
   categorieValue: any;
-  fileList: UploadFile[] = [];
   image: any;
 
   // FORMS
 
-  addForm: FormGroup;
+  spamForm: FormGroup;
 
   constructor(
-    private productService: ProductService,
+    private usuarioService: UsersService,
     private message: NzMessageService,
     private fb: FormBuilder
   ) { }
@@ -45,60 +41,32 @@ export class ProductModalAddComponent implements OnInit {
   }
 
   initForm(): void {
-    this.addForm = this.fb.group({
-      name: [null, [Validators.required]],
-      description: [null, [Validators.required]],
-      product_picture: [null, [Validators.required]],
-      point_cost: [null, [Validators.required]],
-      id_type: [null, [Validators.required]],
-      id_categorie: [null, [Validators.required]]
+    this.spamForm = this.fb.group({
+      type: [null, [Validators.required]],
+      data: [null, [Validators.required]]
     });
-  }
-
-  /* resolveImage(): any {
-    let fileArray = [];
-    let
-  } */
-
-  resolveForm(): Product {
-    this.addForm.value.product_picture = this.image;
-    return this.addForm.value as Product;
-  }
-
-  changeListener($event): void {
-    this.readThis($event.target);
-  }
-
-  readThis(inputValue: any): void {
-    var file: File = inputValue.files[0];
-    var myReader: FileReader = new FileReader();
-
-    myReader.onloadend = (e) => {
-      this.image = myReader.result;
-    };
-    myReader.readAsDataURL(file);
   }
 
   handleOk(): void {
     this.modalIsLoading = true;
 
     // tslint:disable-next-line: forin
-    for (const i in this.addForm.controls) {
-      this.addForm.controls[i].markAsDirty();
-      this.addForm.controls[i].updateValueAndValidity();
+    for (const i in this.spamForm.controls) {
+      this.spamForm.controls[i].markAsDirty();
+      this.spamForm.controls[i].updateValueAndValidity();
     }
 
+    if (this.spamForm.dirty && this.spamForm.valid) {
 
 
-    console.log('form-data', this.addForm.value);
 
-    if (this.addForm.dirty && this.addForm.valid) {
-      this.productService.store(this.resolveForm()).subscribe((data) => {
+      this.usuarioService.sendSpam(this.spamForm.value).subscribe((data) => {
         console.log(data);
         this.closeModal();
         this.modalIsLoading = false;
         if (data.code) {
-          this.message.success('Producto agregado exitosamente');
+          this.message.success('Mensaje enviado exitosamente');
+          this.initForm();
           this.emitReload();
         } else {
           this.modalIsLoading = false;
@@ -168,4 +136,5 @@ export class ProductModalAddComponent implements OnInit {
   emitReload(): void {
     this.parentReload.emit();
   }
+
 }
