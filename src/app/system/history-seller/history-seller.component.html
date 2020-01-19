@@ -1,0 +1,20 @@
+<div class="view-title">
+  <h5 nz-title>Historial de Canjes</h5>
+</div>
+
+
+<div class="grid-container">
+
+
+  <div nz-row [nzGutter]="16" style="display: flex; justify-content: center;">
+
+    <div nz-col nzXs="24" nzSm="24" nzMd="10" nzLg="10" style="margin-left: auto; margin-right: auto;">
+      <div *ngIf="gridIsLoading" class="univ-loading-container">
+        <nz-spin nzSimple></nz-spin>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>

@@ -2,9 +2,9 @@
   [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="handleCancel()">
 
   <ng-template #modalContent>
-      <div *ngIf="contentLoading" class="univ-loading-container">
-          <nz-spin nzSimple></nz-spin>
-        </div>
+    <div *ngIf="contentLoading" class="univ-loading-container">
+      <nz-spin nzSimple></nz-spin>
+    </div>
     <form [formGroup]="editForm" id="addForm" nz-form nzLayout="vertical" (ngSubmit)="handleOk()">
       <nz-input-group style="margin-bottom: 1.5em;">
         <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
@@ -40,23 +40,13 @@
           </nz-form-control>
         </nz-form-item>
       </nz-input-group>
-      <!--       <nz-input-group style="margin-bottom: 1.5em;">
-        <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
-          <nz-form-label>Contraseña:</nz-form-label>
-          <app-password-input formControlName="password"></app-password-input>
-        </nz-form-item>
-        <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
-          <nz-form-label>Confirmar Contraseña:</nz-form-label>
-          <app-password-input formControlName="password_conf"></app-password-input>
-        </nz-form-item>
-      </nz-input-group> -->
     </form>
   </ng-template>
 
 
   <ng-template #modalFooter>
     <button nz-button class="ant-btn-black" (click)="handleCancel()" nzType="default">Cancelar</button>
-    <button nz-button type="submit" [nzLoading]="modalIsLoading" class="ant-btn-success" form="addForm"
-      nzType="primary">Agregar</button>
+    <button nz-button type="submit" [nzLoading]="modalIsLoading" class="ant-btn-blue" form="addForm"
+      nzType="primary">Actualizar</button>
   </ng-template>
 </nz-modal>

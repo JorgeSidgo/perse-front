@@ -30,7 +30,7 @@
           [nzDisabled]="clienteDisabled" nzPlaceHolder="Cliente" nzAllowClear nzShowSearch>
           <nz-option *ngFor="let client of clientList"
             [nzValue]="{id: client.id, points: client.points, name: client.first_name + ' '+ client.last_name}"
-            [nzLabel]="client.first_name + ' ' + client.last_name"></nz-option>
+            [nzLabel]="client.first_name + ' ' + client.last_name + ' - ' + client.email "></nz-option>
         </nz-select>
 
       </div>

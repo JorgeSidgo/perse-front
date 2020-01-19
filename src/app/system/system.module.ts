@@ -41,6 +41,8 @@ import { HistoryClientCardComponent } from './history-client/history-client-card
 import { PendingClientComponent } from './pending-client/pending-client.component';
 import { PendingClientCardComponent } from './pending-client/pending-client-card/pending-client-card.component';
 import { ClientsModalSpamComponent } from './clients/clients-modal-spam/clients-modal-spam.component';
+import { HistorySellerComponent } from './history-seller/history-seller.component';
+import { PendingSellerComponent } from './pending-seller/pending-seller.component';
 
 
 
@@ -81,7 +83,9 @@ import { ClientsModalSpamComponent } from './clients/clients-modal-spam/clients-
     HistoryClientCardComponent,
     PendingClientComponent,
     PendingClientCardComponent,
-    ClientsModalSpamComponent,],
+    ClientsModalSpamComponent,
+    HistorySellerComponent,
+    PendingSellerComponent,],
   imports: [
     BrowserAnimationsModule,
     CommonModule,

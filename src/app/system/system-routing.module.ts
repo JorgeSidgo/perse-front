@@ -10,6 +10,8 @@ import { RedemptionsComponent } from './redemptions/redemptions.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { HistoryClientComponent } from './history-client/history-client.component';
 import { PendingClientComponent } from './pending-client/pending-client.component';
+import { PendingSellerComponent } from './pending-seller/pending-seller.component';
+import { HistorySellerComponent } from './history-seller/history-seller.component';
 
 const routes: Routes = [
   {
@@ -22,6 +24,8 @@ const routes: Routes = [
       { path: 'sellers', component: SellersComponent, canActivate: [AuthGuard] },
       { path: 'client-history', component: HistoryClientComponent, canActivate: [AuthGuard] },
       { path: 'client-pending', component: PendingClientComponent, canActivate: [AuthGuard] },
+      { path: 'seller-history', component: HistorySellerComponent, canActivate: [AuthGuard] },
+      { path: 'seller-pending', component: PendingSellerComponent, canActivate: [AuthGuard] },
       { path: 'exchange', component: RedemptionsComponent, canActivate: [AuthGuard] },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', redirectTo: 'home' },
