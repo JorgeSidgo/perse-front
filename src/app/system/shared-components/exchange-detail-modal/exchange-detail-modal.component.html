@@ -1,0 +1,12 @@
+<nz-modal [nzClosable]="false" [nzKeyboard]="false" [(nzVisible)]="modalIsVisible" nzTitle="Detalles del Canje"
+  [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="handleCancel()">
+
+  <ng-template #modalContent>
+    {{detailData}}
+  </ng-template>
+
+
+  <ng-template #modalFooter>
+    <button nz-button class="ant-btn-black" (click)="handleCancel()" nzType="default">Aceptar</button>
+  </ng-template>
+</nz-modal>

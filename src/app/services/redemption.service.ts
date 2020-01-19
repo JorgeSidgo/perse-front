@@ -34,4 +34,16 @@ export class RedemptionService {
     );
   }
 
+  historySeller(): any {
+    return this.http.get<any>(`${this.baseUrl}/index-completed`).pipe(
+      map((response: any) => response)
+    );
+  }
+
+  pendingSeller(): any {
+    return this.http.get<any>(`${this.baseUrl}/index-pending`).pipe(
+      map((response: any) => response)
+    );
+  }
+
 }

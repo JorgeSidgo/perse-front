@@ -7,13 +7,37 @@
 
 
   <div nz-row [nzGutter]="16" style="display: flex; justify-content: center;">
-
-    <div nz-col nzXs="24" nzSm="24" nzMd="10" nzLg="10" style="margin-left: auto; margin-right: auto;">
-      <div *ngIf="gridIsLoading" class="univ-loading-container">
-        <nz-spin nzSimple></nz-spin>
-      </div>
-
+    <div *ngIf="gridIsLoading" class="univ-loading-container">
+      <nz-spin nzSimple></nz-spin>
     </div>
+
+    <table class="ui very compact celled table">
+
+      <thead class="super-compact">
+        <tr>
+          <th>Nº</th>
+          <th>Cliente</th>
+          <th>Producto</th>
+          <th>Fecha de Canje</th>
+          <th>Tipo de Canje</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of dataList">
+          <td>{{data.id}}</td>
+          <td>{{data.client_data.first_name}}</td>
+          <td>{{data.product_data.id}}</td>
+          <td>{{data.created_at | date:'dd/MM/yyyy'}}</td>
+          <td>{{data.id}}</td>
+
+          <td class="action-shelf">
+            <button class="ant-btn-black" (click)="getRecordData(data.id)" nz-button nzType="primary" nzSize="small"
+              nzShape="circle"><i nz-icon nzType="ellipsis"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
 
