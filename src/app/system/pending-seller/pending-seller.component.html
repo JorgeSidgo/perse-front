@@ -31,9 +31,9 @@
         <tr *ngFor="let data of dataList">
           <td>{{data.id}}</td>
           <td>{{data.client_data.first_name}}</td>
-          <td>{{data.product_data.id}}</td>
+          <td>{{data.product_data.name}}</td>
           <td>{{data.created_at | date:'dd/MM/yyyy'}}</td>
-          <td>{{data.id}}</td>
+          <td>{{data.type_redemption.name}}</td>
 
           <td class="action-shelf">
             <button class="ant-btn-black" (click)="getRecordData(data.id)" nz-button nzType="primary" nzSize="small"
