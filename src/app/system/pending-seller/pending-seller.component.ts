@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RedemptionService } from 'src/app/services/redemption.service';
+import { NzModalService, NzMessageService } from 'ng-zorro-antd';
+import { resolve } from 'url';
 
 @Component({
   selector: 'app-pending-seller',
@@ -19,7 +21,9 @@ export class PendingSellerComponent implements OnInit {
   detailModalIsVisible = false;
 
   constructor(
-    private redemptionService: RedemptionService
+    private redemptionService: RedemptionService,
+    private modalService: NzModalService,
+    private message: NzMessageService
   ) { }
 
   ngOnInit() {
@@ -54,6 +58,28 @@ export class PendingSellerComponent implements OnInit {
   //   }
 
   // }
+
+  showModalChangeState(id: number): any {
+    this.modalService.create({
+      nzTitle: 'Completar canje',
+      nzContent: '¿Desea marcar como completo este canje?',
+      nzClosable: false,
+      nzOnOk: () => new Promise(resolve => this.changeState(id, resolve))
+    });
+  }
+
+  changeState(id: number, resolve: any): any {
+    this.redemptionService.changeState(id).subscribe(data => {
+      if (data.code) {
+        this.message.success('Canje completado');
+        this.loadData();
+        resolve(data.code);
+      } else {
+        this.message.error(data.message);
+        resolve(data);
+      }
+    });
+  }
 
   searchRecords() {
     if (this.search_data == "")

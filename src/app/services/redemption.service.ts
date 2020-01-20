@@ -46,6 +46,12 @@ export class RedemptionService {
     );
   }
 
+  changeState(id: number): any {
+    return this.http.get<any>(`${this.baseUrl}/change-status/${id}`).pipe(
+      map((response: any) => response)
+    );
+  }
+
   historySearch(data: any): any {
 
     const parameter = {

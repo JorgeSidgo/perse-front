@@ -55,6 +55,8 @@
           <td>{{data.type_redemption.name}}</td>
 
           <td class="action-shelf">
+            <button class="ant-btn-success" (click)="showModalChangeState(data.id)" nz-button nzType="primary"
+              nzSize="small" nzShape="circle"><i nz-icon nzType="check"></i></button>
             <button class="ant-btn-black" (click)="getRecordData(data.id)" nz-button nzType="primary" nzSize="small"
               nzShape="circle"><i nz-icon nzType="ellipsis"></i></button>
           </td>

@@ -153,6 +153,8 @@ export class FormRedemptionComponent implements OnInit {
           this.messageService.error(data.message);
         }
 
+        this.initForm();
+
         resolve(data);
       });
     }).catch((rej) => rej('error'));
