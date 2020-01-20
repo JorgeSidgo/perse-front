@@ -5,6 +5,24 @@
 
 <div class="grid-container">
 
+  <div nz-row [nzGutter]="16" style="margin: 0;">
+
+
+    <div nz-col nzOffset="18" nzSpan="6" style="margin-bottom: 1em; padding-right: 0;">
+      <nz-input-group [nzSuffix]="suffixTemplate" [nzPrefix]="prefixTemplate">
+        <input type="text" nz-input placeholder="Buscar" [(ngModel)]="search_data" (change)="searchRecords()" />
+      </nz-input-group>
+      <ng-template #prefixTemplate>
+        <i nz-icon nzType="search"></i>
+      </ng-template>
+      <ng-template #suffixTemplate>
+        <i nz-icon nz-tooltip class="ant-input-clear-icon" nzTheme="fill" nzType="close-circle" *ngIf="search_data"
+          (click)="index()"></i>
+      </ng-template>
+    </div>
+
+
+  </div>
 
   <div nz-row [nzGutter]="16" style="display: flex; justify-content: center;">
     <div *ngIf="gridIsLoading" class="univ-loading-container">

@@ -46,4 +46,26 @@ export class RedemptionService {
     );
   }
 
+  historySearch(data: any): any {
+
+    const parameter = {
+      data: data
+    };
+
+    return this.http.post<any>(`${this.baseUrl}/search-completed`, parameter).pipe(
+      map((response: any) => response)
+    );
+  }
+
+  pendingSearch(data: any): any {
+
+    const parameter = {
+      data: data
+    };
+
+    return this.http.post<any>(`${this.baseUrl}/search-pending`, parameter).pipe(
+      map((response: any) => response)
+    );
+  }
+
 }

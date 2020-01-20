@@ -55,6 +55,20 @@ export class PendingSellerComponent implements OnInit {
 
   // }
 
+  searchRecords() {
+    if (this.search_data == "")
+      this.index();
+    else {
+      this.dataList = null;
+      this.gridIsLoading = true;
+      this.redemptionService.pendingSearch(this.search_data).subscribe((data) => {
+        this.dataList = data.data;
+        this.gridIsLoading = false;
+      });
+    }
+
+  }
+
   getRecordData(recordId: number): void {
     this.detailModalIsVisible = true;
     this.selectedObject = this.dataList.filter(item => item.id === recordId);
