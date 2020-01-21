@@ -1,68 +1,68 @@
-
 <app-sellers-modal-add [modalIsVisible]="addModalIsVisible" (modalState)="closeModal()" (parentReload)="loadData()">
 </app-sellers-modal-add>
 
-<app-sellers-modal-edit [modalIsVisible]="editModalVisible" [dataList]="dataListEdit" [id]="userId" (modalState)="closeModalEdit()" (parentReload)="loadData()" #edit>  
+<app-sellers-modal-edit [modalIsVisible]="editModalVisible" [dataList]="dataListEdit" [id]="userId"
+  (modalState)="closeModalEdit()" (parentReload)="loadData()" #edit>
 </app-sellers-modal-edit>
 
-<app-sellers-modal-delete [modalIsVisible]="deleteModalIsVisible" [userId]="userId" (modalState)="closeModalDelete()" (parentReload)="loadData()">  
+<app-sellers-modal-delete [modalIsVisible]="deleteModalIsVisible" [userId]="userId" (modalState)="closeModalDelete()"
+  (parentReload)="loadData()">
 </app-sellers-modal-delete>
 
 
 <div class="view-title">
-    <h5 nz-title>Gestión de Vendedores</h5>
-    <button nz-button class="ant-btn-success" (click)="showModal()">
-      <i nz-icon nzType="plus" nzTheme="outline"></i>
-      Agregar
-    </button>
-  </div>
-  
-  <div class="grid-container">
-  
-    <div nz-row [nzGutter]="16" style="margin: 0;">
-  
-  
-      <div nz-col nzOffset="18" nzSpan="6" style="margin-bottom: 1em; padding-right: 0;">
-        <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
-          <input type="text" nz-input placeholder="Buscar" />
-        </nz-input-group>
-        <ng-template #suffixIconButton>
-          <button nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
-        </ng-template>
-      </div>
-  
-  
+  <h5 nz-title>Gestión de Vendedores</h5>
+  <button nz-button class="ant-btn-success" (click)="showModal()">
+    <i nz-icon nzType="plus" nzTheme="outline"></i>
+    Agregar
+  </button>
+</div>
+
+<div class="grid-container">
+
+  <div nz-row [nzGutter]="16" style="margin: 0;">
+
+
+    <div nz-col nzOffset="18" nzSpan="6" style="margin-bottom: 1em; padding-right: 0;">
+      <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+        <input type="text" nz-input placeholder="Buscar" />
+      </nz-input-group>
+      <ng-template #suffixIconButton>
+        <button nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
+      </ng-template>
     </div>
-  
-    <div nz-row [nzGutter]="16" style="margin:0;">
-      <nz-table [nzLoading]="gridIsLoading" #borderedTable nzBordered nzSize="small" [nzData]="dataList">
-        <thead>
-          <tr>
-            <th>Nº</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Acciones</th>
-            
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let data of dataList">
-            <td>{{data.id}}</td>
-            <td>{{data.first_name}}</td>
-            <td>{{data.last_name}}</td>
-            <td class="action-shelf">
-              <button class="ant-btn-blue" nz-button nzType="primary" nzSize="small" nzShape="circle" (click)="edit.loadDataEdit(data.id)"><i nz-icon
-                  nzType="edit"></i></button>
-              <button class="ant-btn-red" nz-button nzType="primary" nzSize="small" nzShape="circle" (click)="showModalDelete(data.id)"><i nz-icon
-                  nzType="delete"></i></button>
-              <button class="ant-btn-black" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
-                  nzType="ellipsis"></i></button>
-              
-            </td>
-          </tr>
-        </tbody>
-      </nz-table>
-  
-    </div>
+
+
   </div>
-  
+
+  <div nz-row [nzGutter]="16" style="margin:0;">
+    <nz-table [nzLoading]="gridIsLoading" #borderedTable nzBordered nzSize="small" [nzData]="dataList">
+      <thead>
+        <tr>
+          <th>Nº</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Acciones</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of dataList">
+          <td>{{data.id}}</td>
+          <td>{{data.first_name}}</td>
+          <td>{{data.last_name}}</td>
+          <td class="action-shelf">
+            <button class="ant-btn-blue" nz-button nzType="primary" nzSize="small" nzShape="circle"
+              (click)="edit.loadDataEdit(data.id)"><i nz-icon nzType="edit"></i></button>
+            <button class="ant-btn-red" nz-button nzType="primary" nzSize="small" nzShape="circle"
+              (click)="showModalDelete(data.id)"><i nz-icon nzType="delete"></i></button>
+            <!-- <button class="ant-btn-black" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
+                  nzType="ellipsis"></i></button> -->
+
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+
+  </div>
+</div>

@@ -38,7 +38,7 @@
           <th>Producto</th>
           <th>Fecha de Canje</th>
           <th>Tipo de Canje</th>
-          <th>Acciones</th>
+          <!-- <th>Acciones</th> -->
         </tr>
       </thead>
       <tbody>
@@ -49,10 +49,10 @@
           <td>{{data.created_at | date:'dd/MM/yyyy'}}</td>
           <td>{{data.type_redemption.name}}</td>
 
-          <td class="action-shelf">
+          <!-- <td class="action-shelf">
             <button class="ant-btn-black" (click)="getRecordData(data.id)" nz-button nzType="primary" nzSize="small"
               nzShape="circle"><i nz-icon nzType="ellipsis"></i></button>
-          </td>
+          </td> -->
         </tr>
       </tbody>
     </table>
