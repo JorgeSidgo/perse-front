@@ -9,14 +9,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NZ_I18N, es_ES } from 'ng-zorro-antd';
 
-import es from '@angular/common/locales/es';
+
+import ES from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { SystemModule } from './system/system.module';
 import { TokenInterceptor } from './services/token.interceptor';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
-registerLocaleData(es);
+registerLocaleData(ES);
 
 @NgModule({
   declarations: [

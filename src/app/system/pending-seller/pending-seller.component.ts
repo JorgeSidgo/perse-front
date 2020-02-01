@@ -12,13 +12,14 @@ export class PendingSellerComponent implements OnInit {
 
   // DATA
   gridIsLoading = true;
-  dataList: any[];
+  dataList = new Array();
   userPoints = 0;
   userName = ' ';
   userId = 0;
   search_data = '';
   selectedObject: any;
   detailModalIsVisible = false;
+
 
   constructor(
     private redemptionService: RedemptionService,
@@ -85,7 +86,7 @@ export class PendingSellerComponent implements OnInit {
     if (this.search_data == "")
       this.index();
     else {
-      this.dataList = null;
+      this.dataList = new Array();
       this.gridIsLoading = true;
       this.redemptionService.pendingSearch(this.search_data).subscribe((data) => {
         this.dataList = data.data;
@@ -105,7 +106,7 @@ export class PendingSellerComponent implements OnInit {
   }
 
   loadData(): void {
-    this.dataList = null;
+    this.dataList = new Array();
     this.gridIsLoading = true;
     this.redemptionService.pendingSeller().subscribe((data) => {
       this.dataList = Object.values(data.data);

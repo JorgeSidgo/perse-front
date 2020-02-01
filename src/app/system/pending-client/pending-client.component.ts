@@ -12,7 +12,7 @@ export class PendingClientComponent implements OnInit {
 
   // DATA
   gridIsLoading = true;
-  dataList: any[];
+  dataList = new Array();
   account: Account;
 
   constructor(

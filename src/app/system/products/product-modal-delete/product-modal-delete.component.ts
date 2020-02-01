@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input,EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -9,30 +9,30 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductModalDeleteComponent implements OnInit {
 
-  constructor(private productService: ProductService,private message: NzMessageService) { }
+  constructor(private productService: ProductService, private message: NzMessageService) { }
 
   @Input() modalIsVisible: boolean;
-  @Input() userId : number;
+  @Input() userId: number;
 
-  
+
   @Output() modalState = new EventEmitter<boolean>();
   @Output() parentReload = new EventEmitter<any>();
 
 
-   modalIsLoading = false;
+  modalIsLoading = false;
 
   ngOnInit() {
   }
 
   handleOk(): void {
     this.modalIsLoading = true;
-    
+
 
     // tslint:disable-next-line: forin
-   
 
-    if (this.userId!=0) {
-    
+
+    if (this.userId != 0) {
+
       console.log(this.userId);
       this.productService.delete(this.userId).subscribe((data) => {
         this.closeModal();
@@ -79,10 +79,10 @@ export class ProductModalDeleteComponent implements OnInit {
   }
 
   closeModal(): void {
-    
+
     this.modalState.emit(false);
   }
- 
+
   emitReload(): void {
     this.parentReload.emit();
   }

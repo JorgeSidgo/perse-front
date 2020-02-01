@@ -18,6 +18,8 @@ export class ClientsComponent implements OnInit {
   deleteModalIsVisible = false;
   spamModalIsVisible = false;
   spamModalContentLoading = false;
+  spamIsMassive: boolean;
+  spamUserId: number;
 
   // DATA
   gridIsLoading = true;
@@ -41,7 +43,9 @@ export class ClientsComponent implements OnInit {
     this.pointsModalIsVisible = true;
   }
 
-  showSpamModal(): void {
+  showSpamModal(isMassive: boolean, userId: number): void {
+    this.spamUserId = userId;
+    this.spamIsMassive = isMassive;
     this.spamModalIsVisible = true;
   }
 

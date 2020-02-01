@@ -30,9 +30,9 @@ export class ProductModalEditComponent implements OnInit {
   image: any;
   dataList: Product;
   imgProducto: any;
-  productId:number;
+  productId: number;
 
-  
+
 
   // FORMS
 
@@ -49,48 +49,48 @@ export class ProductModalEditComponent implements OnInit {
   ngOnInit() {
     this.initForm();
     this.cargarCatalogos();
- 
+
   }
 
   initForm(): void {
     this.editForm = this.fb.group({
       name: [null, [Validators.required]],
       description: [null, [Validators.required]],
-      product_picture: [null,[Validators.required]],
+      product_picture: [null],
       point_cost: [null, [Validators.required]],
       id_type: [null, [Validators.required]],
       id_categorie: [null, [Validators.required]]
     });
   }
 
-  loadData(id:number): void{
+  loadData(id: number): void {
 
     console.log("mostrando la info");
-    this.productService.show(id).subscribe((data)=>{
-      this.dataList=data.data;
+    this.productService.show(id).subscribe((data) => {
+      this.dataList = data.data;
       this.editForm.controls['name'].setValue(this.dataList.name);
       this.editForm.controls['description'].setValue(this.dataList.description);
- 
+
       this.editForm.controls['point_cost'].setValue(data.data.point_cost);
       this.editForm.controls['id_type'].setValue(data.data.id_type);
       this.editForm.controls['id_categorie'].setValue(data.data.id_categorie);
-      this.imgProducto=data.data.product_picture;
-      this.productId=id;
+      this.imgProducto = data.data.product_picture;
+      this.productId = id;
       console.log(this.editForm.value);
-     
-   
-     
-       
+
+
+
+
     });
-    
-    
-    this.modalIsVisible=true;
+
+
+    this.modalIsVisible = true;
 
   }
 
   handleCancel(): void {
     this.closeModal();
-    this.modalIsVisible=false;
+    this.modalIsVisible = false;
   }
 
   closeModal(): void {
@@ -101,7 +101,7 @@ export class ProductModalEditComponent implements OnInit {
     this.parentReload.emit();
   }
 
-  cargarCatalogos():void{
+  cargarCatalogos(): void {
 
     this.typeProductService.index().subscribe((data) => {
       this.typeProductList = data.data.data;
@@ -124,10 +124,10 @@ export class ProductModalEditComponent implements OnInit {
     var file: File = inputValue.files[0];
     var myReader: FileReader = new FileReader();
 
-     
+
     myReader.onloadend = (e) => {
       this.image = myReader.result;
- 
+
     };
     myReader.readAsDataURL(file);
 
@@ -147,11 +147,11 @@ export class ProductModalEditComponent implements OnInit {
 
 
     console.log("DATA RESOLVED");
-    console.log('form-data',this.resolveForm()
-     );
+    console.log('form-data', this.resolveForm()
+    );
 
     if (this.editForm.dirty && this.editForm.valid) {
-      this.productService.update(this.resolveForm(),this.productId).subscribe((data) => {
+      this.productService.update(this.resolveForm(), this.productId).subscribe((data) => {
         console.log(data);
         this.closeModal();
         this.modalIsLoading = false;
@@ -180,7 +180,7 @@ export class ProductModalEditComponent implements OnInit {
 
           this.message.error(`${error.error.message} <br> ${list}`);
         } else {
-          console.log("LLEGA A ESTE ERROR");          this.message.error('Error en la petición');
+          console.log("LLEGA A ESTE ERROR"); this.message.error('Error en la petición');
           console.log(error);
         }
 

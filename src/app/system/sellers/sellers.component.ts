@@ -65,9 +65,8 @@ export class SellersComponent implements OnInit {
     this.gridIsLoading = true;
     this.userService.getSellers().subscribe((data) => {
       this.dataList = data.data;
-      console.log(data.data);
       this.gridIsLoading = false;
-    })
+    });
   }
 
   loadDataEdit(id: number): void {

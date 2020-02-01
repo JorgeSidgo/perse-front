@@ -10,7 +10,7 @@ export class HistorySellerComponent implements OnInit {
 
   // DATA
   gridIsLoading = true;
-  dataList: any[];
+  dataList = new Array();
   userPoints = 0;
   userName = ' ';
   userId = 0;
@@ -57,7 +57,7 @@ export class HistorySellerComponent implements OnInit {
     if (this.search_data == "")
       this.index();
     else {
-      this.dataList = null;
+      this.dataList = new Array();
       this.gridIsLoading = true;
       this.redemptionService.historySearch(this.search_data).subscribe((data) => {
         this.dataList = data.data;
@@ -73,11 +73,10 @@ export class HistorySellerComponent implements OnInit {
 
 
   loadData(): void {
-    this.dataList = null;
+    this.dataList = new Array();
     this.gridIsLoading = true;
     this.redemptionService.historySeller().subscribe((data) => {
       this.dataList = Object.values(data.data);
-      console.log(this.dataList.filter(item => item.id === 10));
       this.gridIsLoading = false;
     });
   }

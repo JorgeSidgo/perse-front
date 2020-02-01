@@ -12,7 +12,10 @@
       <div *ngIf="gridIsLoading" class="univ-loading-container">
         <nz-spin nzSimple></nz-spin>
       </div>
-      <nz-timeline>
+
+      <nz-empty *ngIf="dataList.length === 0;"></nz-empty>
+
+      <nz-timeline *ngIf="dataList.length > 0;">
 
         <app-history-client-card [nombreProducto]="item.pname" [fechaRedemption]="item.redemption_day" [prodCost]="
           item.pcost" [imgProducto]="item.pic" [fullObject]="item" *ngFor="let item of dataList">

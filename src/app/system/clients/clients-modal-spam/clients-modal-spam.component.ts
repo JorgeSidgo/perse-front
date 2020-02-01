@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, ComponentRef } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
@@ -13,6 +13,8 @@ export class ClientsModalSpamComponent implements OnInit {
   // INPUTS
   @Input() modalIsVisible: boolean;
   @Input() contentLoading: boolean;
+  @Input() spamIsMassive: boolean;
+  @Input() spamUserId: boolean;
 
 
   // OUTPUTS
@@ -38,6 +40,10 @@ export class ClientsModalSpamComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
+  }
+
+  get titleMessage() {
+    return (this.spamIsMassive) ? 'Enviar mensaje de difusión' : 'Enviar mensaje personalizado';
   }
 
   initForm(): void {
@@ -126,6 +132,7 @@ export class ClientsModalSpamComponent implements OnInit {
     } */
 
   handleCancel(): void {
+    this.initForm();
     this.closeModal();
   }
 

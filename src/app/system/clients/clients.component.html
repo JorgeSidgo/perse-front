@@ -14,15 +14,15 @@
   (parentReload)="loadData()">
 </app-clients-modal-points>
 
-<app-clients-modal-spam [modalIsVisible]="spamModalIsVisible" [contentLoading]="spamModalContentLoading"
-  (modalState)="closeSpamModal()" (parentReload)="loadData()">
+<app-clients-modal-spam [modalIsVisible]="spamModalIsVisible" [spamIsMassive]="spamIsMassive" [spamUserId]="spamUserId"
+  [contentLoading]="spamModalContentLoading" (modalState)="closeSpamModal()" (parentReload)="loadData()">
 </app-clients-modal-spam>
 
 <div class="view-title">
   <h5 nz-title>Gestión de Clientes</h5>
 
   <div class="button-bar">
-    <button style="margin-right: 1em;" (click)="showSpamModal()" nz-button nzType="primary">
+    <button style="margin-right: 1em;" (click)="showSpamModal(true, 0)" nz-button nzType="primary">
       <i nz-icon nzType="message" nzTheme="outline"></i>
       Spam
     </button>
@@ -38,7 +38,8 @@
   <div nz-row [nzGutter]="16" style="margin: 0;">
 
 
-    <div nz-col nzOffset="18" nzSpan="6" style="margin-bottom: 1em; padding-right: 0;">
+    <div nz-col [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 24, offset: 0 }" [nzMd]="{ span: 6, offset: 18 }"
+      [nzLg]="{ span: 6, offset: 18 }" style="margin-bottom: 1em; padding-right: 0;">
       <nz-input-group [nzSuffix]="suffixTemplate" [nzPrefix]="prefixTemplate">
         <input type="text" nz-input placeholder="Buscar" [(ngModel)]="search_data" (change)="searchClients()" />
       </nz-input-group>
@@ -80,16 +81,16 @@
           <td>{{data.email}}</td>
           <td>{{data.phone}}</td>
           <td>{{data.points}}</td>
-          <td>{{data.birthday | date:'dd/MM/yyyy'}}</td>
+          <td>{{data.birthday | date:'dd/MM'}}</td>
           <td class="action-shelf">
             <button class="ant-btn-blue" nz-button nzType="primary" nzSize="small" nzShape="circle"
               (click)="edit.loadDataEdit(data.id)"><i nz-icon nzType="edit"></i></button>
             <button class="ant-btn-red" nz-button nzType="primary" nzSize="small" nzShape="circle"
               (click)="showModalDelete(data.id)"><i nz-icon nzType="delete"></i></button>
-            <!-- <button class="ant-btn-black" nz-button nzType="primary" nzSize="small" nzShape="circle"><i nz-icon
-                nzType="ellipsis"></i></button> -->
             <button class="ant-btn-yellow" (click)="showPointsModal(data.id)" nz-button nzType="primary" nzSize="small"
               nzShape="circle"><i nz-icon nzType="dollar-circle" nzTheme="fill"></i></button>
+            <button class="ant-btn-black" (click)="showSpamModal(false, data.id)" nz-button nzType="primary"
+              nzSize="small" nzShape="circle"><i nz-icon nzType="ellipsis"></i></button>
           </td>
         </tr>
       </tbody>

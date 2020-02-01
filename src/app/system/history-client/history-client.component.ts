@@ -12,7 +12,7 @@ export class HistoryClientComponent implements OnInit {
 
   // DATA
   gridIsLoading = true;
-  dataList: any[];
+  dataList = new Array();
   account: Account;
 
   constructor(
