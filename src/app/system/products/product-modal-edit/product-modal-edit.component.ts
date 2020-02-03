@@ -49,7 +49,6 @@ export class ProductModalEditComponent implements OnInit {
   ngOnInit() {
     this.initForm();
     this.cargarCatalogos();
-
   }
 
   initForm(): void {
@@ -64,23 +63,16 @@ export class ProductModalEditComponent implements OnInit {
   }
 
   loadData(id: number): void {
-
-    console.log("mostrando la info");
     this.productService.show(id).subscribe((data) => {
       this.dataList = data.data;
       this.editForm.controls['name'].setValue(this.dataList.name);
       this.editForm.controls['description'].setValue(this.dataList.description);
-
       this.editForm.controls['point_cost'].setValue(data.data.point_cost);
       this.editForm.controls['id_type'].setValue(data.data.id_type);
       this.editForm.controls['id_categorie'].setValue(data.data.id_categorie);
       this.imgProducto = data.data.product_picture;
       this.productId = id;
       console.log(this.editForm.value);
-
-
-
-
     });
 
 
@@ -111,25 +103,43 @@ export class ProductModalEditComponent implements OnInit {
     });
 
   }
-  resolveForm(): Product {
+  resolveForm(): any {
+    let formData = new FormData();
+    let productObj: Product;
     this.editForm.value.product_picture = this.image;
-    console.log("resolved", this.editForm.value);
-    return this.editForm.value as Product;
+    /*     productObj = this.editForm.value as Product;
+    
+        console.log('Product', productObj); */
+
+    formData.append('product_picture', this.image);
+    formData.append('name', this.editForm.get('name').value);
+    formData.append('description', this.editForm.get('description').value);
+    formData.append('id_type', this.editForm.get('id_type').value);
+    formData.append('id_categorie', this.editForm.get('id_categorie').value);
+    formData.append('point_cost', this.editForm.get('point_cost').value);
+
+    console.log('formData', JSON.stringify(formData));
+
+    return formData;
   }
-  changeListener($event): void {
+  changeListener($event: any): void {
     this.readThis($event.target);
   }
 
   readThis(inputValue: any): void {
-    var file: File = inputValue.files[0];
-    var myReader: FileReader = new FileReader();
+    /*     var file = ;
+        var myReader: FileReader = new FileReader(); */
+
+    this.image = inputValue.files[0] as File;
+
+    console.log(this.image);
 
 
-    myReader.onloadend = (e) => {
+    /* myReader.onloadend = (e) => {
       this.image = myReader.result;
 
     };
-    myReader.readAsDataURL(file);
+    myReader.readAsDataURL(file); */
 
 
   }
@@ -144,12 +154,6 @@ export class ProductModalEditComponent implements OnInit {
       this.editForm.controls[i].updateValueAndValidity();
     }
 
-
-
-    console.log("DATA RESOLVED");
-    console.log('form-data', this.resolveForm()
-    );
-
     if (this.editForm.dirty && this.editForm.valid) {
       this.productService.update(this.resolveForm(), this.productId).subscribe((data) => {
         console.log(data);
@@ -157,9 +161,8 @@ export class ProductModalEditComponent implements OnInit {
         this.modalIsLoading = false;
         if (data.code) {
           this.message.success('Producto modificado exitosamente');
-          this.emitReload();
+          // this.emitReload();
         } else {
-          console.log("llegamos a esta excepcion");
           this.modalIsLoading = false;
           this.message.error(data.message);
         }
@@ -180,7 +183,7 @@ export class ProductModalEditComponent implements OnInit {
 
           this.message.error(`${error.error.message} <br> ${list}`);
         } else {
-          console.log("LLEGA A ESTE ERROR"); this.message.error('Error en la petición');
+          this.message.error('Error en la petición');
           console.log(error);
         }
 

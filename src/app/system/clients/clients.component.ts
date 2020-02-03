@@ -23,7 +23,7 @@ export class ClientsComponent implements OnInit {
 
   // DATA
   gridIsLoading = true;
-  dataList: any[];
+  dataList = new Array();
   userData: Client;
   userPoints = 0;
   userName = ' ';
@@ -92,10 +92,10 @@ export class ClientsComponent implements OnInit {
     if (this.search_data == "")
       this.index();
     else {
-      this.dataList = null;
+      this.dataList = new Array();
       this.gridIsLoading = true;
       this.userService.seachClients(this.search_data).subscribe((data) => {
-        this.dataList = data.data;
+        this.dataList = data.data.data;
         this.gridIsLoading = false;
       });
     }
@@ -104,10 +104,10 @@ export class ClientsComponent implements OnInit {
 
 
   loadData(): void {
-    this.dataList = null;
+    this.dataList = new Array();
     this.gridIsLoading = true;
     this.userService.getClients().subscribe((data) => {
-      this.dataList = data.data;
+      this.dataList = data.data.data;
       this.gridIsLoading = false;
     });
   }

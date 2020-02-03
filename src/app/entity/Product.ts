@@ -2,11 +2,11 @@ export class Product {
     id: number;
     name: string;
     description: string;
-    productPicture: string;
+    productPicture: any;
     state: number;
-    pointCost: number;
-    idType: number;
-    idCategorie: number;
+    pointCost: string;
+    idType: string;
+    idCategorie: string;
     deletedAt: string;
     createdAt: string;
     updatedAt: string;

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Response } from '../entity/Response';
 import { map } from 'rxjs/operators';
 import { Product } from '../entity/Product';
@@ -31,20 +31,28 @@ export class ProductService {
       map((response: any) => response)
     );
   }
-  update(data: Product, id:number): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/update/`+id, data).pipe(
+  update(data: Product, id: number): Observable<any> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      })
+    };
+
+    return this.http.post<any>(`${this.baseUrl}/update/` + id, data).pipe(
       map((response: any) => response)
     );
   }
 
   show(id: number): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/show/` +id ).pipe(
+    return this.http.get<any>(`${this.baseUrl}/show/` + id).pipe(
       map((response: any) => response)
     );
   }
 
   delete(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.baseUrl}/destroy/`+id ).pipe(
+    return this.http.delete<any>(`${this.baseUrl}/destroy/` + id).pipe(
       map((response: any) => response)
     );
   }

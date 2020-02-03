@@ -44,7 +44,7 @@ export class ClientsModalEditComponent implements OnInit {
     this.editForm = this.fb.group({
       first_name: [null, [Validators.required]],
       last_name: [null, [Validators.required]],
-      email: [null, [Validators.required]],
+      email: [null, [Validators.required, Validators.email]],
       phone: [null, [Validators.required]],
       birthday: [null, [Validators.required]]
 

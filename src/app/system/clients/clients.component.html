@@ -22,8 +22,12 @@
   <h5 nz-title>Gestión de Clientes</h5>
 
   <div class="button-bar">
+    <button style="margin-right: 1em;" (click)="showSpamModal(true, 0)" nz-button nzType="dashed">
+      <i nz-icon nzType="file-excel" nzTheme="outline"></i>
+      Exportar
+    </button>
     <button style="margin-right: 1em;" (click)="showSpamModal(true, 0)" nz-button nzType="primary">
-      <i nz-icon nzType="message" nzTheme="outline"></i>
+      <i nz-icon nzType="mail" nzTheme="outline"></i>
       Spam
     </button>
     <button nz-button class="ant-btn-success" (click)="showModal()">
@@ -59,7 +63,9 @@
     <div *ngIf="gridIsLoading" class="univ-loading-container">
       <nz-spin nzSimple></nz-spin>
     </div>
-    <table class="ui very compact celled table">
+    <nz-empty *ngIf="dataList.length === 0"></nz-empty>
+
+    <table *ngIf="dataList.length > 0" class="ui very compact celled table">
 
       <thead class="super-compact">
         <tr>
@@ -90,7 +96,7 @@
             <button class="ant-btn-yellow" (click)="showPointsModal(data.id)" nz-button nzType="primary" nzSize="small"
               nzShape="circle"><i nz-icon nzType="dollar-circle" nzTheme="fill"></i></button>
             <button class="ant-btn-black" (click)="showSpamModal(false, data.id)" nz-button nzType="primary"
-              nzSize="small" nzShape="circle"><i nz-icon nzType="ellipsis"></i></button>
+              nzSize="small" nzShape="circle"><i nz-icon nzType="message"></i></button>
           </td>
         </tr>
       </tbody>

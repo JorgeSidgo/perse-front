@@ -17,8 +17,8 @@ export class ProductCardComponent implements OnInit {
 
 
 
-deleteModalIsVisible:boolean=false;
-userId:number;
+  deleteModalIsVisible: boolean = false;
+  userId: number;
 
   constructor(private modalService: NzModalService) { }
 
@@ -65,28 +65,27 @@ userId:number;
       nzContent: content
     });
   }
-  closeModalEdit():void{
+  closeModalEdit(): void {
   }
 
 
-  showModalDelete(id) : void{
-    this.userId=id;
+  showModalDelete(id): void {
+    this.userId = id;
     this.deleteModalIsVisible = true;
   }
-  closeModalDelete():void{
-    
+  closeModalDelete(): void {
+
     this.deleteModalIsVisible = false;
   }
 
-  loadData(): void{
-    console.log("llego al reload del card");
+  loadData(): void {
     this.emitReload();
   }
 
   emitReload(): void {
     this.parentReload.emit();
   }
-  
+
 
 
 }

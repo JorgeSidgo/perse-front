@@ -71,12 +71,16 @@ export class ProductModalAddComponent implements OnInit {
 
   readThis(inputValue: any): void {
     var file: File = inputValue.files[0];
-    var myReader: FileReader = new FileReader();
 
-    myReader.onloadend = (e) => {
-      this.image = myReader.result;
-    };
-    myReader.readAsDataURL(file);
+
+
+    this.image = file;
+    /*  var myReader: FileReader = new FileReader();
+ 
+     myReader.onloadend = (e) => {
+       this.image = myReader.result;
+     };
+     myReader.readAsDataURL(file); */
   }
 
   handleOk(): void {
@@ -93,7 +97,7 @@ export class ProductModalAddComponent implements OnInit {
     console.log('form-data', this.addForm.value);
 
     if (this.addForm.dirty && this.addForm.valid) {
-      this.productService.store(this.resolveForm()).subscribe((data) => {
+      /* this.productService.store(this.resolveForm()).subscribe((data) => {
         console.log(data);
         this.closeModal();
         this.modalIsLoading = false;
@@ -126,7 +130,7 @@ export class ProductModalAddComponent implements OnInit {
         }
 
         this.modalIsLoading = false;
-      });
+      }); */
     } else {
       this.message.warning('Complete el formulario');
       this.modalIsLoading = false;
