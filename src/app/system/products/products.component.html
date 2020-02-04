@@ -14,11 +14,14 @@
 <div class="grid-container">
   <div nz-row [nzGutter]="16">
 
-    <app-product-card-loading *ngFor="let item of [0,1,2,3,4,5]" nz-col nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8" [isLoading]="gridIsLoading" >
+    <app-product-card-loading *ngFor="let item of [0,1,2,3,4,5]" nz-col nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8"
+      [isLoading]="gridIsLoading">
     </app-product-card-loading>
 
-    <app-product-card nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8" *ngFor="let item of dataList" [nombreProducto]="item.name"
-      [descProducto]="item.point_cost" [imgProducto]="item.product_picture" [productId]="item.id" (parentReload)="index()" [fullObject]="item"></app-product-card>
+    <app-product-card nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8" *ngFor="let item of dataList"
+      [nombreProducto]="item.name" [descProducto]="item.point_cost"
+      [imgProducto]="'https://eatperse.com:8443/myimg/' + item.product_picture" [productId]="item.id"
+      (parentReload)="index()" [fullObject]="item"></app-product-card>
 
   </div>
 </div>
