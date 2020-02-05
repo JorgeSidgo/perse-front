@@ -107,7 +107,8 @@ export class ClientsComponent implements OnInit {
     this.dataList = new Array();
     this.gridIsLoading = true;
     this.userService.getClients().subscribe((data) => {
-      this.dataList = data.data.data;
+      console.log(data);
+      this.dataList = data.data;
       this.gridIsLoading = false;
     });
   }
