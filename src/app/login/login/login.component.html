@@ -1,41 +1,63 @@
 <div class="full-flex">
   <div class="filter">
-    <div class="card parent-card login-card">
-      <div class="card child-card">
-        <p class="logo-login">Persé</p>
+    <div [ngClass]="{'desktop': !deviceWidth, 'mobile': deviceWidth }" class="card parent-card login-card">
+
+      <div *ngIf="!deviceWidth" [ngClass]="{'desktop-lay': !deviceWidth, 'mobile-lay': deviceWidth }"
+        class="left-division">
+
+        <div class="perse-header">
+          <p>Persé</p>
+        </div>
+        <div class="perse-content-left">
+          <span nz-title>
+            Bienvenido al sistema de fidelización Persé. Ingresa el correo electrónico o número Telefónico con el que
+            has sido
+            registrado y verifica los productos disponibles a canjear.
+          </span>
+        </div>
       </div>
 
-      <div class="login-form">
-        <form nz-form [formGroup]="loginForm" (ngSubmit)="login()">
-          <nz-form-item>
-            <nz-form-control nzErrorTip="Ingrese su e-mail">
-              <nz-input-group nzPrefixIcon="user">
-                <input type="email" formControlName="email" nz-input placeholder="E-mail" />
-              </nz-input-group>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item *ngIf="requirePass">
-            <nz-form-control nzErrorTip="Ingrese su contraseña">
-              <nz-input-group nzPrefixIcon="lock">
-                <input type="password" formControlName="password" nz-input placeholder="Contraseña" />
-              </nz-input-group>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item class="button-row">
-            <nz-form-control>
-              <!-- <small *ngIf="requirePass"><a class="login-form-forgot" class="login-form-forgot">¿Olvidó su contraseña?</a></small> -->
-              <button nz-button class="login-form-button" [nzLoading]="loginButtonLoading" [nzType]="'primary'">Iniciar
-                Sesión</button>
-            </nz-form-control>
-          </nz-form-item>
-        </form>
+      <div [ngClass]="{'desktop-lay': !deviceWidth, 'mobile-lay': deviceWidth }" class="right-division">
+        <div *ngIf="deviceWidth" class="mobile-top-banner">
+          <div class="perse-header mobile">
+            <p>Persé</p>
+          </div>
+        </div>
+        <h2 *ngIf="!deviceWidth" nz-title>Ingresar</h2>
+        <div class="login-form">
+          <form class="form-element" nz-form [formGroup]="loginForm" (ngSubmit)="login()">
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Ingrese su E-mail o Número Telefónico">
+                <nz-input-group nzPrefixIcon="user">
+                  <input type="email" formControlName="email" nz-input placeholder="E-mail o Número Telefónico" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item *ngIf="requirePass">
+              <nz-form-control nzErrorTip="Ingrese su contraseña">
+                <nz-input-group nzPrefixIcon="lock">
+                  <input type="password" formControlName="password" nz-input placeholder="Contraseña" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item class="button-row">
+              <nz-form-control>
+                <button nz-button class="login-form-button" [nzLoading]="loginButtonLoading"
+                  [nzType]="'primary'">Iniciar
+                  Sesión</button>
+              </nz-form-control>
+            </nz-form-item>
+          </form>
+        </div>
+
       </div>
+
 
     </div>
 
-    <div class="card parent-card">
+    <!-- <div class="card parent-card">
       <nz-alert nzType="success" nzMessage="Bienvenido al sistema de fidelizacion Perse. Ingresa el correo electronico con el que has sido registrado y verifica los productos disponibles a canjear.
       "></nz-alert>
-    </div>
+    </div> -->
   </div>
 </div>

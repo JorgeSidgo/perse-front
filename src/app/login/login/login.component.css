@@ -1,3 +1,9 @@
+* {
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .full-flex {
   width: 100vw;
   height: 100vh;
@@ -16,10 +22,10 @@
   background: rgba(18, 60, 61, 0.4);
 }
 
-.parent-card {
+/* .parent-card {
   max-width: 25em;
   min-width: 25em;
-}
+} */
 
 .child-card {
   margin-top: -4em;
@@ -32,8 +38,21 @@
   width: 75%;
 }
 
-.login-card {
+.login-card.desktop {
   margin-bottom: 1em;
+  min-width: 45em;
+  min-height: 30em;
+  max-width: 55%;
+  max-height: 50%;
+  padding: 0 !important;
+}
+
+.login-card.mobile {
+  margin-bottom: 1em;
+  width: 80%;
+  min-width: 70%;
+  height: 40%;
+  padding: 0 !important;
 }
 
 .logo-login {
@@ -49,8 +68,16 @@
 }
 
 .login-form {
-  min-width: 20em;
-  max-width: 25em;
+  width: 100% !important;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form-element {
+  width: 100%;
 }
 
 .login-form-forgot {
@@ -59,4 +86,97 @@
 
 .login-form-button {
   width: 100%;
+}
+
+.desktop-lay {
+  width: 50%;
+  height: 100%;
+  float: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-lay {
+  width: 100%;
+  height: 100%;
+  padding: 2em 2em;
+  padding-top: 5.25em;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.mobile-top-banner {
+  width: 100%;
+  background-image: url('/assets/img/smol-back.png');
+  background-size: cover;
+  height: 5.25em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-top-left-radius: 0.28571429rem;
+  border-top-right-radius: 0.28571429rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.desktop-lay>div {}
+
+.desktop-lay.left-division {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  /* background-color: rgba(18, 60, 61, 0.4); */
+}
+
+.desktop-lay.right-division {
+  padding: 2em;
+  /* background-color: rgba(0, 0, 0, 0.4); */
+}
+
+.perse-header {
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* background: #D35400; */
+
+  border-top-left-radius: 0.28571429rem;
+  padding: 1em 2em;
+  width: 100% !important;
+}
+
+.perse-header.mobile {
+  justify-content: center !important;
+}
+
+.perse-content-left {
+  width: 100% !important;
+  background-image: url('/assets/img/left-back.png');
+  background-size: cover;
+  /* background: rgba(8, 29, 32); */
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 0.28571429rem;
+  padding-right: 2em;
+  padding-left: 2em;
+}
+
+.perse-content-left>span {
+  color: #eee;
+  text-align: left;
+  font-family: 'Montserrat-Regular';
+  text-shadow: .1em .1em 0em rgba(0, 0, 0, 0.3);
+  font-size: 1.25em;
+}
+
+.perse-header>p {
+  margin: 0 !important;
+  font-family: 'Grand Hotel';
+  font-size: 3.5em;
+  font-weight: 400;
+  color: #eee;
 }
