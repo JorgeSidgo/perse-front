@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   loginData: any;
   loginForm: FormGroup;
   requirePass = false;
+  deviceWidth = false;
 
   constructor(
     private authService: AuthService,
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router
   ) {
+    this.deviceWidth = (window.innerWidth < 576) ? true : false;
     this.cuenta = new Account();
     this.loginData = new Login();
     this.loginForm = this.fb.group({
@@ -34,7 +36,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.resize();
+  }
 
   login(): void {
     this.loginButtonLoading = true;
@@ -88,4 +92,12 @@ export class LoginComponent implements OnInit {
 
 
   }
+
+  resize(): void {
+    window.addEventListener('resize', e => {
+      console.log(window.innerWidth);
+      this.deviceWidth = (window.innerWidth < 576) ? true : false;
+    });
+  }
+
 }

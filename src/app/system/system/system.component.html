@@ -1,6 +1,6 @@
 <nz-layout>
   <nz-sider *ngIf="notClient && !deviceWidth" nzCollapsible [(nzCollapsed)]="isCollapsed" [nzBreakpoint]="'sm'"
-    [nzCollapsedWidth]="collapsedWith" [nzTrigger]="null">
+    [nzCollapsedWidth]="collapsedWith" nzWidth="150" [nzTrigger]="null">
     <div *ngIf="permissionLoading" class="univ-loading-container">
       <nz-spin nzSimple></nz-spin>
     </div>
