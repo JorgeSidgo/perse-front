@@ -52,6 +52,7 @@
   width: 80%;
   min-width: 70%;
   height: 40%;
+  min-height: 16em;
   padding: 0 !important;
 }
 
@@ -179,4 +180,10 @@
   font-size: 3.5em;
   font-weight: 400;
   color: #eee;
+}
+
+.message-card {
+  width: 80%;
+  min-width: 70%;
+  margin-bottom: 1.25em;
 }

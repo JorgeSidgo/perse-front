@@ -33,6 +33,8 @@ export class SystemComponent implements OnInit {
 
   notClient = true;
 
+  watermarkText = 'Powered By';
+
   collapsedWith = 0;
 
   constructor(
@@ -56,12 +58,15 @@ export class SystemComponent implements OnInit {
 
   changeState(state: boolean): any {
     this.headerBarText = (!state) ? 'Persé' : 'P';
+    this.watermarkText = (state) ? '' : 'Powered By';
     this.backgroundStyle(state);
   }
 
   checkRole(): void {
     this.notClient = (this.userData.roles[0].name === 'client') ? false : true;
   }
+
+
 
   getPermits() {
 
@@ -86,6 +91,7 @@ export class SystemComponent implements OnInit {
     window.addEventListener('resize', e => {
       this.deviceWidth = (window.innerWidth < 576) ? true : false;
       this.headerBarText = (this.deviceWidth) ? 'P' : 'Persé';
+      this.watermarkText = (this.isCollapsed) ? '' : 'Powered By';
     });
   }
 

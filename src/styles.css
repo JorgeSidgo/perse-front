@@ -133,3 +133,21 @@ body::-webkit-scrollbar-thumb {
 .ant-card-small>.ant-card-body>* {
   display: block;
 }
+
+.paging-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 0;
+}
+
+.paging-description {}
+
+
+.grid-container {
+  position: relative !important;
+}
+
+.ant-btn-group>button {
+  height: 100% !important;
+}

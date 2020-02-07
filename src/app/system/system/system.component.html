@@ -1,6 +1,6 @@
 <nz-layout>
   <nz-sider *ngIf="notClient && !deviceWidth" nzCollapsible [(nzCollapsed)]="isCollapsed" [nzBreakpoint]="'sm'"
-    [nzCollapsedWidth]="collapsedWith" nzWidth="150" [nzTrigger]="null">
+    [nzCollapsedWidth]="collapsedWith" [nzTrigger]="null">
     <div *ngIf="permissionLoading" class="univ-loading-container">
       <nz-spin nzSimple></nz-spin>
     </div>
@@ -16,7 +16,7 @@
 
     <div class="water-mark">
       <p class="balteum-trademark">
-        Powered by <img src="/assets/img/balteum.svg" style="height: 1em;" alt="">
+        {{watermarkText}} <img src="/assets/img/balteum.svg" style="height: 1em;" alt="">
       </p>
     </div>
 

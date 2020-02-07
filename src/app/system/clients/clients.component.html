@@ -138,4 +138,27 @@
     </nz-table> -->
 
   </div>
+
+  <div class="paging-footer">
+    <p class="paging-description">
+      Mostrando registros del {{pagingData.from}} al {{pagingData.to}} de un total de {{pagingData.total}}
+    </p>
+    <nz-button-group>
+      <button nz-button (click)="loadData(1)" nzType="default">
+        <i nz-icon nzType="vertical-right" nzTheme="outline"></i>
+      </button>
+      <button nz-button (click)="loadData((pagingData.currentPage - 1))" nzType="default">
+        <i nz-icon nzType="left" nzTheme="outline"></i>
+      </button>
+      <button nz-button *ngFor='let in of createArray(pagingData.lastPage) ;let i = index'
+        [ngClass]="{'active': (pagingData.currentPage == (i+1))}" (click)="loadData((i+1))"
+        nzType="default">{{i + 1}}</button>
+      <button nz-button (click)="loadData((pagingData.currentPage + 1))" nzType="default">
+        <i nz-icon nzType="right" nzTheme="outline"></i>
+      </button>
+      <button nz-button (click)="loadData(pagingData.lastPage)" nzType="default">
+        <i nz-icon nzType="vertical-left" nzTheme="outline"></i>
+      </button>
+    </nz-button-group>
+  </div>
 </div>

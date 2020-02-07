@@ -2,6 +2,7 @@
   width: 99%;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 }
 
 .ant-row {

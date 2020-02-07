@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { Client } from 'src/app/entity/Client';
+import { Paging } from 'src/app/entity/Paging';
 
 @Component({
   selector: 'app-clients',
@@ -25,6 +26,7 @@ export class ClientsComponent implements OnInit {
   gridIsLoading = true;
   dataList = new Array();
   userData: Client;
+  pagingData = new Paging();
   userPoints = 0;
   userName = ' ';
   userId = 0;
@@ -55,7 +57,7 @@ export class ClientsComponent implements OnInit {
 
   index(): void {
     this.search_data = "";
-    this.loadData();
+    this.loadData(1);
   }
 
   closePointsModal(): void {
@@ -103,16 +105,27 @@ export class ClientsComponent implements OnInit {
   }
 
 
-  loadData(): void {
-    this.dataList = new Array();
-    this.gridIsLoading = true;
-    this.userService.getClients().subscribe((data) => {
-      console.log(data);
-      this.dataList = data.data.data;
-      this.gridIsLoading = false;
-    });
+  loadData(page: number): void {
+    if (page <= this.pagingData.lastPage || page === 1) {
+      this.dataList = new Array();
+      this.gridIsLoading = true;
+      this.userService.getClients(page).subscribe((data) => {
+        this.pagingData.currentPage = data.data.current_page;
+        this.pagingData.from = data.data.from;
+        this.pagingData.to = data.data.to;
+        this.pagingData.total = data.data.total;
+        this.pagingData.lastPage = data.data.last_page;
+        this.dataList = data.data.data;
+        this.gridIsLoading = false;
+      });
+    }
+
+
   }
 
+  createArray(size: number): any {
+    return new Array(size);
+  }
 
   showModalDelete(id): void {
     this.userId = id;

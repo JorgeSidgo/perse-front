@@ -46,8 +46,8 @@ export class UsersService {
     );
   }
 
-  getClients(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/user/index-clients`).pipe(
+  getClients(page: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/user/index-clients?page=${page}`).pipe(
       map((response: any) => response)
     );
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Login } from 'src/app/entity/Login';
 import { Account } from 'src/app/entity/Account';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder, Form } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router
   ) {
-    this.deviceWidth = (window.innerWidth < 576) ? true : false;
+    this.deviceWidth = (window.innerWidth < 725) ? true : false;
     this.cuenta = new Account();
     this.loginData = new Login();
     this.loginForm = this.fb.group({
@@ -95,8 +95,7 @@ export class LoginComponent implements OnInit {
 
   resize(): void {
     window.addEventListener('resize', e => {
-      console.log(window.innerWidth);
-      this.deviceWidth = (window.innerWidth < 576) ? true : false;
+      this.deviceWidth = (window.innerWidth < 725) ? true : false;
     });
   }
 

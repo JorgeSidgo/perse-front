@@ -1,5 +1,7 @@
 <div class="full-flex">
   <div class="filter">
+
+
     <div [ngClass]="{'desktop': !deviceWidth, 'mobile': deviceWidth }" class="card parent-card login-card">
 
       <div *ngIf="!deviceWidth" [ngClass]="{'desktop-lay': !deviceWidth, 'mobile-lay': deviceWidth }"
@@ -10,7 +12,7 @@
         </div>
         <div class="perse-content-left">
           <span nz-title>
-            Bienvenido al sistema de fidelización Persé. Ingresa el correo electrónico o número Telefónico con el que
+            Bienvenido al sistema de fidelización Persé. Ingresa el correo electrónico o número telefónico con el que
             has sido
             registrado y verifica los productos disponibles a canjear.
           </span>
@@ -36,7 +38,7 @@
             <nz-form-item *ngIf="requirePass">
               <nz-form-control nzErrorTip="Ingrese su contraseña">
                 <nz-input-group nzPrefixIcon="lock">
-                  <input type="password" formControlName="password" nz-input placeholder="Contraseña" />
+                  <input type="password" id="pwd" formControlName="password" nz-input placeholder="Contraseña" />
                 </nz-input-group>
               </nz-form-control>
             </nz-form-item>
@@ -54,6 +56,21 @@
 
 
     </div>
+
+    <div *ngIf="deviceWidth" class="card message-card">
+      <div class="ant-notification-notice-content">
+        <div class="ant-notification-notice-with-icon">
+          <span class="ant-notification-notice-icon"><i nz-icon nzType="info-circle"
+              style="color: rgb(16, 142, 233);"></i></span>
+          <div class="ant-notification-notice-description">
+            Bienvenido al sistema de fidelización Persé. Ingresa el correo electrónico o número telefónico con el que
+            has sido
+            registrado y verifica los productos disponibles a canjear.
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <!-- <div class="card parent-card">
       <nz-alert nzType="success" nzMessage="Bienvenido al sistema de fidelizacion Perse. Ingresa el correo electronico con el que has sido registrado y verifica los productos disponibles a canjear.
