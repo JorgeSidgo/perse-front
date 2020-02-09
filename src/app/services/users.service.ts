@@ -46,7 +46,12 @@ export class UsersService {
     );
   }
 
-  getClients(page: number): Observable<any> {
+  getClients(page?: number): Observable<any> {
+
+    if (page === undefined) {
+      page = 1;
+    }
+
     return this.http.get<any>(`${this.baseUrl}/user/index-clients?page=${page}`).pipe(
       map((response: any) => response)
     );
