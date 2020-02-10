@@ -105,7 +105,6 @@ export class ClientsComponent implements OnInit {
           this.pagingData.to = data.data.to;
           this.pagingData.total = data.data.total;
           this.pagingData.lastPage = data.data.last_page;
-          this.dataList = data.data.data;
           this.gridIsLoading = false;
         }
 
@@ -121,13 +120,15 @@ export class ClientsComponent implements OnInit {
       this.dataList = new Array();
       this.gridIsLoading = true;
       this.userService.getClients(page).subscribe((data) => {
-        this.pagingData.currentPage = data.data.current_page;
-        this.pagingData.from = data.data.from;
-        this.pagingData.to = data.data.to;
-        this.pagingData.total = data.data.total;
-        this.pagingData.lastPage = data.data.last_page;
         this.dataList = data.data.data;
-        this.gridIsLoading = false;
+        if (data.data.data.length > 0) {
+          this.pagingData.currentPage = data.data.current_page;
+          this.pagingData.from = data.data.from;
+          this.pagingData.to = data.data.to;
+          this.pagingData.total = data.data.total;
+          this.pagingData.lastPage = data.data.last_page;
+          this.gridIsLoading = false;
+        }
       });
     }
 

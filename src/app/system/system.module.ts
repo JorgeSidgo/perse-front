@@ -45,6 +45,7 @@ import { HistorySellerComponent } from './history-seller/history-seller.componen
 import { PendingSellerComponent } from './pending-seller/pending-seller.component';
 import { ExchangeDetailModalComponent } from './shared-components/exchange-detail-modal/exchange-detail-modal.component';
 import { SettingsComponent } from './settings/settings.component';
+import { RecycleComponent } from './recycle/recycle.component';
 
 
 
@@ -89,7 +90,8 @@ import { SettingsComponent } from './settings/settings.component';
     HistorySellerComponent,
     PendingSellerComponent,
     ExchangeDetailModalComponent,
-    SettingsComponent,],
+    SettingsComponent,
+    RecycleComponent,],
   imports: [
     BrowserAnimationsModule,
     CommonModule,

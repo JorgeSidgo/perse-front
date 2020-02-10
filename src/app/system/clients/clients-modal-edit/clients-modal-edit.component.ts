@@ -144,7 +144,7 @@ export class ClientsModalEditComponent implements OnInit {
       this.editForm.controls['first_name'].setValue(this.dataList.first_name);
       this.editForm.controls['last_name'].setValue(this.dataList.last_name);
       this.editForm.controls['email'].setValue(this.dataList.email);
-      this.editForm.controls['phone'].setValue(this.dataList.phone);
+      this.editForm.controls['phone'].setValue(this.dataList.phone.substring(3, this.dataList.phone.length));
       this.editForm.controls['birthday'].setValue(this.dataList.birthday);
 
     });

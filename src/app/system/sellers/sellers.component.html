@@ -20,7 +20,7 @@
 
 <div class="grid-container">
 
-  <div nz-row [nzGutter]="16" style="margin: 0;">
+  <!-- <div nz-row [nzGutter]="16" style="margin: 0;">
 
 
     <div nz-col nzOffset="18" nzSpan="6" style="margin-bottom: 1em; padding-right: 0;">
@@ -33,10 +33,17 @@
     </div>
 
 
-  </div>
+  </div> -->
 
   <div nz-row [nzGutter]="16" style="margin:0;">
-    <nz-table [nzLoading]="gridIsLoading" #borderedTable nzBordered nzSize="small" [nzData]="dataList">
+
+    <div *ngIf="gridIsLoading" class="univ-loading-container">
+      <nz-spin nzSimple></nz-spin>
+    </div>
+    <nz-empty *ngIf="dataList.length === 0"></nz-empty>
+
+    <table *ngIf="dataList.length > 0" class="ui very compact celled table">
+
       <thead>
         <tr>
           <th>Nº</th>
@@ -62,7 +69,29 @@
           </td>
         </tr>
       </tbody>
-    </nz-table>
+    </table>
 
+  </div>
+  <div *ngIf="dataList.length > 0" class="paging-footer">
+    <p class="paging-description">
+      Mostrando registros del {{pagingData.from}} al {{pagingData.to}} de un total de {{pagingData.total}}
+    </p>
+    <nz-button-group>
+      <button nz-button (click)="loadData(1)" nzType="default">
+        <i nz-icon nzType="vertical-right" nzTheme="outline"></i>
+      </button>
+      <button nz-button (click)="loadData((pagingData.currentPage - 1))" nzType="default">
+        <i nz-icon nzType="left" nzTheme="outline"></i>
+      </button>
+      <button nz-button *ngFor='let in of createArray(pagingData.lastPage) ;let i = index'
+        [ngClass]="{'active': (pagingData.currentPage == (i+1))}" (click)="loadData((i+1))"
+        nzType="default">{{i + 1}}</button>
+      <button nz-button (click)="loadData((pagingData.currentPage + 1))" nzType="default">
+        <i nz-icon nzType="right" nzTheme="outline"></i>
+      </button>
+      <button nz-button (click)="loadData(pagingData.lastPage)" nzType="default">
+        <i nz-icon nzType="vertical-left" nzTheme="outline"></i>
+      </button>
+    </nz-button-group>
   </div>
 </div>

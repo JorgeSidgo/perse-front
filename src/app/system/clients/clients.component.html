@@ -22,10 +22,10 @@
   <h5 nz-title>Gestión de Clientes</h5>
 
   <div class="button-bar">
-    <button style="margin-right: 1em;" (click)="showSpamModal(true, 0)" nz-button nzType="dashed">
+    <!--     <button style="margin-right: 1em;" (click)="showSpamModal(true, 0)" nz-button nzType="dashed">
       <i nz-icon nzType="file-excel" nzTheme="outline"></i>
       Exportar
-    </button>
+    </button> -->
     <button style="margin-right: 1em;" (click)="showSpamModal(true, 0)" nz-button nzType="primary">
       <i nz-icon nzType="mail" nzTheme="outline"></i>
       Spam
@@ -59,7 +59,7 @@
 
   </div>
 
-  <div nz-row [nzGutter]="16" style="margin:0;">
+  <div nz-row [nzGutter]="16" style="margin:0; overflow: auto;">
     <div *ngIf="gridIsLoading" class="univ-loading-container">
       <nz-spin nzSimple></nz-spin>
     </div>
@@ -85,7 +85,7 @@
           <td>{{data.first_name}}</td>
           <td>{{data.last_name}}</td>
           <td>{{data.email}}</td>
-          <td>{{data.phone}}</td>
+          <td>{{data.phone.substring(3, data.phone.length)}}</td>
           <td>{{data.points}}</td>
           <td>{{data.birthday | date:'dd/MM'}}</td>
           <td class="action-shelf">
