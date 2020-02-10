@@ -98,7 +98,18 @@ export class ClientsComponent implements OnInit {
       this.gridIsLoading = true;
       this.userService.seachClients(this.search_data).subscribe((data) => {
         this.dataList = data.data.data;
-        this.gridIsLoading = false;
+
+        if (data.data.data.length > 0) {
+          this.pagingData.currentPage = data.data.current_page;
+          this.pagingData.from = data.data.from;
+          this.pagingData.to = data.data.to;
+          this.pagingData.total = data.data.total;
+          this.pagingData.lastPage = data.data.last_page;
+          this.dataList = data.data.data;
+          this.gridIsLoading = false;
+        }
+
+
       });
     }
 

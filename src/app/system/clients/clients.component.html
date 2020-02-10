@@ -139,7 +139,7 @@
 
   </div>
 
-  <div class="paging-footer">
+  <div *ngIf="dataList.length > 0" class="paging-footer">
     <p class="paging-description">
       Mostrando registros del {{pagingData.from}} al {{pagingData.to}} de un total de {{pagingData.total}}
     </p>

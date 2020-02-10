@@ -60,7 +60,6 @@ export class LoginComponent implements OnInit {
 
 
       this.authService.login(this.loginData).subscribe((data) => {
-
         if (data === 0) {
           this.requirePass = true;
           this.loginForm.controls.is_admin.setValue(true);
@@ -80,7 +79,7 @@ export class LoginComponent implements OnInit {
         }
       }, (error) => {
         if (error.status === 422) {
-          this.messageService.error('Credenciales Incorrectas');
+          this.messageService.warning(error.error.message);
           this.loginButtonLoading = false;
         }
       });

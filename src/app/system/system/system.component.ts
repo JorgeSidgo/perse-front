@@ -19,6 +19,7 @@ export class SystemComponent implements OnInit {
 
   title = 'Persé';
   email: string;
+  name: string;
   userData: Account;
   isCollapsed = false;
 
@@ -44,6 +45,7 @@ export class SystemComponent implements OnInit {
     this.headerBarText = 'Persé';
     this.userData = this.authService.getAccount();
     this.email = this.userData.email;
+    this.name = `${this.userData.first_name} ${this.userData.last_name}`;
     this.deviceWidth = (window.innerWidth < 576) ? true : false;
     this.collapsedWith = (this.deviceWidth) ? 0 : 80;
   }

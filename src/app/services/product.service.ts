@@ -26,6 +26,13 @@ export class ProductService {
     );
   }
 
+  indexGift(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/index-gift`).pipe(
+      map((response: any) => response)
+    );
+  }
+
+
   store(data: Product): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/store`, data).pipe(
       map((response: any) => response)
