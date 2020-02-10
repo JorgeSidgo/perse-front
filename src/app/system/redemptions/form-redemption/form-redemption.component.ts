@@ -79,10 +79,10 @@ export class FormRedemptionComponent implements OnInit {
 
     // tslint:disable-next-line: triple-equals
     if (this.redemptionForm.value.tipo_canje == 1) {
-      this.getClientesNoGift();
+      this.getClientes();
       // tslint:disable-next-line: triple-equals
     } else if (this.redemptionForm.value.tipo_canje == 2) {
-      this.getClientes();
+      this.getClientesNoGift();
     }
 
   }

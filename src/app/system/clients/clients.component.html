@@ -1,8 +1,8 @@
-<app-clients-modal-add [modalIsVisible]="addModalIsVisible" (modalState)="closeModal()" (parentReload)="loadData()">
+<app-clients-modal-add [modalIsVisible]="addModalIsVisible" (modalState)="closeModal()" (parentReload)="loadData(1)">
 </app-clients-modal-add>
 
 <app-clients-modal-delete [modalIsVisible]="deleteModalIsVisible" [userId]="userId" (modalState)="closeModalDelete()"
-  (parentReload)="loadData()">
+  (parentReload)="loadData(1)">
 </app-clients-modal-delete>
 
 <app-clients-modal-edit [modalIsVisible]="editModalVisible" [dataList]="dataListEdit" [id]="userId"
@@ -11,11 +11,11 @@
 
 <app-clients-modal-points [modalIsVisible]="pointsModalIsVisible" [contentLoading]="pointsModalcontentLoading"
   [clientPoints]="userPoints" [clientName]="userName" [clientId]="userId" (modalState)="closePointsModal()"
-  (parentReload)="loadData()">
+  (parentReload)="loadData(1)">
 </app-clients-modal-points>
 
 <app-clients-modal-spam [modalIsVisible]="spamModalIsVisible" [spamIsMassive]="spamIsMassive" [spamUserId]="spamUserId"
-  [contentLoading]="spamModalContentLoading" (modalState)="closeSpamModal()" (parentReload)="loadData()">
+  [contentLoading]="spamModalContentLoading" (modalState)="closeSpamModal()" (parentReload)="loadData(1)">
 </app-clients-modal-spam>
 
 <div class="view-title">
