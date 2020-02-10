@@ -85,7 +85,7 @@
           <td>{{data.first_name}}</td>
           <td>{{data.last_name}}</td>
           <td>{{data.email}}</td>
-          <td>{{data.phone.substring(3, data.phone.length)}}</td>
+          <td>{{(data.phone != null) ? data.phone.substring(3, data.phone.length) : data.phone}}</td>
           <td>{{data.points}}</td>
           <td>{{data.birthday | date:'dd/MM'}}</td>
           <td class="action-shelf">
