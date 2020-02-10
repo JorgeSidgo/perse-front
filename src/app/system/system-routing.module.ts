@@ -12,6 +12,7 @@ import { HistoryClientComponent } from './history-client/history-client.componen
 import { PendingClientComponent } from './pending-client/pending-client.component';
 import { PendingSellerComponent } from './pending-seller/pending-seller.component';
 import { HistorySellerComponent } from './history-seller/history-seller.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
       { path: 'seller-history', component: HistorySellerComponent, canActivate: [AuthGuard] },
       { path: 'seller-pending', component: PendingSellerComponent, canActivate: [AuthGuard] },
       { path: 'exchange', component: RedemptionsComponent, canActivate: [AuthGuard] },
+      { path: 'admin-settings', component: SettingsComponent, canActivate: [AuthGuard] },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', redirectTo: 'home' },
     ]

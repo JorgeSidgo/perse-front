@@ -71,7 +71,7 @@ export class SellersComponent implements OnInit {
 
   loadDataEdit(id: number): void {
     this.userService.show(id).subscribe((data) => {
-      this.dataListEdit = data.data;
+      this.dataListEdit = data.data.data;
     });
 
   }

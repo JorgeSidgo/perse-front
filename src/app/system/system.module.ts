@@ -44,6 +44,7 @@ import { ClientsModalSpamComponent } from './clients/clients-modal-spam/clients-
 import { HistorySellerComponent } from './history-seller/history-seller.component';
 import { PendingSellerComponent } from './pending-seller/pending-seller.component';
 import { ExchangeDetailModalComponent } from './shared-components/exchange-detail-modal/exchange-detail-modal.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 
@@ -87,7 +88,8 @@ import { ExchangeDetailModalComponent } from './shared-components/exchange-detai
     ClientsModalSpamComponent,
     HistorySellerComponent,
     PendingSellerComponent,
-    ExchangeDetailModalComponent,],
+    ExchangeDetailModalComponent,
+    SettingsComponent,],
   imports: [
     BrowserAnimationsModule,
     CommonModule,

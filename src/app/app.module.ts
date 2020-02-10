@@ -21,7 +21,7 @@ registerLocaleData(ES);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

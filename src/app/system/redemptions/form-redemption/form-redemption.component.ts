@@ -92,7 +92,13 @@ export class FormRedemptionComponent implements OnInit {
     this.clientName = this.redemptionForm.value.id_cliente.name;
     this.clienteId = this.redemptionForm.value.id_cliente.id;
 
-    this.getProductosNoImg(userObj.points);
+    if (this.type_selected == 1) {
+      this.getProductosNoImg(userObj.points);
+    } else {
+      this.getProductosGift();
+    }
+
+
 
   }
 
@@ -108,7 +114,7 @@ export class FormRedemptionComponent implements OnInit {
     this.productoDisabled = true;
     this.productList = null;
     this.userService.getClients().subscribe((data) => {
-      this.clientList = data.data;
+      this.clientList = data.data.data;
       this.clienteDisabled = false;
       this.isLoading = false;
     });
@@ -128,6 +134,16 @@ export class FormRedemptionComponent implements OnInit {
     this.isLoading = true;
     this.productList = null;
     this.productService.availableNoImg(points).subscribe((data) => {
+      this.productList = data.data;
+      this.productoDisabled = false;
+      this.isLoading = false;
+    });
+  }
+
+  getProductosGift(): void {
+    this.isLoading = true;
+    this.productList = null;
+    this.productService.indexGift().subscribe((data) => {
       this.productList = data.data;
       this.productoDisabled = false;
       this.isLoading = false;

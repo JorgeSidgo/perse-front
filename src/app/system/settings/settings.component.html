@@ -1,0 +1,37 @@
+<div class="view-title">
+  <h5 nz-title>Configuraciones</h5>
+  <button type="submit" form="settingForm" nz-button class="ant-btn-blue">
+    <i nz-icon nzType="save" nzTheme="outline"></i>
+    Guardar
+  </button>
+</div>
+
+<div class="grid-container">
+  <div nz-row [nzGutter]="10" style="margin: 0;">
+    <div *ngIf="isLoading" class="univ-loading-container">
+      <nz-spin nzSimple></nz-spin>
+    </div>
+    <form [formGroup]="settingForm" id="settingForm" nz-form nzLayout="horizontal" (ngSubmit)="saveSettings()">
+      <nz-form-item *ngFor="let item of settingList">
+        <nz-form-label nzSpan="6">{{item.display_name}}</nz-form-label>
+        <nz-form-control *ngIf="item.form_data == 'textarea'" nzSpan="18" nzErrorTip="Complete este campo">
+          <textarea rows="4" [formControlName]="item.property" nz-input></textarea>
+        </nz-form-control>
+        <nz-form-control *ngIf="item.form_data == 'checkbox'" nzSpan="18" nzErrorTip="Complete este campo">
+          <nz-switch style="margin-left: 0.5em;" [formControlName]="item.property" nzSize="small"
+            [nzCheckedChildren]="checkedTemplate" [nzUnCheckedChildren]="unCheckedTemplate"></nz-switch>
+          <ng-template #checkedTemplate><i nz-icon nzType="check" nzTheme="outline"></i></ng-template>
+          <ng-template #unCheckedTemplate><i nz-icon nzType="close" nzTheme="outline"></i></ng-template>
+        </nz-form-control>
+        <nz-form-control *ngIf="item.form_data == 'select'" nzSpan="18" nzErrorTip="Complete este campo">
+          <nz-select [formControlName]="item.property" style="width: 100%;" nzShowSearch nzAllowClear
+            nzPlaceHolder="Producto">
+            <nz-option *ngFor="let prod of giftList" [nzValue]="prod.id" [nzLabel]="prod.name">
+            </nz-option>
+          </nz-select>
+        </nz-form-control>
+
+      </nz-form-item>
+    </form>
+  </div>
+</div>
