@@ -91,6 +91,8 @@ export class ClientsComponent implements OnInit {
   }
 
   searchClients() {
+    console.log('search_data', this.search_data.length);
+
     if (this.search_data == "")
       this.index();
     else {

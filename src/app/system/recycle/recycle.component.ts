@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecycleComponent implements OnInit {
 
+  isLoading = false;
+  selectedBin: any;
+
   constructor() { }
 
   ngOnInit() {
   }
+
+  papeleraChange(event: any): any {
+
+  }
+
 
 }

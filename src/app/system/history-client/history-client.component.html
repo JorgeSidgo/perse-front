@@ -18,7 +18,8 @@
       <nz-timeline *ngIf="dataList.length > 0;">
 
         <app-history-client-card [nombreProducto]="item.pname" [fechaRedemption]="item.redemption_day" [prodCost]="
-          item.pcost" [imgProducto]="item.pic" [fullObject]="item" *ngFor="let item of dataList">
+          item.pcost" [imgProducto]="'https://eatperse.com:8443/myimg/' + item.pic" [fullObject]="item"
+          *ngFor="let item of dataList">
         </app-history-client-card>
 
       </nz-timeline>

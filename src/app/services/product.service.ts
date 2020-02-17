@@ -58,6 +58,19 @@ export class ProductService {
     );
   }
 
+  showDeletes(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/show-deletes`).pipe(
+      map((response: any) => response)
+    );
+  }
+
+  restoreDeleted(id: number): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/deleted-recovery/${id}`, {}).pipe(
+      map((response: any) => response)
+    );
+  }
+
+
   delete(id: number): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/destroy/` + id).pipe(
       map((response: any) => response)

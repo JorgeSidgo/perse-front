@@ -36,6 +36,12 @@ export class FormRedemptionComponent implements OnInit {
   typeProductList: TypeProduct[];
   clientList: Client[];
 
+  selectedClient: Client;
+  showCliente = false;
+
+  selectedProduct: Product;
+  showProduct = false;
+
   clienteDisabled = true;
   productoDisabled = true;
 
@@ -47,6 +53,8 @@ export class FormRedemptionComponent implements OnInit {
   productName: string;
 
   redemptionForm: FormGroup;
+
+  showDetails = false;
 
   ngOnInit() {
     this.initForm();
@@ -91,6 +99,9 @@ export class FormRedemptionComponent implements OnInit {
     let userObj = this.redemptionForm.value.id_cliente;
     this.clientName = this.redemptionForm.value.id_cliente.name;
     this.clienteId = this.redemptionForm.value.id_cliente.id;
+    this.selectedClient = (this.clientList.filter(client => client.id == this.clienteId))[0];
+    this.showCliente = true;
+    this.showDetails = true;
 
     if (this.type_selected == 1) {
       this.getProductosNoImg(userObj.points);
@@ -105,6 +116,8 @@ export class FormRedemptionComponent implements OnInit {
   productoChange(): void {
     this.productName = this.redemptionForm.value.id_producto.name;
     this.productoId = this.redemptionForm.value.id_producto.id;
+    this.selectedProduct = (this.productList.filter(product => product.id == this.productoId))[0];
+    this.showProduct = true;
   }
 
 

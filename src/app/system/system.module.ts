@@ -46,6 +46,7 @@ import { PendingSellerComponent } from './pending-seller/pending-seller.componen
 import { ExchangeDetailModalComponent } from './shared-components/exchange-detail-modal/exchange-detail-modal.component';
 import { SettingsComponent } from './settings/settings.component';
 import { RecycleComponent } from './recycle/recycle.component';
+import { RecycleProductsComponent } from './recycle/recycle-products/recycle-products.component';
 
 
 
@@ -91,7 +92,8 @@ import { RecycleComponent } from './recycle/recycle.component';
     PendingSellerComponent,
     ExchangeDetailModalComponent,
     SettingsComponent,
-    RecycleComponent,],
+    RecycleComponent,
+    RecycleProductsComponent,],
   imports: [
     BrowserAnimationsModule,
     CommonModule,

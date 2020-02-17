@@ -1,3 +1,24 @@
 <div class="view-title">
   <h5 nz-title>Papelera de Reciclaje</h5>
 </div>
+
+<div nz-row>
+  <div *ngIf="isLoading" class="univ-loading-container">
+    <nz-spin nzSimple></nz-spin>
+  </div>
+  <div nz-row nzType="flex" [nzGutter]="24">
+    <div nz-col nzOffset="16" nzXs="24" nzSm="24" nzMd="8" nzLg="8">
+      <h4>Papelera: </h4>
+      <nz-select [(ngModel)]="selectedBin" (ngModelChange)="papeleraChange($event)" style="width: 100%;" nzXs="24"
+        nzSm="24" nzMd="8" nzLg="8" nzShowSearch nzAllowClear nzPlaceHolder="Seleccione uno">
+        <nz-option nzLabel="Productos" nzValue="Productos"></nz-option>
+        <!-- <nz-option nzLabel="Clientes" nzValue="Clientes"></nz-option> -->
+      </nz-select>
+    </div>
+  </div>
+
+  <br>
+
+  <app-recycle-products *ngIf="selectedBin == 'Productos'"></app-recycle-products>
+
+</div>

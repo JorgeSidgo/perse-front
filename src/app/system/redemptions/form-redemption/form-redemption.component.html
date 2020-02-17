@@ -4,17 +4,6 @@
   </div>
 
   <form id="redemptionForm" [formGroup]="redemptionForm" nz-form>
-
-    <!--     <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
-      <nz-form-label>Categoría:</nz-form-label>
-      <nz-form-control nzErrorTip="Ingrese una descripción">
-        <nz-select formControlName="id_categorie" style="width: 100%;" nzShowSearch nzAllowClear
-          nzPlaceHolder="Seleccione una...">
-          <nz-option *ngFor="let item of categorieList" [nzLabel]="item.name" [nzValue]="item.id"></nz-option>
-        </nz-select>
-      </nz-form-control>
-    </nz-form-item> -->
-
     <div nz-row nzType="flex" [nzGutter]="24">
       <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8">
         <h4>Selecciona el tipo de canje</h4>
@@ -43,11 +32,40 @@
         </nz-select>
       </div>
     </div>
-    <div nz-row nzType="flex" nazAlign="middle" nzJustify="end" [nzGutter]="24">
-      <div nz-col style="padding: 1em 0 !important;">
-        <button type="button" (click)="checkoutModal()" nz-button [nzLoading]="false" class="ant-btn-success"
-          nzType="primary">Canjear</button>
-      </div>
-    </div>
   </form>
+
+  <div *ngIf="showDetails" style="margin-top: 1.5em;" class="view-title">
+    <h5 nz-title>Detalle</h5>
+  </div>
+
+  <div nz-row nzType="flex" [nzGutter]="24" *ngIf="showDetails" class="redemption-details">
+    <div *ngIf="showCliente" nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12" class="detail-card left">
+      <h4>Cliente</h4>
+      <ul>
+        <li><b>Nombre:</b> {{selectedClient.first_name + ' ' +selectedClient.last_name}} </li>
+        <li><b>E-mail:</b> {{selectedClient.email}} </li>
+        <li><b>Teléfono:</b>
+          {{(selectedClient.phone != null) ? selectedClient.phone.substring(3, selectedClient.phone.length) : selectedClient.phone}}
+        </li>
+        <li><b>Cumpleaños:</b> {{selectedClient.birthday | date:'dd/MM'}} </li>
+        <li><b>Puntos:</b> {{selectedClient.points}} </li>
+      </ul>
+    </div>
+    <div *ngIf="showProduct" nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12" class="detail-card right">
+      <h4>Producto</h4>
+      <ul>
+        <li><b>Nombre:</b> {{selectedProduct.name}} </li>
+        <li><b>Descripción:</b> <br> {{selectedProduct.description}} </li>
+        <li><b>Costo en puntos:</b> {{selectedProduct.point_cost}} </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div nz-row nzType="flex" nazAlign="middle" nzJustify="end" [nzGutter]="24">
+    <div nz-col style="padding: 1em 0 !important;">
+      <button type="button" (click)="checkoutModal()" nz-button [nzLoading]="false" class="ant-btn-success"
+        nzType="primary">Canjear</button>
+    </div>
+  </div>
 </div>
