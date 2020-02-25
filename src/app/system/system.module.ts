@@ -47,6 +47,8 @@ import { ExchangeDetailModalComponent } from './shared-components/exchange-detai
 import { SettingsComponent } from './settings/settings.component';
 import { RecycleComponent } from './recycle/recycle.component';
 import { RecycleProductsComponent } from './recycle/recycle-products/recycle-products.component';
+import { RecycleClientsComponent } from './recycle/recycle-clients/recycle-clients.component';
+import { RecycleSellersComponent } from './recycle/recycle-sellers/recycle-sellers.component';
 
 
 
@@ -93,7 +95,9 @@ import { RecycleProductsComponent } from './recycle/recycle-products/recycle-pro
     ExchangeDetailModalComponent,
     SettingsComponent,
     RecycleComponent,
-    RecycleProductsComponent,],
+    RecycleProductsComponent,
+    RecycleClientsComponent,
+    RecycleSellersComponent,],
   imports: [
     BrowserAnimationsModule,
     CommonModule,

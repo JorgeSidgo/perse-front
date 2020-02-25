@@ -17,8 +17,7 @@
     </div>
   </div>
 
-  <br>
-
+  <h4 *ngIf="selectedBin != null" nz-title>{{selectedBin}} en papelera</h4>
   <app-recycle-products *ngIf="selectedBin == 'Productos'"></app-recycle-products>
 
 </div>
