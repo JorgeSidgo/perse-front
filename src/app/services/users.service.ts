@@ -98,4 +98,23 @@ export class UsersService {
       map((response: any) => response)
     );
   }
+
+  showDeletedClients(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/user/show-clients-deleted`).pipe(
+      map((response: any) => response)
+    );
+  }
+
+  showDeletedSellers(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/user/show-sellers-deleted`).pipe(
+      map((response: any) => response)
+    );
+  }
+
+  restoreDeleted(id: number): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/user/deleted-recovery/${id}`, {}).pipe(
+      map((response: any) => response)
+    );
+  }
+
 }

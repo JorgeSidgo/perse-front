@@ -1,1 +1,30 @@
-<p>recycle-sellers works!</p>
+<div nz-row [nzGutter]="16" style="display: flex; justify-content: center;">
+  <div *ngIf="isLoading" class="univ-loading-container">
+    <nz-spin nzSimple></nz-spin>
+  </div>
+
+  <nz-empty *ngIf="dataList.length === 0"></nz-empty>
+
+  <table *ngIf="dataList.length > 0" class="ui very compact celled table">
+
+    <thead class="super-compact">
+      <tr>
+        <th>Nº</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of dataList">
+        <td>{{data.id}}</td>
+        <td>{{data.first_name}}</td>
+        <td>{{data.last_name}}</td>
+        <td class="action-shelf">
+          <button class="ant-btn-blue" (click)="showModalRestore(data.id)" nz-button nzType="primary" nzSize="small"
+            nzShape="circle"><i nz-icon nzType="reload"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,7 @@
+.grid-container>div {
+  display: grid;
+  position: relative;
+  grid-template-columns: auto auto auto;
+  column-gap: 1em;
+  row-gap: 1em;
+}

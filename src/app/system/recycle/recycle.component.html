@@ -12,12 +12,15 @@
       <nz-select [(ngModel)]="selectedBin" (ngModelChange)="papeleraChange($event)" style="width: 100%;" nzXs="24"
         nzSm="24" nzMd="8" nzLg="8" nzShowSearch nzAllowClear nzPlaceHolder="Seleccione uno">
         <nz-option nzLabel="Productos" nzValue="Productos"></nz-option>
-        <!-- <nz-option nzLabel="Clientes" nzValue="Clientes"></nz-option> -->
+        <nz-option nzLabel="Clientes" nzValue="Clientes"></nz-option>
+        <nz-option nzLabel="Vendedores" nzValue="Vendedores"></nz-option>
       </nz-select>
     </div>
   </div>
 
   <h4 *ngIf="selectedBin != null" nz-title>{{selectedBin}} en papelera</h4>
   <app-recycle-products *ngIf="selectedBin == 'Productos'"></app-recycle-products>
+  <app-recycle-clients *ngIf="selectedBin == 'Clientes'"></app-recycle-clients>
+  <app-recycle-sellers *ngIf="selectedBin == 'Vendedores'"></app-recycle-sellers>
 
 </div>
