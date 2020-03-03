@@ -106,6 +106,7 @@ export class ClientsModalPointsComponent implements OnInit {
 
   handleCancel(): void {
     this.closeModal();
+    this.initForm();
   }
 
   closeModal(): void {

@@ -163,6 +163,7 @@ export class ProductModalAddComponent implements OnInit {
 
   handleCancel(): void {
     this.closeModal();
+    this.initForm();
   }
 
   closeModal(): void {

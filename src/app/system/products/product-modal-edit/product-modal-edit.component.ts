@@ -82,6 +82,7 @@ export class ProductModalEditComponent implements OnInit {
 
   handleCancel(): void {
     this.closeModal();
+    this.initForm();
     this.modalIsVisible = false;
   }
 

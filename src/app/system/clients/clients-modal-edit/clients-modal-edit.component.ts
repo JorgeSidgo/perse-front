@@ -121,6 +121,7 @@ export class ClientsModalEditComponent implements OnInit {
 
   handleCancel(): void {
     this.closeModal();
+    this.initForm();
   }
 
   closeModal(): void {
