@@ -94,7 +94,7 @@ export class UsersService {
   }
 
   sendSpam(data: any): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/user/index-sellers`).pipe(
+    return this.http.get<any>(`${this.baseUrl}/user/send-spam`).pipe(
       map((response: any) => response)
     );
   }

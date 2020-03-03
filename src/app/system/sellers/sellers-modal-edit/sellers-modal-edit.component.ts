@@ -25,15 +25,15 @@ export class SellersModalEditComponent implements OnInit {
 
 
 
-//Declaring dataVariables
-editForm: FormGroup;
-modalIsLoading = false;
-contentLoading: boolean=false;
+  //Declaring dataVariables
+  editForm: FormGroup;
+  modalIsLoading = false;
+  contentLoading: boolean = false;
 
 
 
 
-  constructor(private userService: UsersService,private fb: FormBuilder,private message: NzMessageService) { }
+  constructor(private userService: UsersService, private fb: FormBuilder, private message: NzMessageService) { }
 
   ngOnInit() {
     this.initForm();
@@ -45,7 +45,7 @@ contentLoading: boolean=false;
       last_name: [null, [Validators.required]],
       email: [null, [Validators.required]],
       phone: [null, [Validators.required]]
-    
+
     });
   }
 
@@ -65,7 +65,7 @@ contentLoading: boolean=false;
 
   handleOk(): void {
     this.modalIsLoading = true;
-    
+
 
     // tslint:disable-next-line: forin
     for (const i in this.editForm.controls) {
@@ -73,17 +73,17 @@ contentLoading: boolean=false;
       this.editForm.controls[i].updateValueAndValidity();
     }
 
-    if ( this.editForm.dirty && this.editForm.valid) {
-    
-     
-      this.userService.updateSeller(this.resolveForm(),this.id).subscribe((data) => {
+    if (this.editForm.dirty && this.editForm.valid) {
+
+
+      this.userService.updateSeller(this.resolveForm(), this.id).subscribe((data) => {
         this.closeModal();
         this.modalIsLoading = false;
         if (data.code) {
           this.message.success('Vendedor Editado exitosamente');
           this.emitReload();
         } else {
-        this.modalIsLoading = false;
+          this.modalIsLoading = false;
           this.message.error(data.message);
         }
       }, (error) => {
@@ -122,31 +122,32 @@ contentLoading: boolean=false;
 
   closeModal(): void {
     this.initForm();
-    this.modalIsVisible=false;
+    this.modalIsVisible = false;
   }
 
   emitReload(): void {
     this.parentReload.emit();
   }
 
-  loadDataEdit(id: number):void{
-    
+  loadDataEdit(id: number): void {
 
-    this.id=id;
-    this.modalIsVisible=true;
-    
-    this.contentLoading=true;
-    this.userService.show(id).subscribe((data)=>{
-      this.dataList=data.data;
-        this.editForm.controls['first_name'].setValue(this.dataList.first_name);
-        this.editForm.controls['last_name'].setValue(this.dataList.last_name);
-        this.editForm.controls['email'].setValue(this.dataList.email);
-        this.editForm.controls['phone'].setValue(this.dataList.phone);
+
+    this.id = id;
+    this.modalIsVisible = true;
+
+    this.contentLoading = true;
+    this.userService.show(id).subscribe((data) => {
+      this.dataList = data.data;
+      let phoneString = this.dataList.phone;
+      this.editForm.controls['first_name'].setValue(this.dataList.first_name);
+      this.editForm.controls['last_name'].setValue(this.dataList.last_name);
+      this.editForm.controls['email'].setValue(this.dataList.email);
+      this.editForm.controls['phone'].setValue(phoneString.substring(3, phoneString.length));
     });
 
-    this.contentLoading=false;
-    
-    
+    this.contentLoading = false;
+
+
 
   }
 

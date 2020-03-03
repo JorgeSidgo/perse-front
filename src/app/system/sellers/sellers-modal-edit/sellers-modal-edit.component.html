@@ -1,12 +1,10 @@
-
-
 <nz-modal [nzClosable]="false" [nzKeyboard]="false" [(nzVisible)]="modalIsVisible" nzTitle="Editar Vendedor"
   [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="handleCancel()">
- 
+
   <ng-template #modalContent>
-      <div *ngIf="contentLoading" class="univ-loading-container">
-          <nz-spin nzSimple></nz-spin>
-        </div>
+    <div *ngIf="contentLoading" class="univ-loading-container">
+      <nz-spin nzSimple></nz-spin>
+    </div>
     <form [formGroup]="editForm" id="editForm" nz-form nzLayout="vertical" (ngSubmit)="handleOk()">
       <nz-input-group style="margin-bottom: 1.5em;">
         <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
@@ -18,7 +16,7 @@
         <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
           <nz-form-label>Apellido:</nz-form-label>
           <nz-form-control nzErrorTip="Ingrese el apellido del Vendedor">
-            <input formControlName="last_name" placeholder="Apellido"  nz-input onlyLetters />
+            <input formControlName="last_name" placeholder="Apellido" nz-input onlyLetters />
           </nz-form-control>
         </nz-form-item>
       </nz-input-group>
@@ -28,26 +26,20 @@
           <input formControlName="email" placeholder="Correo Electrónico" nz-input />
         </nz-form-control>
       </nz-form-item>
-      <nz-input-group style="margin-bottom: 1.5em;">
-        <nz-form-item nz-col nzSpan="12" style="margin-bottom: 0;">
-          <nz-form-label>Número de Teléfono:</nz-form-label>
-          <nz-form-control nzErrorTip="Ingrese el número de teléfono">
-            <input formControlName="phone" mask="00000000" placeholder="77777777"   nz-input/>
-          </nz-form-control>
-        </nz-form-item>
-      </nz-input-group>
-     
+      <nz-form-item>
+        <nz-form-label>Número de Teléfono:</nz-form-label>
+        <nz-form-control nzErrorTip="Ingrese el número de teléfono">
+          <input formControlName="phone" mask="00000000" placeholder="77777777" nz-input />
+        </nz-form-control>
+      </nz-form-item>
+
     </form>
   </ng-template>
 
 
   <ng-template #modalFooter>
     <button nz-button class="ant-btn-black" (click)="handleCancel()" nzType="default">Cancelar</button>
-    <button nz-button type="submit" [nzLoading]="modalIsLoading" class="ant-btn-success" form="editForm"
-      nzType="primary">Modificar</button>
+    <button nz-button type="submit" [nzLoading]="modalIsLoading" class="ant-btn-blue" form="editForm"
+      nzType="primary">Guardar Cambios</button>
   </ng-template>
 </nz-modal>
-
-
-
-
