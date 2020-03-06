@@ -47,8 +47,8 @@ export class ClientsModalAddComponent implements OnInit {
     this.addForm = this.fb.group({
       first_name: [null, [Validators.required]],
       last_name: [null, [Validators.required]],
-      email: [null, [Validators.required, Validators.email]],
-      phone: [null, [Validators.required]],
+      email: [null, [Validators.email]],
+      phone: [null],
       birthday: [null, [Validators.required]],
       send_sms: [null]
     });
